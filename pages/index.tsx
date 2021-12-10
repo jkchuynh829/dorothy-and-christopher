@@ -42,7 +42,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        DorothyAndChristopher.com is Under Construction!
+        DorothyAndChristopher.com is Under Construction!!
       </main>
     </div>
   )
