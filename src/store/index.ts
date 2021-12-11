@@ -15,7 +15,6 @@ export function configureAppStore() {
     middleware: [...getDefaultMiddleware()],
   });
 
-
   if (module.hot) {
     module.hot.accept('./index', () => store.replaceReducer(rootReducer));
   }

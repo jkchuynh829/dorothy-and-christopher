@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { test } from './test';
+import { maintenanceMode } from './maintenanceMode';
 
 const rootReducer = combineReducers({
-  test,
+  maintenanceMode,
 });
 export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>;
