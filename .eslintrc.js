@@ -20,6 +20,9 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
     'no-restricted-imports': 'off',
+    'import/extensions': 'off', //disable the following 3 lines for next.js
+    'import/no-extraneous-dependencies': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   overrides: [
     {
