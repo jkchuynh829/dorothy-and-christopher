@@ -12,11 +12,7 @@
     "eslint.alwaysShowStatus": true,
     "eslint.format.enable": true,
     "eslint.workingDirectories": [
-      "./web",
-      "./server",
-      "./dashboard",
-      "./studio",
-      "./common"
+      ".",
     ],
     "[javascript]": {
       "editor.defaultFormatter": "dbaeumer.vscode-eslint"
