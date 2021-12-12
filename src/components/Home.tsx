@@ -1,9 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 import tw, { styled } from 'twin.macro';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { Aerotis, Almara, H1, Paragraph as P } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import hero from '../assets/photos/hero-1.jpg';
+import hero2 from '../assets/photos/hero-2.jpg';
+import hero3 from '../assets/photos/hero-3.jpg';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll`;
 const HeroContainer = styled.div`
@@ -15,23 +19,52 @@ const HeroContainer = styled.div`
 `;
 const Heading = styled.div`
   ${tw`text-center z-10 mt-96 text-white`}
-  font-size: 100px;
+  font-size: 6.25rem;
 `;
 const PaddedAerotis = styled(Aerotis)`
   ${tw`mb-6`}
 `;
 
+const Embla = tw.div`absolute top-0 left-0 overflow-hidden h-96 h-full w-full`;
+const EmblaContainer = tw.div`flex absolute top-0 left-0 w-full h-full`;
+const EmblaSlide = tw.div`flex-embla relative`;
+
 const Home = () => {
+  const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
   return (
     <Container>
       <HeroContainer>
-        <Image
-          src={hero}
-          alt="hero"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
+        <Embla className="embla" ref={emblaRef}>
+          <EmblaContainer className="embla__container">
+            <EmblaSlide className="embla__slide">
+              <Image
+                src={hero}
+                alt="hero"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            </EmblaSlide>
+            <EmblaSlide className="embla__slide">
+              <Image
+                src={hero2}
+                alt="hero"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            </EmblaSlide>
+            <EmblaSlide className="embla__slide">
+              <Image
+                src={hero3}
+                alt="hero"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            </EmblaSlide>
+          </EmblaContainer>
+        </Embla>
         <Heading>
           <PaddedAerotis>
             dorothy <Almara>&</Almara> christopher

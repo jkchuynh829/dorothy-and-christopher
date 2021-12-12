@@ -15,6 +15,9 @@ module.exports = {
       white: '#FAFAFA',
     },
     extend: {
+      flex: {
+        'embla': '0 0 100%',
+      },
       fontSize: {
         'nav-link': '1.125rem',
       },
