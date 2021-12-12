@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 import tw, { styled } from 'twin.macro';
-import { Aerotis, Almara, H1, Paragraph as P } from './Typography';
+import { Aerotis, H1, Paragraph as P } from './Typography';
 import ContentWrapper from './ContentWrapper';
-import hero from '../assets/photos/DOROTHYANDCHRIS84.jpg';
+import hero from '../assets/photos/DOROTHYANDCHRIS63.jpg';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll`;
 const HeroContainer = styled.div`
@@ -14,14 +14,11 @@ const HeroContainer = styled.div`
   }
 `;
 const Heading = styled.div`
-  ${tw`text-center z-10 mt-96 text-white`}
+  ${tw`z-10 mt-96 text-white`}
   font-size: 100px;
 `;
-const PaddedAerotis = styled(Aerotis)`
-  ${tw`mb-6`}
-`;
 
-const Home = () => {
+const SaveTheDate = () => {
   return (
     <Container>
       <HeroContainer>
@@ -33,14 +30,11 @@ const Home = () => {
           objectPosition="center"
         />
         <Heading>
-          <PaddedAerotis>
-            dorothy <Almara>&</Almara> christopher
-          </PaddedAerotis>
-          <P>AUGUST 20 , 2022</P>
+          <Aerotis>save the date</Aerotis>
         </Heading>
       </HeroContainer>
       <ContentWrapper>
-        <H1>Dorothy and Christopher</H1>
+        <H1>Save the Date</H1>
         <P>
           I&apos;m baby celiac twee skateboard pabst. Direct trade man bun
           helvetica tacos street art man braid. Hot chicken cray hexagon raw
@@ -81,4 +75,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SaveTheDate;

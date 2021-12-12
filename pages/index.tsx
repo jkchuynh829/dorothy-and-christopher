@@ -11,7 +11,7 @@ import { disableMaintenanceMode } from '../src/store/maintenanceMode';
 // const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 // const supabase = createClient(supabaseUrl, supabaseKey);
 
-const Container = tw.div`relative w-full h-full`;
+const Container = tw.div`relative w-full h-full flex flex-1`;
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Main = () => {
     <Container>
       <Head>
         <title>Dorothy and Christopher&apos;s Wedding</title>
-        <meta name="description" content="Made by Jimy Huynh" />
+        <meta name="description" content="Made by Jimmy Huynh" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {enabled ? (

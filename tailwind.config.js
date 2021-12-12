@@ -5,11 +5,27 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ['Urbanist', 'Helvetica', 'Arial', 'sans-serif'],
-      heading: ['Aerotis', 'Helvetica', 'Arial', 'sans-serif'],
-      accent: ['Almara', 'Helvetica', 'Arial', 'sans-serif'],
+      urbanist: ['Urbanist', 'Helvetica', 'Arial', 'sans-serif'],
+      aerotis: ['Aerotis', 'Helvetica', 'Arial', 'sans-serif'],
+      almara: ['Almara', 'Helvetica', 'Arial', 'sans-serif'],
     },
-    extend: {},
+    colors: {
+      transparent: 'transparent',
+      black: '#0F0F0F',
+      white: '#FAFAFA',
+    },
+    extend: {
+      fontSize: {
+        'nav-link': '1.125rem',
+      },
+      opacity: {
+        '35': '0.35',
+      },
+      backgroundColor: {
+        'black': '#0F0F0F',
+        'white': '#FAFAFA',
+      },
+    },
   },
   plugins: [],
 }

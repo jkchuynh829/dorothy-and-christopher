@@ -1,11 +1,18 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { extractCritical } from '@emotion/server'
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
+import { extractCritical } from '@emotion/server';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const critical = extractCritical(initialProps.html)
-    initialProps.html = critical.html
+    const initialProps = await Document.getInitialProps(ctx);
+    const critical = extractCritical(initialProps.html);
+    initialProps.html = critical.html;
     initialProps.styles = (
       <>
         {initialProps.styles}
@@ -14,9 +21,9 @@ export default class MyDocument extends Document {
           dangerouslySetInnerHTML={{ __html: critical.css }}
         />
       </>
-    )
+    );
 
-    return initialProps
+    return initialProps;
   }
 
   render() {
@@ -33,6 +40,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

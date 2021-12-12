@@ -1,13 +1,13 @@
 import tw, { styled } from 'twin.macro';
 import { useSpring, animated } from 'react-spring';
-import { H1, Paragraph, Accent } from './Typography';
+import { H1, Paragraph, Almara, Aerotis } from './Typography';
 import MdiIcon from '@mdi/react';
 import { mdiLock } from '@mdi/js';
 
 const PASSWORD = 'pugsley';
 
 const Container = tw.main`
-  flex flex-col
+  flex flex-col flex-1
   justify-center items-center
   h-screen w-full
   text-center
@@ -56,7 +56,9 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
   return (
     <Container>
       <Heading style={animatedHeading}>
-        Dorothy <Accent>&</Accent> Christopher
+        <Aerotis>
+          Dorothy <Almara>&</Almara> Christopher
+        </Aerotis>
       </Heading>
       <P style={animmateParagraph}>Coming soon!</P>
       <IconButton onClick={onUnlockClick}>

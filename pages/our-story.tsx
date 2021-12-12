@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useDispatch } from 'react-redux';
 import tw from 'twin.macro';
 import Maintenance from '../src/components/Maintenance';
+import OurStory from '../src/components/OurStory';
 import { useSelector } from '../src/store';
 import { disableMaintenanceMode } from '../src/store/maintenanceMode';
 
@@ -14,13 +15,13 @@ const Main = () => {
     <Container>
       <Head>
         <title>Dorothy and Christopher&apos;s Wedding - Our Story</title>
-        <meta name="description" content="Made by Jimy Huynh" />
+        <meta name="description" content="Made by Jimmy Huynh" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {enabled ? (
         <Maintenance unlock={() => dispatch(disableMaintenanceMode())} />
       ) : (
-        <>Our Story</>
+        <OurStory />
       )}
     </Container>
   );
