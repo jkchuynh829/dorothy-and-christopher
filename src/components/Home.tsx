@@ -3,7 +3,7 @@ import React from 'react';
 import tw, { styled } from 'twin.macro';
 import { Aerotis, Almara, H1, Paragraph as P } from './Typography';
 import ContentWrapper from './ContentWrapper';
-import hero from '../assets/photos/DOROTHYANDCHRIS84.jpg';
+import hero from '../assets/photos/hero-1.jpg';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll`;
 const HeroContainer = styled.div`
