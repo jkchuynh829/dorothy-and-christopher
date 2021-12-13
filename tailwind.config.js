@@ -13,6 +13,8 @@ module.exports = {
       transparent: 'transparent',
       black: '#0F0F0F',
       white: '#FAFAFA',
+      green: 'rgba(17, 146, 118, 0.25)',
+      pink: 'rgba(242, 156, 183, 0.25)',
     },
     extend: {
       backgroundColor: {
