@@ -3,13 +3,20 @@ import React from 'react';
 import tw, { styled } from 'twin.macro';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { Aerotis, Almara, H1, Paragraph as P } from './Typography';
+import { Aerotis, Almara, Paragraph as P } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import hero from '../assets/photos/hero-1.jpg';
 import hero2 from '../assets/photos/hero-2.jpg';
 import hero3 from '../assets/photos/hero-3.jpg';
+import GoldTextClip from './GoldTextClip';
 
-const Container = tw.div`w-full flex flex-col items-center overflow-scroll`;
+const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
+const HeroHeading = tw.div`text-center z-10 mt-120 text-white text-8xl`;
+const Heading = tw.div`mt-44 text-white text-8xl w-full mb-6`;
+const Embla = tw.div`absolute top-0 left-0 overflow-hidden h-96 h-full w-full`;
+const EmblaContainer = tw.div`flex absolute top-0 left-0 w-full h-full`;
+const EmblaSlide = tw.div`flex-embla relative`;
+
 const HeroContainer = styled.div`
   ${tw`relative min-h-screen w-full flex justify-center items-center`}
   &::after {
@@ -17,17 +24,10 @@ const HeroContainer = styled.div`
     ${tw`absolute w-full h-full bg-black opacity-35`}
   }
 `;
-const Heading = styled.div`
-  ${tw`text-center z-10 mt-96 text-white`}
-  font-size: 6.25rem;
-`;
 const PaddedAerotis = styled(Aerotis)`
   ${tw`mb-6`}
 `;
-
-const Embla = tw.div`absolute top-0 left-0 overflow-hidden h-96 h-full w-full`;
-const EmblaContainer = tw.div`flex absolute top-0 left-0 w-full h-full`;
-const EmblaSlide = tw.div`flex-embla relative`;
+const ExtraMargin = tw.div`mb-96`;
 
 const Home = () => {
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
@@ -65,51 +65,64 @@ const Home = () => {
             </EmblaSlide>
           </EmblaContainer>
         </Embla>
-        <Heading>
-          <PaddedAerotis>
-            dorothy <Almara>&</Almara> christopher
-          </PaddedAerotis>
+        <HeroHeading>
+          <GoldTextClip>
+            <PaddedAerotis>
+              dorothy <Almara>&</Almara> christopher
+            </PaddedAerotis>
+          </GoldTextClip>
           <P>AUGUST 20 , 2022</P>
-        </Heading>
+        </HeroHeading>
       </HeroContainer>
-      <ContentWrapper>
-        <H1>Dorothy and Christopher</H1>
-        <P>
-          I&apos;m baby celiac twee skateboard pabst. Direct trade man bun
-          helvetica tacos street art man braid. Hot chicken cray hexagon raw
-          denim, swag four dollar toast bitters ennui hammock vegan mlkshk tacos
-          keytar forage. Fam try-hard edison bulb, mlkshk fingerstache offal
-          pop-up kinfolk prism fanny pack roof party franzen shaman. Lo-fi
-          celiac everyday carry, biodiesel offal stumptown activated charcoal
-          dreamcatcher blog flexitarian pug sustainable selfies. Cloud bread
-          hexagon humblebrag, bushwick gentrify keffiyeh vape tacos distillery
-          leggings pitchfork blog everyday carry. Artisan ennui master cleanse,
-          glossier helvetica shabby chic brunch occupy trust fund ramps iPhone.
-        </P>
-        <P>
-          Hashtag food truck glossier crucifix chia vinyl messenger bag small
-          batch gastropub squid paleo. Lo-fi PBR&B pinterest YOLO tousled. Plaid
-          enamel pin paleo small batch pickled iPhone trust fund tattooed
-          sartorial. Pop-up ugh cardigan, tbh bushwick portland tousled marfa.
-        </P>
-        <P>
-          Microdosing woke retro yuccie DIY hashtag taxidermy. Cornhole kinfolk
-          you probably haven&apos;t heard of them wolf readymade pok pok synth
-          etsy meggings. Locavore mixtape iPhone kinfolk sartorial street art,
-          bushwick normcore ugh gentrify PBR&B heirloom schlitz ethical lyft.
-          Direct trade raclette taxidermy palo santo art party meh, portland
-          chillwave four loko locavore forage umami cronut migas swag. Synth
-          mlkshk small batch 90&apos;s, cronut biodiesel lumbersexual fam
-          unicorn iceland food truck meh.
-        </P>
-        <P>
-          Humblebrag glossier portland irony. Williamsburg scenester meditation
-          craft beer wolf listicle fixie etsy. Flexitarian tofu poutine, ethical
-          shoreditch DIY four loko typewriter hell of edison bulb kinfolk
-          heirloom. Kickstarter whatever flannel vaporware, echo park kogi
-          fashion axe butcher kitsch authentic quinoa chia neutra.
-        </P>
-      </ContentWrapper>
+      <ExtraMargin>
+        <ContentWrapper>
+          <Heading>
+            <GoldTextClip>
+              <Aerotis>
+                &nbsp;pasadena<Almara>,</Almara> ca
+              </Aerotis>
+            </GoldTextClip>
+          </Heading>
+          <P>On August 20, 2020</P>
+          <P>
+            I&apos;m baby celiac twee skateboard pabst. Direct trade man bun
+            helvetica tacos street art man braid. Hot chicken cray hexagon raw
+            denim, swag four dollar toast bitters ennui hammock vegan mlkshk
+            tacos keytar forage. Fam try-hard edison bulb, mlkshk fingerstache
+            offal pop-up kinfolk prism fanny pack roof party franzen shaman.
+            Lo-fi celiac everyday carry, biodiesel offal stumptown activated
+            charcoal dreamcatcher blog flexitarian pug sustainable selfies.
+            Cloud bread hexagon humblebrag, bushwick gentrify keffiyeh vape
+            tacos distillery leggings pitchfork blog everyday carry. Artisan
+            ennui master cleanse, glossier helvetica shabby chic brunch occupy
+            trust fund ramps iPhone.
+          </P>
+          <P>
+            Hashtag food truck glossier crucifix chia vinyl messenger bag small
+            batch gastropub squid paleo. Lo-fi PBR&B pinterest YOLO tousled.
+            Plaid enamel pin paleo small batch pickled iPhone trust fund
+            tattooed sartorial. Pop-up ugh cardigan, tbh bushwick portland
+            tousled marfa.
+          </P>
+          <P>
+            Microdosing woke retro yuccie DIY hashtag taxidermy. Cornhole
+            kinfolk you probably haven&apos;t heard of them wolf readymade pok
+            pok synth etsy meggings. Locavore mixtape iPhone kinfolk sartorial
+            street art, bushwick normcore ugh gentrify PBR&B heirloom schlitz
+            ethical lyft. Direct trade raclette taxidermy palo santo art party
+            meh, portland chillwave four loko locavore forage umami cronut migas
+            swag. Synth mlkshk small batch 90&apos;s, cronut biodiesel
+            lumbersexual fam unicorn iceland food truck meh.
+          </P>
+          <P>
+            Humblebrag glossier portland irony. Williamsburg scenester
+            meditation craft beer wolf listicle fixie etsy. Flexitarian tofu
+            poutine, ethical shoreditch DIY four loko typewriter hell of edison
+            bulb kinfolk heirloom. Kickstarter whatever flannel vaporware, echo
+            park kogi fashion axe butcher kitsch authentic quinoa chia neutra.
+          </P>
+        </ContentWrapper>
+      </ExtraMargin>
     </Container>
   );
 };

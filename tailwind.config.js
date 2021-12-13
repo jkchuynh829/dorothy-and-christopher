@@ -15,18 +15,21 @@ module.exports = {
       white: '#FAFAFA',
     },
     extend: {
+      backgroundColor: {
+        'black': '#0F0F0F',
+        'white': '#FAFAFA',
+      },
       flex: {
         'embla': '0 0 100%',
       },
       fontSize: {
         'nav-link': '1.125rem',
       },
+      margin: {
+        '120': '30rem',
+      },
       opacity: {
         '35': '0.35',
-      },
-      backgroundColor: {
-        'black': '#0F0F0F',
-        'white': '#FAFAFA',
       },
     },
   },
