@@ -8,7 +8,7 @@ import NavLink from './NavLink';
 
 const Container = animated(
   styled.nav`
-    ${tw`absolute w-full top-0 bg-transparent fixed flex justify-center items-center z-10`}
+    ${tw`absolute w-full top-0 bg-transparent fixed flex justify-center items-center z-20`}
   `
 );
 
@@ -45,8 +45,8 @@ const Navigation = ({ disableScrollEffect }: NavigationProps) => {
       scrolled || disableScrollEffect ? '#FAFAFA' : 'transparent',
     boxShadow:
       scrolled || disableScrollEffect
-        ? '0px 1px 0px rgba(15, 15, 15, 0.15)'
-        : null,
+        ? '0px 1px 3px rgba(15, 15, 15, 0.15)'
+        : '0px 1px 3px rgba(0, 0, 0, 0)',
   });
 
   const isCurrentPath = useCallback(

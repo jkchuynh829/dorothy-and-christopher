@@ -11,7 +11,7 @@ import { disableMaintenanceMode } from '../src/store/maintenanceMode';
 // const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 // const supabase = createClient(supabaseUrl, supabaseKey);
 
-const Container = tw.div`relative w-full h-full flex flex-1`;
+const Container = tw.div`relative w-full h-full flex flex-1 bg-white`;
 
 const Main = () => {
   const dispatch = useDispatch();
