@@ -8,11 +8,11 @@ interface ContainerProps {
 }
 
 const Container = styled.section<ContainerProps>`
-  ${tw`relative flex justify-center items-center border-0 border-solid p-12`}
+  ${tw`relative flex justify-center items-center border-0 border-dotted mb-2 p-12`}
   ${({ format }) =>
     ({
-      'image-left': tw`flex-row border-green border-t-8 border-l-8`,
-      'image-right': tw`flex-row-reverse border-pink border-t-8 border-r-8`,
+      'image-left': tw`flex-row border-light-gray border-t-8 border-l-8`,
+      'image-right': tw`flex-row-reverse border-dark-gray border-t-8 border-r-8`,
     }[format])}
   min-height: 40rem;
 `;

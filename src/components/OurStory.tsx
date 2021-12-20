@@ -21,11 +21,11 @@ const HeroContainer = styled.div`
 const HeroImageContainer = styled.div`
   ${tw`absolute top-0 left-0 w-full h-full`}
   img {
-    filter: blur(6px) grayscale(40%);
+    filter: blur(6px) grayscale(90%);
   }
   &::after {
     content: '';
-    ${tw`absolute w-full h-full bg-black opacity-40`}
+    ${tw`absolute w-full h-full bg-black opacity-35`}
   }
 `;
 
@@ -35,7 +35,7 @@ const OurStory = () => {
       <HeroContainer>
         <HeroImageContainer>
           <Image
-            src={hero}
+            src={storyPhoto1}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
