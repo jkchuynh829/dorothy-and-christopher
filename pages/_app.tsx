@@ -14,7 +14,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <Provider store={store}>
       <ParallaxProvider>
         <GlobalStyles />
-        <Navigation disableScrollEffect={pathname !== '/'} />
+        <Navigation
+          disableScrollEffect={!['/', '/our-story'].includes(pathname)}
+        />
         <Component {...pageProps} />
       </ParallaxProvider>
     </Provider>

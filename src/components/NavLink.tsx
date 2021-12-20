@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const Container = styled.a<ContainerProps>`
   ${tw`relative font-urbanist uppercase text-nav-link mx-8 cursor-pointer transition-opacity hover:opacity-35`}
-  ${({ selected }) => selected && tw`border-b border-white`}
+  ${({ selected }) => selected && tw`border-b`}
 `;
 
 interface NavLinkPropsBase {

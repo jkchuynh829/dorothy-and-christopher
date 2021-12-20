@@ -8,13 +8,13 @@ interface ContainerProps {
 }
 
 const Container = styled.section<ContainerProps>`
-  ${tw`relative flex justify-center items-center mb-12 p-12 border-8 border-solid`}
+  ${tw`relative flex justify-center items-center border-0 border-solid p-12`}
   ${({ format }) =>
     ({
-      'image-left': tw`flex-row border-green`,
-      'image-right': tw`flex-row-reverse border-pink`,
+      'image-left': tw`flex-row border-green border-t-8 border-l-8`,
+      'image-right': tw`flex-row-reverse border-pink border-t-8 border-r-8`,
     }[format])}
-  min-height: 30rem;
+  min-height: 40rem;
 `;
 
 const StyledParallax = styled(Parallax)`
@@ -22,8 +22,8 @@ const StyledParallax = styled(Parallax)`
 `;
 
 const ImageContainer = styled.div`
-  ${tw`relative flex-1`}
-  padding-top: 30rem;
+  ${tw`relative flex-1 rounded-3xl overflow-hidden`}
+  padding-top: 35rem;
 `;
 
 const ContentContainer = styled.div`

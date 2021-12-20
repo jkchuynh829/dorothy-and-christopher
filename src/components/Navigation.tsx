@@ -12,6 +12,11 @@ const Container = animated(
   `
 );
 
+const Gradient = styled.div`
+  ${tw`absolute top-0 left-0 w-full h-full`}
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.50), transparent);
+`;
+
 interface NavigationProps {
   disableScrollEffect: boolean;
 }
@@ -41,8 +46,7 @@ const Navigation = ({ disableScrollEffect }: NavigationProps) => {
   const navAnimation = useSpring({
     height: scrolled || disableScrollEffect ? '5rem' : '10rem',
     color: scrolled || disableScrollEffect ? '#0F0F0F' : '#FAFAFA',
-    backgroundColor:
-      scrolled || disableScrollEffect ? '#FAFAFA' : 'transparent',
+    background: scrolled || disableScrollEffect ? '#FAFAFA' : 'transparent',
     boxShadow:
       scrolled || disableScrollEffect
         ? '0px 1px 3px rgba(15, 15, 15, 0.15)'
@@ -60,6 +64,7 @@ const Navigation = ({ disableScrollEffect }: NavigationProps) => {
 
   return (
     <Container style={navAnimation}>
+      {!scrolled && <Gradient />}
       <NavLink href="/" selected={isCurrentPath('/')}>
         Home
       </NavLink>
