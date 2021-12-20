@@ -1,21 +1,50 @@
 import React from 'react';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
+import Image from 'next/image';
 import { Aerotis, Paragraph as P } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import GoldTextClip from './GoldTextClip';
+import hero from '../assets/our-story/DOROTHYANDCHRIS58.jpg';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
-const Heading = tw.div`w-full mt-80 text-black text-8xl mb-6`;
+const Heading = tw.div`w-full text-white text-8xl mb-6 z-50`;
+
+const HeroContainer = styled.div`
+  ${tw`relative max-h-screen w-full flex justify-center items-center`}
+  height: 50vh;
+`;
+const HeroImageContainer = styled.div`
+  ${tw`absolute top-0 left-0 w-full h-full`}
+  img {
+    filter: blur(6px) grayscale(90%);
+  }
+  &::after {
+    content: '';
+    ${tw`absolute w-full h-full bg-black opacity-35`}
+  }
+`;
 
 const SaveTheDate = () => {
   return (
     <Container>
+      <HeroContainer>
+        <HeroImageContainer>
+          <Image
+            src={hero}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </HeroImageContainer>
+        <ContentWrapper>
+          <Heading>
+            <GoldTextClip>
+              <Aerotis>save the date</Aerotis>
+            </GoldTextClip>
+          </Heading>
+        </ContentWrapper>
+      </HeroContainer>
       <ContentWrapper>
-        <Heading>
-          <GoldTextClip>
-            <Aerotis>save the date</Aerotis>
-          </GoldTextClip>
-        </Heading>
         <P>
           I&apos;m baby celiac twee skateboard pabst. Direct trade man bun
           helvetica tacos street art man braid. Hot chicken cray hexagon raw

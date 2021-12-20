@@ -17,10 +17,7 @@ const Gradient = styled.div`
   background: linear-gradient(to bottom, rgba(15, 15, 15, 0.50), transparent);
 `;
 
-interface NavigationProps {
-  disableScrollEffect: boolean;
-}
-const Navigation = ({ disableScrollEffect }: NavigationProps) => {
+const Navigation = () => {
   const maintenanceMode = useSelector((state) => state.maintenanceMode.enabled);
 
   const { pathname } = useRouter();
@@ -44,13 +41,12 @@ const Navigation = ({ disableScrollEffect }: NavigationProps) => {
   }, [onScroll]);
 
   const navAnimation = useSpring({
-    height: scrolled || disableScrollEffect ? '5rem' : '10rem',
-    color: scrolled || disableScrollEffect ? '#0F0F0F' : '#FAFAFA',
-    background: scrolled || disableScrollEffect ? '#FAFAFA' : 'transparent',
-    boxShadow:
-      scrolled || disableScrollEffect
-        ? '0px 1px 3px rgba(15, 15, 15, 0.15)'
-        : '0px 1px 3px rgba(0, 0, 0, 0)',
+    height: scrolled ? '5rem' : '10rem',
+    color: scrolled ? '#0F0F0F' : '#FAFAFA',
+    background: scrolled ? '#FAFAFA' : 'transparent',
+    boxShadow: scrolled
+      ? '0px 1px 3px rgba(15, 15, 15, 0.15)'
+      : '0px 1px 3px rgba(0, 0, 0, 0)',
   });
 
   const isCurrentPath = useCallback(

@@ -9,14 +9,11 @@ import 'tailwindcss/tailwind.css';
 import '../src/styles/fonts.scss';
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const { pathname } = useRouter();
   return (
     <Provider store={store}>
       <ParallaxProvider>
         <GlobalStyles />
-        <Navigation
-          disableScrollEffect={!['/', '/our-story'].includes(pathname)}
-        />
+        <Navigation />
         <Component {...pageProps} />
       </ParallaxProvider>
     </Provider>

@@ -1,14 +1,13 @@
 import React from 'react';
 import tw, { styled } from 'twin.macro';
+import Image from 'next/image';
 import { Aerotis } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import StorySection from './StorySection';
-import hero from '../assets/our-story/hero.jpg';
 import storyPhoto1 from '../assets/our-story/DOROTHYANDCHRIS3.jpg';
 import storyPhoto2 from '../assets/our-story/DOROTHYANDCHRIS58.jpg';
 import storyPhoto3 from '../assets/our-story/DOROTHYANDCHRIS74.jpg';
 import storyPhoto4 from '../assets/our-story/DOROTHYANDCHRIS16.jpg';
-import Image from 'next/image';
 import GoldTextClip from './GoldTextClip';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full bg-white`;
