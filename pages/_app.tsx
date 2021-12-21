@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import store from '../src/store';
 import Navigation from '../src/components/Navigation';
-import { useRouter } from 'next/router';
 import 'tailwindcss/tailwind.css';
 import '../src/styles/fonts.scss';
 
