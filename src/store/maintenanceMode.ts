@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  enabled: true,
+  enabled: false,
 };
 
 const maintenanceModeSlice = createSlice({

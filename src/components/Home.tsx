@@ -1,21 +1,17 @@
-import Image from 'next/image';
 import React from 'react';
 import tw, { styled } from 'twin.macro';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
 import { Aerotis, Almara, Paragraph as P } from './Typography';
 import ContentWrapper from './ContentWrapper';
-import hero from '../assets/photos/hero-1.jpg';
-import hero2 from '../assets/photos/hero-2.jpg';
-import hero3 from '../assets/photos/hero-3.jpg';
+import image1 from '../assets/photos/hero-1.jpg';
+import image2 from '../assets/photos/hero-2.jpg';
+import image3 from '../assets/photos/hero-3.jpg';
 import GoldTextClip from './GoldTextClip';
+import Carousel from './Carousel';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
 const HeroHeading = tw.div`text-center z-10 mt-120 text-white text-8xl`;
 const Heading = tw.div`mt-44 text-white text-8xl w-full mb-6`;
-const Embla = tw.div`absolute top-0 left-0 overflow-hidden h-96 h-full w-full`;
-const EmblaContainer = tw.div`flex absolute top-0 left-0 w-full h-full`;
-const EmblaSlide = tw.div`flex-embla relative`;
+const ExtraMargin = tw.div`mb-96`;
 
 const HeroContainer = styled.div`
   ${tw`relative min-h-screen w-full flex justify-center items-center`}
@@ -27,44 +23,12 @@ const HeroContainer = styled.div`
 const PaddedAerotis = styled(Aerotis)`
   ${tw`mb-6`}
 `;
-const ExtraMargin = tw.div`mb-96`;
 
 const Home = () => {
-  const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
   return (
     <Container>
       <HeroContainer>
-        <Embla className="embla" ref={emblaRef}>
-          <EmblaContainer className="embla__container">
-            <EmblaSlide className="embla__slide">
-              <Image
-                src={hero}
-                alt="hero"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </EmblaSlide>
-            <EmblaSlide className="embla__slide">
-              <Image
-                src={hero2}
-                alt="hero"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </EmblaSlide>
-            <EmblaSlide className="embla__slide">
-              <Image
-                src={hero3}
-                alt="hero"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </EmblaSlide>
-          </EmblaContainer>
-        </Embla>
+        <Carousel images={[image1, image2, image3]} />
         <HeroHeading>
           <GoldTextClip>
             <PaddedAerotis>
