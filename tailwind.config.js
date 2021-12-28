@@ -9,10 +9,13 @@ module.exports = {
       aerotis: ['Aerotis', 'Helvetica', 'Arial', 'sans-serif'],
       almara: ['Almara', 'Helvetica', 'Arial', 'sans-serif'],
     },
+    boxShadow: {
+      'input': 'inset 0px 1px 8px rgba(85, 85, 85, 0.15)',
+    },
     colors: {
       transparent: 'transparent',
       'light-gray': 'rgba(15, 15, 15, 0.10)',
-      'dark-gray': 'rgba(25, 25, 25, 1)',
+      'dark-gray': 'rgba(25, 25, 25, 0.35)',
       black: '#0F0F0F',
       white: '#FAFAFA',
       green: 'rgba(17, 146, 118, 0.25)',

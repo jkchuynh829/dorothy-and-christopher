@@ -1,10 +1,59 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import tw, { styled } from 'twin.macro';
 import Image from 'next/image';
-import { Aerotis, Paragraph as P } from './Typography';
+import { Aerotis } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import GoldTextClip from './GoldTextClip';
 import hero from '../assets/our-story/DOROTHYANDCHRIS58.jpg';
+import { useDispatch } from 'react-redux';
+import { getGuests, getParties, updatePartyAddress } from '../store/guests';
+import { useSelector } from '../store';
+import PartySettings from './PartySettings';
+import GuestSearch from './GuestSearch';
+
+const initialSearchForm = {
+  firstName: {
+    value: '',
+  },
+  lastName: {
+    value: '',
+  },
+};
+
+const initialAddressForm = {
+  address1: {
+    value: '',
+  },
+  address2: {
+    value: '',
+  },
+  city: {
+    value: '',
+  },
+  state: {
+    value: '',
+  },
+  zipcode: {
+    value: '',
+  },
+};
+
+interface FormField {
+  value: string;
+}
+
+export interface GuestSearchForm {
+  firstName: FormField;
+  lastName: FormField;
+}
+
+export interface AddressForm {
+  address1: FormField;
+  address2: FormField;
+  city: FormField;
+  state: FormField;
+  zipcode: FormField;
+}
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
 const Heading = tw.div`w-full text-white text-8xl mb-6 z-50`;
@@ -25,6 +74,86 @@ const HeroImageContainer = styled.div`
 `;
 
 const SaveTheDate = () => {
+  const dispatch = useDispatch();
+
+  const guests = useSelector((state) => state.guests.guests);
+  const parties = useSelector((state) => state.guests.parties);
+
+  const [searchResults, setSearchResults] = useState<Models.Guest[]>([]);
+  const [selectedParty, setSelectedParty] = useState<Models.Party | null>(null);
+
+  const [searchForm, updateSearchForm] =
+    useState<GuestSearchForm>(initialSearchForm);
+
+  const onChangeSearch = useCallback(
+    (type: 'lastName' | 'firstName') => {
+      const updatedForm = { ...searchForm };
+      return (value: string) => {
+        updatedForm[type].value = value;
+        updateSearchForm(updatedForm);
+      };
+    },
+    [searchForm]
+  );
+
+  const selectParty = (id: string) => {
+    const party = parties.find((p) => p.id === id);
+    if (party) {
+      setSelectedParty(party);
+    }
+  };
+
+  const clearSelectedParty = () => {
+    setSelectedParty(null);
+  };
+
+  const [addressForm, updateAddressForm] =
+    useState<AddressForm>(initialAddressForm);
+
+  const onChangeAddress = useCallback(
+    (type: 'address1' | 'address2' | 'city' | 'state' | 'zipcode') => {
+      const updatedForm = { ...addressForm };
+      return (value: string) => {
+        updatedForm[type].value = value;
+        updateAddressForm(updatedForm);
+      };
+    },
+    [addressForm]
+  );
+
+  useEffect(() => {
+    dispatch(getGuests());
+    dispatch(getParties());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const first = searchForm.firstName.value.toLowerCase();
+    const last = searchForm.lastName.value.toLowerCase();
+
+    const filteredGuests = guests.filter((guest) => {
+      return (
+        guest.first_name.toLowerCase() === first ||
+        guest.last_name.toLowerCase() === last
+      );
+    });
+
+    setSearchResults(filteredGuests);
+  }, [searchForm, guests]);
+
+  const partyGuests = useMemo(() => {
+    if (selectedParty == null) return [];
+    return guests.filter((guest) => guest.party_id === selectedParty.id);
+  }, [guests, selectedParty]);
+
+  const onSubmit = useCallback(() => {
+    if (!selectedParty) return;
+    const { address1, address2, city, state, zipcode } = addressForm;
+    const address = `${address1.value} ${address2.value}, ${city.value}, ${state.value} ${zipcode.value}`;
+    dispatch(updatePartyAddress({ id: selectedParty.id, address }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [addressForm, selectedParty]);
+
   return (
     <Container>
       <HeroContainer>
@@ -45,41 +174,23 @@ const SaveTheDate = () => {
         </ContentWrapper>
       </HeroContainer>
       <ContentWrapper>
-        <P>
-          I&apos;m baby celiac twee skateboard pabst. Direct trade man bun
-          helvetica tacos street art man braid. Hot chicken cray hexagon raw
-          denim, swag four dollar toast bitters ennui hammock vegan mlkshk tacos
-          keytar forage. Fam try-hard edison bulb, mlkshk fingerstache offal
-          pop-up kinfolk prism fanny pack roof party franzen shaman. Lo-fi
-          celiac everyday carry, biodiesel offal stumptown activated charcoal
-          dreamcatcher blog flexitarian pug sustainable selfies. Cloud bread
-          hexagon humblebrag, bushwick gentrify keffiyeh vape tacos distillery
-          leggings pitchfork blog everyday carry. Artisan ennui master cleanse,
-          glossier helvetica shabby chic brunch occupy trust fund ramps iPhone.
-        </P>
-        <P>
-          Hashtag food truck glossier crucifix chia vinyl messenger bag small
-          batch gastropub squid paleo. Lo-fi PBR&B pinterest YOLO tousled. Plaid
-          enamel pin paleo small batch pickled iPhone trust fund tattooed
-          sartorial. Pop-up ugh cardigan, tbh bushwick portland tousled marfa.
-        </P>
-        <P>
-          Microdosing woke retro yuccie DIY hashtag taxidermy. Cornhole kinfolk
-          you probably haven&apos;t heard of them wolf readymade pok pok synth
-          etsy meggings. Locavore mixtape iPhone kinfolk sartorial street art,
-          bushwick normcore ugh gentrify PBR&B heirloom schlitz ethical lyft.
-          Direct trade raclette taxidermy palo santo art party meh, portland
-          chillwave four loko locavore forage umami cronut migas swag. Synth
-          mlkshk small batch 90&apos;s, cronut biodiesel lumbersexual fam
-          unicorn iceland food truck meh.
-        </P>
-        <P>
-          Humblebrag glossier portland irony. Williamsburg scenester meditation
-          craft beer wolf listicle fixie etsy. Flexitarian tofu poutine, ethical
-          shoreditch DIY four loko typewriter hell of edison bulb kinfolk
-          heirloom. Kickstarter whatever flannel vaporware, echo park kogi
-          fashion axe butcher kitsch authentic quinoa chia neutra.
-        </P>
+        {selectedParty ? (
+          <PartySettings
+            form={addressForm}
+            onChange={onChangeAddress}
+            party={selectedParty}
+            guests={partyGuests}
+            goBack={clearSelectedParty}
+            onSubmit={onSubmit}
+          />
+        ) : (
+          <GuestSearch
+            form={searchForm}
+            searchResults={searchResults}
+            onChange={onChangeSearch}
+            selectParty={selectParty}
+          />
+        )}
       </ContentWrapper>
     </Container>
   );
