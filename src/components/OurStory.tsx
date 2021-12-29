@@ -11,7 +11,7 @@ import storyPhoto4 from '../assets/our-story/DOROTHYANDCHRIS16.jpg';
 import GoldTextClip from './GoldTextClip';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full bg-white`;
-const Heading = tw.div`w-full text-white text-8xl mb-6 z-50`;
+const Heading = tw.div`w-full text-white text-8xl mb-6 z-50 text-center`;
 
 const HeroContainer = styled.div`
   ${tw`relative max-h-screen w-full flex justify-center items-center`}

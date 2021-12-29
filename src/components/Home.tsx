@@ -12,6 +12,9 @@ const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-ful
 const HeroHeading = tw.div`text-center z-10 mt-120 text-white text-8xl`;
 const Heading = tw.div`mt-44 text-white text-8xl w-full mb-6`;
 const ExtraMargin = tw.div`mb-96`;
+const Date = styled(P)`
+  ${tw`text-lg`}
+`;
 
 const HeroContainer = styled.div`
   ${tw`relative min-h-screen w-full flex justify-center items-center`}
@@ -35,7 +38,6 @@ const Home = () => {
               dorothy <Almara>&</Almara> christopher
             </PaddedAerotis>
           </GoldTextClip>
-          <P>AUGUST 20 , 2022</P>
         </HeroHeading>
       </HeroContainer>
       <ExtraMargin>
@@ -47,7 +49,7 @@ const Home = () => {
               </Aerotis>
             </GoldTextClip>
           </Heading>
-          <P>On August 20, 2020</P>
+          <Date>AUGUST 20 , 2022</Date>
           <P>
             I&apos;m baby celiac twee skateboard pabst. Direct trade man bun
             helvetica tacos street art man braid. Hot chicken cray hexagon raw
