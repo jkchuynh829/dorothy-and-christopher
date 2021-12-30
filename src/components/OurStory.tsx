@@ -4,10 +4,13 @@ import Image from 'next/image';
 import { Aerotis } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import StorySection from './StorySection';
-import storyPhoto1 from '../assets/our-story/DOROTHYANDCHRIS3.jpg';
-import storyPhoto2 from '../assets/our-story/DOROTHYANDCHRIS58.jpg';
-import storyPhoto3 from '../assets/our-story/DOROTHYANDCHRIS74.jpg';
-import storyPhoto4 from '../assets/our-story/DOROTHYANDCHRIS16.jpg';
+import storyPhoto1 from '../assets/our-story/boba.jpg';
+import zetaPhoto from '../assets/our-story/zeta.jpg';
+import alcove from '../assets/our-story/alcove.jpg';
+import storyPhoto3 from '../assets/our-story/IMG_9146.jpg';
+import cheeks from '../assets/our-story/usc-cheeks.jpg';
+import pomPoms from '../assets/our-story/IMG_0558.jpg';
+import proposal from '../assets/photos/proposal.png';
 import GoldTextClip from './GoldTextClip';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full bg-white`;
@@ -56,13 +59,15 @@ const OurStory = () => {
           collaborated on a boba fundraiser and I stopped by to support.
           Apparently, this is where Dorothy first saw me and thought it was
           perplexing that I ordered 2 boba drinks and finished both of them
-          right then and there. (She should’ve known right away that we were
-          meant to be because we’re both boba addicts!) Later that night,
-          funnily enough, she was assigned to be my “sister” as a part of the
-          fraternity’s sister program...and that’s how we officially met
-          (awkward laugh)...weird, right?
+          right then and there. She should’ve known right away that we were
+          meant to be because we’re both boba addicts!
         </StorySection>
-        <StorySection image={storyPhoto2} format="image-left">
+        <StorySection image={zetaPhoto} format="image-left">
+          Later that night, funnily enough, she was assigned to be my “sister”
+          as a part of the fraternity’s sister program...and that’s how we
+          officially met (awkward laugh)...weird, right?
+        </StorySection>
+        <StorySection image={alcove} format="image-right">
           Throughout that same year, I got to know her more. Our first
           “adventure” was a trip to the Bay Area with some of our USC friends
           (shout out to Road Trip Crew aka “RTC”!). That’s when I started to
@@ -74,7 +79,7 @@ const OurStory = () => {
           and right before the movie began, I asked her to be my girlfriend, and
           the rest is history!
         </StorySection>
-        <StorySection image={storyPhoto3} format="image-right">
+        <StorySection image={storyPhoto3} format="image-left">
           Since then, we’ve gone on many more adventures and started a hashtag:
           #duckiexduarteadventures. “Duckie” is a nickname she gave to me (ask
           Dorothy why if you’re interested) and “Duarte” is the nickname she
@@ -82,25 +87,28 @@ const OurStory = () => {
           see her favorite DJ, Kaskade. Since then, we’ve gone to many more of
           his shows and have made it an annual tradition to see him live.
         </StorySection>
-        <StorySection image={storyPhoto3} format="image-left">
+        <StorySection image={cheeks} format="image-right">
           We’ve also gone to various cities around the world and have made it a
           mission to collect refrigerator magnets of the cities we visit. As
           relatively diehard USC football fans since our childhood, we went to
           games together as students and now continue to be season ticket
           holders. One of our most memorable trips was seeing USC lose to
-          Alabama in Dallas 6-52. At least we got the magnet though! Our
-          favorite experiences at the Coliseum span from storming the field
-          after we beat Stanford our senior year to beating Texas in double
-          overtime and finally to our proposal.
+          Alabama in Dallas 6-52. At least we got the magnet though!
         </StorySection>
-        <StorySection image={storyPhoto4} format="image-right">
+        <StorySection image={proposal} format="image-left">
+          Our favorite experiences at the Coliseum span from storming the field
+          after we beat Stanford our senior year to beating Texas in double
+          overtime and finally to our proposal. (MAKE THIS LANDSCAAAAPE)
+        </StorySection>
+        <StorySection image={pomPoms} format="image-right">
           My favorite adventures though are the ones we have every day at home.
           Whether we’re watching football or One Tree Hill, or if I’m losing to
           her at board games, or even just sitting there while she cooks because
           I’m useless in the kitchen, I cherish these small moments. These
           adventures have culminated in our wedding day, August 20, 2022,
           exactly 10 years after I asked her to be my girlfriend. Thank you to
-          everyone who’s been a part of our story and adventure.
+          everyone who’s been a part of our story and adventure. (MAKE
+          LANDSCALEP!)
         </StorySection>
       </ContentWrapper>
     </Container>
