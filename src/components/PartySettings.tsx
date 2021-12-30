@@ -2,7 +2,7 @@ import React from 'react';
 import tw, { styled } from 'twin.macro';
 import FormInput from './FormInput';
 import { AddressForm } from './SaveTheDate';
-import { H1, Paragraph } from './Typography';
+import { Paragraph } from './Typography';
 
 const Container = tw.div``;
 const BackButton = tw.button``;
@@ -27,6 +27,7 @@ interface PartySettingsProps {
 const PartySettings = ({
   form,
   onChange,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   party,
   guests,
   goBack,
@@ -35,7 +36,6 @@ const PartySettings = ({
   return (
     <Container>
       <BackButton onClick={goBack}>Go Back</BackButton>
-      <H1>{party.name}</H1>
       <FormRow>
         <FormInput
           label="Address"
@@ -70,7 +70,7 @@ const PartySettings = ({
           placeholder="e.g. 90210"
         />
       </FormRow>
-      <button onClick={onSubmit}>Update Address</button>
+      <button onClick={onSubmit}>Submit Address</button>
       {guests.map((guest) => (
         <Paragraph key={guest.id}>
           {guest.first_name} {guest.last_name}
