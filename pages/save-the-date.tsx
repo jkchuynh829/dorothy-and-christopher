@@ -1,8 +1,9 @@
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import tw from 'twin.macro';
 import Maintenance from '../src/components/Maintenance';
-import SaveTheDate from '../src/components/SaveTheDate';
 import { useSelector } from '../src/store';
 import { disableMaintenanceMode } from '../src/store/maintenanceMode';
 
@@ -10,7 +11,14 @@ const Container = tw.div`relative w-full h-full`;
 
 const Main = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const { enabled } = useSelector((state) => state.maintenanceMode);
+
+  useEffect(() => {
+    if (enabled) return;
+    router.replace('/#save-the-date');
+  }, [enabled, router]);
   return (
     <Container>
       <Head>
@@ -18,11 +26,7 @@ const Main = () => {
         <meta name="description" content="Made by Jimmy Huynh" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {enabled ? (
-        <Maintenance unlock={() => dispatch(disableMaintenanceMode())} />
-      ) : (
-        <SaveTheDate />
-      )}
+      <Maintenance unlock={() => dispatch(disableMaintenanceMode())} />
     </Container>
   );
 };

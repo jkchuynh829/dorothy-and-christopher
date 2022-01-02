@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import tw, { styled } from 'twin.macro';
-import Image from 'next/image';
-import { Aerotis } from './Typography';
+import tw from 'twin.macro';
 import ContentWrapper from './ContentWrapper';
-import GoldTextClip from './GoldTextClip';
-import hero from '../assets/our-story/DOROTHYANDCHRIS58.jpg';
 import { useDispatch } from 'react-redux';
 import { getGuests, getParties, updatePartyAddress } from '../store/guests';
 import { useSelector } from '../store';
@@ -56,22 +52,6 @@ export interface AddressForm {
 }
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
-const Heading = tw.div`w-full text-white text-8xl mb-6 z-50`;
-
-const HeroContainer = styled.div`
-  ${tw`relative max-h-screen w-full flex justify-center items-center`}
-  height: 50vh;
-`;
-const HeroImageContainer = styled.div`
-  ${tw`absolute top-0 left-0 w-full h-full`}
-  img {
-    filter: blur(6px) grayscale(90%);
-  }
-  &::after {
-    content: '';
-    ${tw`absolute w-full h-full bg-black opacity-35`}
-  }
-`;
 
 const SaveTheDate = () => {
   const dispatch = useDispatch();
@@ -156,23 +136,6 @@ const SaveTheDate = () => {
 
   return (
     <Container>
-      <HeroContainer>
-        <HeroImageContainer>
-          <Image
-            src={hero}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
-        </HeroImageContainer>
-        <ContentWrapper>
-          <Heading>
-            <GoldTextClip>
-              <Aerotis>save the date</Aerotis>
-            </GoldTextClip>
-          </Heading>
-        </ContentWrapper>
-      </HeroContainer>
       <ContentWrapper>
         {selectedParty ? (
           <PartySettings

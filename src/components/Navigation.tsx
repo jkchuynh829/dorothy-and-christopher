@@ -20,7 +20,7 @@ const Gradient = styled.div`
 const Navigation = () => {
   const maintenanceMode = useSelector((state) => state.maintenanceMode.enabled);
 
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -51,9 +51,9 @@ const Navigation = () => {
 
   const isCurrentPath = useCallback(
     (link: string) => {
-      return link === pathname;
+      return link === asPath;
     },
-    [pathname]
+    [asPath]
   );
 
   if (maintenanceMode) return <></>;
@@ -67,7 +67,10 @@ const Navigation = () => {
       <NavLink href="/our-story" selected={isCurrentPath('/our-story')}>
         Our Story
       </NavLink>
-      <NavLink href="/save-the-date" selected={isCurrentPath('/save-the-date')}>
+      <NavLink
+        href="/#save-the-date"
+        selected={isCurrentPath('/#save-the-date')}
+      >
         Save the Date
       </NavLink>
     </Container>
