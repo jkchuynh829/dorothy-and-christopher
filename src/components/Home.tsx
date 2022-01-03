@@ -14,8 +14,8 @@ import SaveTheDate from './SaveTheDate';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
 const HeroHeading = tw.div`text-center z-10 mt-120 md:mt-0 text-white text-8xl md:text-6xl`;
-const Section = tw.div`min-h-screen w-full flex flex-row justify-center`;
-const Content = tw.div`absolute w-full h-full flex justify-center items-center flex-col`;
+const Section = tw.div`relative min-h-screen w-full flex flex-row justify-center`;
+const Content = tw.div`absolute w-full h-full flex justify-center items-center flex-col text-white`;
 
 const HeroContainer = styled.div`
   ${tw`relative min-h-screen w-full flex justify-center items-center`}
@@ -34,10 +34,10 @@ const SectionInner = styled.div`
 const Block = styled.div`
   ${tw`relative flex-1 m-16 my-36`};
   &:first-of-type {
-    ${tw`mr-8`}
+    ${tw`mr-8 md:mx-0`}
   }
   &:last-of-type {
-    ${tw`ml-8 text-white`}
+    ${tw`ml-8 text-white md:hidden`}
     &::after {
       content: '';
       ${tw`absolute w-full h-full bg-black opacity-35`}
@@ -49,6 +49,13 @@ const AerotisHeading = styled(Aerotis)`
 `;
 const SaveTheDateP = styled(Paragraph)`
   ${tw`z-20 mb-2 text-2xl`}
+`;
+const MobileSection = styled(Section)`
+  ${tw`hidden md:block`}
+  &::after {
+    content: '';
+    ${tw`absolute w-full h-full bg-black opacity-35`}
+  }
 `;
 
 const Home = () => {
@@ -85,6 +92,20 @@ const Home = () => {
           </Block>
         </SectionInner>
       </Section>
+      <MobileSection>
+        <Image
+          src={saveTheDate}
+          alt="hero"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
+        <Content>
+          <AerotisHeading>save the date</AerotisHeading>
+          <SaveTheDateP>August 20, 2022</SaveTheDateP>
+          <SaveTheDateP>Pasadena, CA</SaveTheDateP>
+        </Content>
+      </MobileSection>
     </Container>
   );
 };
