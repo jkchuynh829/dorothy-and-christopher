@@ -41,7 +41,7 @@ const Navigation = () => {
   }, [onScroll]);
 
   const navAnimation = useSpring({
-    height: scrolled ? '10rem' : '12rem',
+    height: scrolled ? '6rem' : '10rem',
     color: scrolled ? '#0F0F0F' : '#FAFAFA',
     background: scrolled ? '#FAFAFA' : 'transparent',
     boxShadow: scrolled

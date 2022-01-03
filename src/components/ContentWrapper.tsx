@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-const Container = tw.main`relative w-full my-20 px-12 max-w-5xl`;
+const Container = tw.main`relative w-full px-12 max-w-5xl`;
 
 interface ContentWrapperBase {}
 
