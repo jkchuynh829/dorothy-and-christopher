@@ -7,9 +7,9 @@ import StorySection from './StorySection';
 import storyPhoto1 from '../assets/our-story/boba.jpg';
 import zetaPhoto from '../assets/our-story/zeta.jpg';
 import alcove from '../assets/our-story/alcove.jpg';
-import storyPhoto3 from '../assets/our-story/IMG_9146.jpg';
+import storyPhoto3 from '../assets/our-story/IMG_9146-1.jpg';
 import cheeks from '../assets/our-story/usc-cheeks.jpg';
-import pomPoms from '../assets/our-story/IMG_0558.jpg';
+import pomPoms from '../assets/our-story/IMG_0558-1.jpg';
 import proposal from '../assets/photos/proposal.png';
 import GoldTextClip from './GoldTextClip';
 
