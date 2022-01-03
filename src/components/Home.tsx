@@ -13,7 +13,7 @@ import Carousel from './Carousel';
 import SaveTheDate from './SaveTheDate';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
-const HeroHeading = tw.div`text-center z-10 mt-120 text-white text-8xl`;
+const HeroHeading = tw.div`text-center z-10 mt-120 md:mt-0 text-white text-8xl md:text-6xl`;
 const Heading = tw.div`mt-44 text-white text-8xl w-full mb-6`;
 const ExtraMargin = tw.div`flex justify-center w-full mb-96`;
 
@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <Container>
       <HeroContainer>
-        <Carousel images={[image1, image2, image3, image4, image5]} />
+        <Carousel images={[image2, image1, image3, image4, image5]} />
         <HeroHeading>
           <GoldTextClip>
             <PaddedAerotis>

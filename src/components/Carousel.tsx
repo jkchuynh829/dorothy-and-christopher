@@ -10,13 +10,13 @@ const Embla = tw.div`absolute top-0 left-0 overflow-hidden h-96 h-full w-full`;
 const EmblaContainer = tw.div`flex absolute top-0 left-0 w-full h-full`;
 const EmblaSlide = tw.div`flex-embla relative`;
 
-const DotsContainer = tw.div`absolute w-full h-36 flex justify-center items-center bottom-0 z-20`;
+const DotsContainer = tw.div`absolute w-full h-36 md:h-24 flex justify-center items-center bottom-0`;
 
-const ArrowsContainer = tw.div`absolute bottom-0 h-full w-full flex items-center justify-between text-white z-10 px-8`;
+const ArrowsContainer = tw.div`absolute bottom-0 h-full w-full flex items-center justify-between text-white z-10 px-8 md:px-0`;
 const Button = tw.button``;
 
 const Dot = styled.div<{ selected: boolean }>`
-  ${tw`h-3 w-3 rounded-full mx-4 bg-white opacity-35 hover:opacity-100 pointer-events-auto cursor-pointer`}
+  ${tw`h-3 w-3 rounded-full mx-4 bg-white opacity-35 hover:opacity-100 pointer-events-auto cursor-pointer z-20 pointer-events-auto`}
   ${({ selected }) => selected && tw`opacity-100`}
 `;
 const ArrowButton = styled(Icon)`
@@ -29,7 +29,7 @@ interface ArrowIconProps {
 }
 const ArrowIcon = ({ path, onClick }: ArrowIconProps) => (
   <Button onClick={onClick}>
-    <ArrowButton path={path} size="72px" />
+    <ArrowButton path={path} size="56px" />
   </Button>
 );
 

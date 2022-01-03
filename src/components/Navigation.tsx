@@ -8,7 +8,7 @@ import NavLink from './NavLink';
 
 const Container = animated(
   styled.nav`
-    ${tw`absolute w-full top-0 bg-transparent fixed flex justify-center items-center z-20`}
+    ${tw`absolute w-full top-0 bg-transparent fixed flex md:flex-col justify-center items-center z-20`}
   `
 );
 
@@ -41,7 +41,7 @@ const Navigation = () => {
   }, [onScroll]);
 
   const navAnimation = useSpring({
-    height: scrolled ? '5rem' : '10rem',
+    height: scrolled ? '10rem' : '12rem',
     color: scrolled ? '#0F0F0F' : '#FAFAFA',
     background: scrolled ? '#FAFAFA' : 'transparent',
     boxShadow: scrolled
