@@ -6,12 +6,12 @@ import { Paragraph as P } from './Typography';
 const Mobile = tw.div`hidden md:block`;
 
 interface ImageContainerProps {
-  landscape: boolean;
+  landscape?: boolean;
 }
 
 const ImageContainer = styled.div<ImageContainerProps>`
   ${tw`relative flex-1 w-full rounded-3xl md:rounded-sm overflow-hidden pt-140 md:mb-3 md:pt-80`}
-  ${({ landscape }) => landscape && tw`pt-80`}
+  ${({ landscape = false }) => landscape && tw`pt-96`}
 `;
 
 interface ContainerProps {
@@ -73,6 +73,7 @@ interface StorySectionBaseProps {
   image?: StaticImageData;
   format: 'image-left' | 'image-right';
   landscape?: boolean;
+  objectFit?: any;
 }
 
 type StorySectionProps = React.PropsWithChildren<StorySectionBaseProps>;
@@ -81,6 +82,7 @@ const StorySection = ({
   image,
   format,
   landscape = false,
+  objectFit = 'cover',
   children,
 }: StorySectionProps) => {
   return (
@@ -91,7 +93,7 @@ const StorySection = ({
           y={imageParallaxValues[format].y}
         >
           <ImageContainer landscape={landscape}>
-            <Image src={image} layout="fill" objectFit="cover" />
+            <Image src={image} layout="fill" objectFit={objectFit} />
           </ImageContainer>
         </StyledParallax>
       )}
@@ -107,7 +109,7 @@ const StorySection = ({
       <Mobile>
         {image && (
           <ImageContainer>
-            <Image src={image} layout="fill" objectFit="cover" />
+            <Image src={image} layout="fill" objectFit={objectFit} />
           </ImageContainer>
         )}
         <Paragraph>{children}</Paragraph>

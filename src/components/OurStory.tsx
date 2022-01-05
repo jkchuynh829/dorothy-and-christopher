@@ -7,8 +7,8 @@ import StorySection from './StorySection';
 import storyPhoto1 from '../assets/our-story/boba.jpg';
 import zetaPhoto from '../assets/our-story/zeta.jpg';
 import alcove from '../assets/our-story/alcove.jpg';
-import storyPhoto3 from '../assets/our-story/IMG_9146-1.jpg';
-import cheeks from '../assets/our-story/usc-cheeks.jpg';
+import storyPhoto3 from '../assets/our-story/adventures-comp.png';
+import cheeks from '../assets/our-story/usc-comp.png';
 import pomPoms from '../assets/our-story/IMG_0558-1.jpg';
 import proposal from '../assets/photos/proposal.png';
 import GoldTextClip from './GoldTextClip';
@@ -79,7 +79,11 @@ const OurStory = () => {
           and right before the movie began, I asked her to be my girlfriend, and
           the rest is history!
         </StorySection>
-        <StorySection image={storyPhoto3} format="image-left">
+        <StorySection
+          image={storyPhoto3}
+          format="image-left"
+          objectFit="contain"
+        >
           Since then, we’ve gone on many more adventures and started a hashtag:
           #duckiexduarteadventures. “Duckie” is a nickname she gave to me (ask
           Dorothy why if you’re interested) and “Duarte” is the nickname she
@@ -87,7 +91,7 @@ const OurStory = () => {
           see her favorite DJ, Kaskade. Since then, we’ve gone to many more of
           his shows and have made it an annual tradition to see him live.
         </StorySection>
-        <StorySection image={cheeks} format="image-right">
+        <StorySection image={cheeks} format="image-right" landscape>
           We’ve also gone to various cities around the world and have made it a
           mission to collect refrigerator magnets of the cities we visit. As
           relatively diehard USC football fans since our childhood, we went to
