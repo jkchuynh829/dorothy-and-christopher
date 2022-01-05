@@ -51,6 +51,9 @@ module.exports = {
       margin: {
         '120': '30rem',
       },
+      minHeight: {
+        'mobile-carousel': '90vh',
+      },
       opacity: {
         '35': '0.35',
       },
