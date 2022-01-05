@@ -61,7 +61,11 @@ const Navigation = () => {
   return (
     <Container style={navAnimation}>
       {!scrolled && <Gradient />}
-      <NavLink href="/" selected={isCurrentPath('/')}>
+      <NavLink
+        href="/"
+        selected={isCurrentPath('/')}
+        onClick={() => window.scrollTo(0, 0)}
+      >
         Home
       </NavLink>
       <NavLink href="/our-story" selected={isCurrentPath('/our-story')}>

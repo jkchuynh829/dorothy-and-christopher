@@ -14,14 +14,17 @@ const Container = styled.a<ContainerProps>`
 interface NavLinkPropsBase {
   href: string;
   selected: boolean;
+  onClick?: () => void;
 }
 
 type NavLinkProps = React.PropsWithChildren<NavLinkPropsBase>;
 
-const NavLink = ({ href, selected, children }: NavLinkProps) => {
+const NavLink = ({ href, selected, children, onClick }: NavLinkProps) => {
   return (
     <Link href={href}>
-      <Container selected={selected}>{children}</Container>
+      <Container selected={selected} onClick={onClick}>
+        {children}
+      </Container>
     </Link>
   );
 };
