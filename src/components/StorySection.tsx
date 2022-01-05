@@ -3,27 +3,38 @@ import Image from 'next/image';
 import tw, { styled } from 'twin.macro';
 import { Paragraph as P } from './Typography';
 
+const Mobile = tw.div`hidden md:block`;
+
+interface ImageContainerProps {
+  landscape: boolean;
+}
+
+const ImageContainer = styled.div<ImageContainerProps>`
+  ${tw`relative flex-1 w-full rounded-3xl md:rounded-sm overflow-hidden pt-140 md:mb-3 md:pt-80`}
+  ${({ landscape }) => landscape && tw`pt-80`}
+`;
+
 interface ContainerProps {
   format: 'image-left' | 'image-right';
 }
 
 const Container = styled.section<ContainerProps>`
-  ${tw`relative flex justify-center items-center border-0 border-dotted mb-2 p-12`}
+  ${tw`
+    relative flex justify-center items-center
+    border-0 border-dotted md:border-solid
+    mb-2 md:mb-0
+    p-12 md:p-0
+    min-h-160 md:min-h-0
+  `}
   ${({ format }) =>
     ({
-      'image-left': tw`flex-row border-light-gray border-t-8 border-l-8`,
-      'image-right': tw`flex-row-reverse border-dark-gray border-t-8 border-r-8`,
+      'image-left': tw`flex-row border-light-gray border-t-8 border-l-8 md:border-0`,
+      'image-right': tw`flex-row-reverse border-dark-gray border-t-8 border-r-8 md:border-0`,
     }[format])}
-  min-height: 40rem;
 `;
 
 const StyledParallax = styled(Parallax)`
-  ${tw`flex-1 h-full w-full`}
-`;
-
-const ImageContainer = styled.div`
-  ${tw`relative flex-1 rounded-3xl overflow-hidden`}
-  padding-top: 35rem;
+  ${tw`flex-1 h-full w-full md:hidden`}
 `;
 
 const ContentContainer = styled.div`
@@ -31,7 +42,7 @@ const ContentContainer = styled.div`
 `;
 
 const Paragraph = styled(P)`
-  ${tw`text-xl leading-8`}
+  ${tw`text-xl leading-8 md:text-base md:mb-6`}
 `;
 
 const textParallaxValues = {
@@ -56,16 +67,22 @@ const imageParallaxValues = {
   },
 };
 
-const Gutter = tw.div`w-12`;
+const Gutter = tw.div`w-12 md:hidden`;
 
 interface StorySectionBaseProps {
   image?: StaticImageData;
   format: 'image-left' | 'image-right';
+  landscape?: boolean;
 }
 
 type StorySectionProps = React.PropsWithChildren<StorySectionBaseProps>;
 
-const StorySection = ({ image, format, children }: StorySectionProps) => {
+const StorySection = ({
+  image,
+  format,
+  landscape = false,
+  children,
+}: StorySectionProps) => {
   return (
     <Container format={format}>
       {image && (
@@ -73,7 +90,7 @@ const StorySection = ({ image, format, children }: StorySectionProps) => {
           x={imageParallaxValues[format].x}
           y={imageParallaxValues[format].y}
         >
-          <ImageContainer>
+          <ImageContainer landscape={landscape}>
             <Image src={image} layout="fill" objectFit="cover" />
           </ImageContainer>
         </StyledParallax>
@@ -87,6 +104,14 @@ const StorySection = ({ image, format, children }: StorySectionProps) => {
           <Paragraph>{children}</Paragraph>
         </StyledParallax>
       </ContentContainer>
+      <Mobile>
+        {image && (
+          <ImageContainer>
+            <Image src={image} layout="fill" objectFit="cover" />
+          </ImageContainer>
+        )}
+        <Paragraph>{children}</Paragraph>
+      </Mobile>
     </Container>
   );
 };

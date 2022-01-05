@@ -53,10 +53,17 @@ module.exports = {
       },
       minHeight: {
         'mobile-carousel': '90vh',
+        '160': '40rem',
+      },
+      maxHeight: {
+        'our-story-hero': '75vh',
       },
       opacity: {
         '35': '0.35',
       },
+      spacing: {
+        '140': '35rem',
+      }
     },
   },
   plugins: [],

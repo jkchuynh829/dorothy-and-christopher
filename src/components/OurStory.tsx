@@ -14,22 +14,22 @@ import proposal from '../assets/photos/proposal.png';
 import GoldTextClip from './GoldTextClip';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full bg-white`;
-const Heading = tw.div`w-full text-white text-8xl mb-6 z-50 text-center`;
+const Heading = tw.div`w-full text-white text-8xl md:text-7xl mb-6 z-50 text-center`;
 
 const HeroContainer = styled.div`
-  ${tw`relative max-h-screen w-full flex justify-center items-center`}
-  height: 50vh;
+  ${tw`relative h-screen max-h-our-story-hero md:max-h-screen w-full flex justify-center items-center`}
 `;
 const HeroImageContainer = styled.div`
   ${tw`absolute top-0 left-0 w-full h-full`}
   img {
-    filter: blur(6px) grayscale(90%);
+    filter: blur(0.25rem) grayscale(90%);
   }
   &::after {
     content: '';
     ${tw`absolute w-full h-full bg-black opacity-35`}
   }
 `;
+const Content = tw.div`w-full py-32 md:py-8 max-w-6xl md:px-8`;
 
 const OurStory = () => {
   return (
@@ -51,7 +51,7 @@ const OurStory = () => {
           </Heading>
         </ContentWrapper>
       </HeroContainer>
-      <ContentWrapper>
+      <Content>
         <StorySection image={storyPhoto1} format="image-right">
           In early 2011 while at USC, I joined a fraternity and had already been
           in the Filipino club (Troy Philippines). Dorothy had been a part of
@@ -95,22 +95,21 @@ const OurStory = () => {
           holders. One of our most memorable trips was seeing USC lose to
           Alabama in Dallas 6-52. At least we got the magnet though!
         </StorySection>
-        <StorySection image={proposal} format="image-left">
+        <StorySection image={proposal} format="image-left" landscape>
           Our favorite experiences at the Coliseum span from storming the field
           after we beat Stanford our senior year to beating Texas in double
-          overtime and finally to our proposal. (MAKE THIS LANDSCAAAAPE)
+          overtime and finally to our proposal.
         </StorySection>
-        <StorySection image={pomPoms} format="image-right">
+        <StorySection image={pomPoms} format="image-right" landscape>
           My favorite adventures though are the ones we have every day at home.
           Whether we’re watching football or One Tree Hill, or if I’m losing to
           her at board games, or even just sitting there while she cooks because
           I’m useless in the kitchen, I cherish these small moments. These
           adventures have culminated in our wedding day, August 20, 2022,
           exactly 10 years after I asked her to be my girlfriend. Thank you to
-          everyone who’s been a part of our story and adventure. (MAKE
-          LANDSCALEP!)
+          everyone who’s been a part of our story and adventure.
         </StorySection>
-      </ContentWrapper>
+      </Content>
     </Container>
   );
 };
