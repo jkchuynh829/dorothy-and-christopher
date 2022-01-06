@@ -12,15 +12,25 @@ const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 
 const Label = tw.div`font-urbanist uppercase text-sm`;
 const FormRow = styled.div`
   ${tw`flex flex-row`}
+  & > div {
+    ${tw`mr-3`}
+  }
   & > div:last-of-type {
-    ${tw`ml-3`}
+    ${tw`mr-0`}
   }
 `;
 
 interface PartySettingsProps {
   form: AddressForm;
   onChange: (
-    type: 'address1' | 'address2' | 'city' | 'state' | 'zipcode'
+    type:
+      | 'address1'
+      | 'address2'
+      | 'city'
+      | 'state'
+      | 'zipcode'
+      | 'email'
+      | 'country'
   ) => (value: string) => void;
   goBack: () => void;
   party: Models.Party;
@@ -59,9 +69,15 @@ const PartySettings = ({
         Go Back
       </BackButton>
       <Heading>Please Submit Your Address</Heading>
-      <P>(to send your invitation!)</P>
+      <P>(so we can send you a formal invitation)</P>
       <Label>Your Party</Label>
       <Members>{partyMemberNames}</Members>
+      <FormInput
+        label="Email"
+        value={form.email.value}
+        onChange={onChange('email')}
+        placeholder="e.g. hello@hotmail.com"
+      />
       <FormInput
         label="Address"
         value={form.address1.value}
@@ -82,10 +98,10 @@ const PartySettings = ({
       />
       <FormRow>
         <FormInput
-          label="State"
+          label="State / Province"
           value={form.state.value}
           onChange={onChange('state')}
-          placeholder="e.g. CA"
+          placeholder="e.g. CA, Samar, etc."
         />
         <FormInput
           label="Zip Code"
@@ -94,7 +110,13 @@ const PartySettings = ({
           placeholder="e.g. 90210"
         />
       </FormRow>
-      <SubmitButton onClick={onSubmit}>Submit Address</SubmitButton>
+      <FormInput
+        label="Country"
+        value={form.country.value}
+        onChange={onChange('country')}
+        placeholder="e.g. USA"
+      />
+      <SubmitButton onClick={onSubmit}>Submit</SubmitButton>
     </Container>
   );
 };

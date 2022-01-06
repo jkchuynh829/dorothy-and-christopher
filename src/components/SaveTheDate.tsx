@@ -17,6 +17,9 @@ const initialSearchForm = {
 };
 
 const initialAddressForm = {
+  email: {
+    value: '',
+  },
   address1: {
     value: '',
   },
@@ -32,6 +35,9 @@ const initialAddressForm = {
   zipcode: {
     value: '',
   },
+  country: {
+    value: '',
+  },
 };
 
 interface FormField {
@@ -44,11 +50,13 @@ export interface GuestSearchForm {
 }
 
 export interface AddressForm {
+  email: FormField;
   address1: FormField;
   address2: FormField;
   city: FormField;
   state: FormField;
   zipcode: FormField;
+  country: FormField;
 }
 
 const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
@@ -91,7 +99,16 @@ const SaveTheDate = () => {
     useState<AddressForm>(initialAddressForm);
 
   const onChangeAddress = useCallback(
-    (type: 'address1' | 'address2' | 'city' | 'state' | 'zipcode') => {
+    (
+      type:
+        | 'address1'
+        | 'address2'
+        | 'city'
+        | 'state'
+        | 'zipcode'
+        | 'country'
+        | 'email'
+    ) => {
       const updatedForm = { ...addressForm };
       return (value: string) => {
         updatedForm[type].value = value;

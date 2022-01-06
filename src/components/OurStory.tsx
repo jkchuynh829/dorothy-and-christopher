@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Aerotis } from './Typography';
 import ContentWrapper from './ContentWrapper';
 import StorySection from './StorySection';
+import hero from '../assets/our-story/DOROTHYANDCHRIS58-comp.jpg';
 import storyPhoto1 from '../assets/our-story/boba.jpg';
 import zetaPhoto from '../assets/our-story/zeta.jpg';
 import alcove from '../assets/our-story/alcove.jpg';
@@ -22,7 +23,7 @@ const HeroContainer = styled.div`
 const HeroImageContainer = styled.div`
   ${tw`absolute top-0 left-0 w-full h-full`}
   img {
-    filter: blur(0.25rem) grayscale(90%);
+    filter: grayscale(100%);
   }
   &::after {
     content: '';
@@ -37,7 +38,7 @@ const OurStory = () => {
       <HeroContainer>
         <HeroImageContainer>
           <Image
-            src={storyPhoto1}
+            src={hero}
             layout="fill"
             objectFit="cover"
             objectPosition="center"

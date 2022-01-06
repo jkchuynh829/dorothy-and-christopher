@@ -5,7 +5,12 @@ import { GuestSearchForm } from './SaveTheDate';
 import { H2, H5 } from './Typography';
 
 const Container = tw.div`flex flex-col`;
-const Results = tw.div`w-full flex flex-col flex-1 max-h-80 overflow-scroll border border-solid border-dark-gray shadow-input rounded-sm p-3`;
+const Results = tw.div`
+  w-full flex flex-col flex-1 max-h-80
+  overflow-scroll
+  border border-solid border-dark-gray
+  shadow-input rounded-sm p-3 min-h-160
+`;
 const ResultItem = tw.button`w-full flex-row text-left mb-2 text-lg cursor-pointer font-urbanist hover:opacity-35`;
 const FormRow = tw.div`flex flex-col`;
 const U = tw.span`border-b`;
@@ -25,7 +30,7 @@ const GuestSearch = ({
 }: GuestSearchProps) => {
   return (
     <Container>
-      <H2>Guest Look Up</H2>
+      <H2>Submit Your Address</H2>
       <FormRow>
         <FormInput
           label="First Name"
