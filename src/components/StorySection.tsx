@@ -25,7 +25,6 @@ const Container = styled.section<ContainerProps>`
     mb-2 md:mb-0
     p-12 md:p-0
     min-h-160 md:min-h-0
-    overflow-hidden
   `}
   ${({ format }) =>
     ({
