@@ -14,7 +14,7 @@ import pomPoms from '../assets/our-story/IMG_0558-1.jpg';
 import proposal from '../assets/photos/proposal.png';
 import GoldTextClip from './GoldTextClip';
 
-const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full bg-white`;
+const Container = tw.div`w-full flex flex-col items-center overflow-scroll overflow-x-hidden h-full bg-white`;
 const Heading = tw.div`w-full text-white text-8xl md:text-7xl mb-6 z-50 text-center`;
 
 const HeroContainer = styled.div`
