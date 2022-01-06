@@ -15,6 +15,7 @@ declare namespace Models {
     name: string;
     size: number;
     address: string;
+    email: string;
     created_at: Date;
     updated_at: Date;
   }

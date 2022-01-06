@@ -2,7 +2,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import tw from 'twin.macro';
 import ContentWrapper from './ContentWrapper';
 import { useDispatch } from 'react-redux';
-import { getGuests, getParties, updatePartyAddress } from '../store/guests';
+import {
+  getGuests,
+  getParties,
+  updatePartyAddress,
+  updatePartyEmail,
+} from '../store/guests';
 import { useSelector } from '../store';
 import PartySettings from './PartySettings';
 import GuestSearch from './GuestSearch';
@@ -145,9 +150,11 @@ const SaveTheDate = () => {
 
   const onSubmit = useCallback(() => {
     if (!selectedParty) return;
-    const { address1, address2, city, state, zipcode } = addressForm;
-    const address = `${address1.value} ${address2.value}, ${city.value}, ${state.value} ${zipcode.value}`;
+    const { address1, address2, city, state, zipcode, email, country } =
+      addressForm;
+    const address = `${address1.value} ${address2.value}, ${city.value}, ${state.value} ${zipcode.value} ${country}`;
     dispatch(updatePartyAddress({ id: selectedParty.id, address }));
+    dispatch(updatePartyEmail({ id: selectedParty.id, email: email.value }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addressForm, selectedParty]);
 

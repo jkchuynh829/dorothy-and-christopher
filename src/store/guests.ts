@@ -41,17 +41,42 @@ const updatePartyAddress = createAsyncThunk(
 
     console.log('data', data);
     console.log('error', error);
+    return { success: error != null };
+  }
+);
+
+const updatePartyEmail = createAsyncThunk(
+  'update/parties/email',
+  async ({
+    id,
+    email,
+  }: {
+    id: Models.Party['id'];
+    email: Models.Party['email'];
+  }) => {
+    const { data, error } = await supabase
+      .from('parties')
+      .update({ email })
+      .eq('id', id);
+
+    console.log('data', data);
+    console.log('error', error);
+    return { success: error != null };
   }
 );
 
 interface GuestsProps {
   guests: Models.Guest[];
   parties: Models.Party[];
+  updateAddressSuccess: boolean;
+  updateEmailSuccess: boolean;
 }
 
 const initialState: GuestsProps = {
   guests: [],
   parties: [],
+  updateAddressSuccess: false,
+  updateEmailSuccess: false,
 };
 
 const guestsSlice = createSlice({
@@ -65,9 +90,15 @@ const guestsSlice = createSlice({
     builder.addCase(getParties.fulfilled, (state, { payload }) => {
       state.parties = payload.parties as Models.Party[];
     });
+    builder.addCase(updatePartyAddress.fulfilled, (state, { payload }) => {
+      state.updateAddressSuccess = payload.success as boolean;
+    });
+    builder.addCase(updatePartyEmail.fulfilled, (state, { payload }) => {
+      state.updateEmailSuccess = payload.success as boolean;
+    });
   },
 });
 
 const { reducer: guests } = guestsSlice;
 
-export { guests, getGuests, getParties, updatePartyAddress };
+export { guests, getGuests, getParties, updatePartyAddress, updatePartyEmail };

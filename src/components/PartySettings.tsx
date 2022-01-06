@@ -8,7 +8,7 @@ import { H2, Paragraph } from './Typography';
 
 const Container = tw.div``;
 const BackButton = tw.button`flex flex-row justify-center  items-center mb-6 text-dark-gray hover:text-black`;
-const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist`;
+const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist uppercase font-bold`;
 const Label = tw.div`font-urbanist uppercase text-sm`;
 const FormRow = styled.div`
   ${tw`flex flex-row`}
@@ -69,7 +69,7 @@ const PartySettings = ({
         Go Back
       </BackButton>
       <Heading>Please Submit Your Address</Heading>
-      <P>(so we can send you a formal invitation)</P>
+      <P>(to receive a formal invitation)</P>
       <Label>Your Party</Label>
       <Members>{partyMemberNames}</Members>
       <FormInput
