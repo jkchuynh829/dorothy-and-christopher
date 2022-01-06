@@ -69,7 +69,7 @@ const Carousel = ({ images }: CarouselProps) => {
               alt="hero"
               layout="fill"
               objectFit="cover"
-              objectPosition="center"
+              objectPosition={i === 0 ? 'left' : 'center'}
             />
           </EmblaSlide>
         ))}
