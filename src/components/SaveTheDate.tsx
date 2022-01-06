@@ -130,8 +130,8 @@ const SaveTheDate = () => {
 
     const filteredGuests = guests.filter((guest) => {
       return (
-        guest.first_name.toLowerCase() === first ||
-        guest.last_name.toLowerCase() === last
+        guest.first_name.toLowerCase().trim() === first.trim() ||
+        guest.last_name.toLowerCase().trim() === last.trim()
       );
     });
 
