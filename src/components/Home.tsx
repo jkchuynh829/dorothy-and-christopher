@@ -12,7 +12,7 @@ import GoldTextClip from './GoldTextClip';
 import Carousel from './Carousel';
 import SaveTheDate from './SaveTheDate';
 
-const Container = tw.div`w-full flex flex-col items-center overflow-scroll overflow-x-hidden h-full`;
+const Container = tw.div`w-full flex flex-col items-center overflow-hidden h-full`;
 const HeroHeading = tw.div`text-center z-10 mt-120 md:mt-0 text-white text-8xl md:text-6xl md:mx-14`;
 const Section = tw.div`relative min-h-screen w-full flex flex-row justify-center`;
 const Content = tw.div`absolute w-full h-full flex justify-center items-center flex-col text-white`;
