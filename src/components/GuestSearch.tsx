@@ -9,7 +9,7 @@ const Results = tw.div`
   w-full flex flex-col flex-1 max-h-80
   overflow-scroll
   border border-solid border-dark-gray
-  shadow-input rounded-sm p-3 min-h-160
+  shadow-input rounded-sm p-3
 `;
 const ResultItem = tw.button`w-full flex-row text-left mb-2 text-lg cursor-pointer font-urbanist hover:opacity-35`;
 const FormRow = tw.div`flex flex-col`;
