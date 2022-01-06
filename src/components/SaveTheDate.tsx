@@ -59,7 +59,7 @@ export interface AddressForm {
   country: FormField;
 }
 
-const Container = tw.div`w-full flex flex-col items-center overflow-scroll h-full`;
+const Container = tw.div`w-full flex flex-col items-center overflow-hidden h-full`;
 
 const SaveTheDate = () => {
   const dispatch = useDispatch();
