@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import tw, { styled } from 'twin.macro';
 import Image from 'next/image';
 import { Aerotis, Almara, Paragraph } from './Typography';
