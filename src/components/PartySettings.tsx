@@ -8,15 +8,12 @@ import { H2, Paragraph } from './Typography';
 
 const Container = tw.div``;
 const BackButton = tw.button`flex flex-row justify-center  items-center mb-6 text-dark-gray hover:text-black`;
-const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist uppercase font-bold`;
+const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist uppercase font-bold hover:bg-green`;
 const Label = tw.div`font-urbanist uppercase text-sm`;
 const FormRow = styled.div`
-  ${tw`flex flex-row`}
-  & > div {
-    ${tw`mr-3`}
-  }
+  ${tw`flex flex-row w-full`}
   & > div:last-of-type {
-    ${tw`mr-0`}
+    ${tw`ml-3 w-full flex-1`}
   }
 `;
 

@@ -25,64 +25,64 @@ const getParties = createAsyncThunk('get/parties', async () => {
   return { parties };
 });
 
-const updatePartyAddress = createAsyncThunk(
-  'update/parties/address',
-  async ({
-    id,
-    address,
-  }: {
-    id: Models.Party['id'];
-    address: Models.Party['address'];
-  }) => {
-    const { data, error } = await supabase
-      .from('parties')
-      .update({ address })
-      .eq('id', id);
-
-    console.log('data', data);
-    console.log('error', error);
-    return { success: error != null };
-  }
-);
-
-const updatePartyEmail = createAsyncThunk(
-  'update/parties/email',
+const updatePartyData = createAsyncThunk(
+  'update/parties',
   async ({
     id,
     email,
+    address,
   }: {
     id: Models.Party['id'];
     email: Models.Party['email'];
+    address: Models.Party['address'];
   }) => {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('parties')
-      .update({ email })
+      .update({ email, address })
       .eq('id', id);
 
-    console.log('data', data);
-    console.log('error', error);
-    return { success: error != null };
+    if (error == null) {
+      await fetch('/api/save-the-date-confirmation', {
+        method: 'POST',
+        body: JSON.stringify({
+          to: email,
+          subject: 'Address Confirmation',
+          message: `This is the address we are sending stuff to: ${address}`,
+        }),
+      });
+    }
+
+    return { success: error == null, email, address };
   }
 );
 
 interface GuestsProps {
   guests: Models.Guest[];
   parties: Models.Party[];
-  updateAddressSuccess: boolean;
-  updateEmailSuccess: boolean;
+  updatePartySuccess: boolean;
+  confirmedAddress?: string;
+  recipient?: string;
+  selectedParty: Models.Party | null;
 }
 
 const initialState: GuestsProps = {
   guests: [],
   parties: [],
-  updateAddressSuccess: false,
-  updateEmailSuccess: false,
+  updatePartySuccess: false,
+  selectedParty: null,
 };
 
 const guestsSlice = createSlice({
   name: 'guests',
   initialState,
-  reducers: {},
+  reducers: {
+    closeModal(state) {
+      state.updatePartySuccess = false;
+    },
+    setSelectedParty(state, action) {
+      state.selectedParty = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getGuests.fulfilled, (state, { payload }) => {
       state.guests = payload.guests as Models.Guest[];
@@ -90,15 +90,23 @@ const guestsSlice = createSlice({
     builder.addCase(getParties.fulfilled, (state, { payload }) => {
       state.parties = payload.parties as Models.Party[];
     });
-    builder.addCase(updatePartyAddress.fulfilled, (state, { payload }) => {
-      state.updateAddressSuccess = payload.success as boolean;
-    });
-    builder.addCase(updatePartyEmail.fulfilled, (state, { payload }) => {
-      state.updateEmailSuccess = payload.success as boolean;
+    builder.addCase(updatePartyData.fulfilled, (state, { payload }) => {
+      state.updatePartySuccess = payload.success as boolean;
+      state.confirmedAddress = payload.address;
+      state.recipient = payload.email;
     });
   },
 });
 
 const { reducer: guests } = guestsSlice;
 
-export { guests, getGuests, getParties, updatePartyAddress, updatePartyEmail };
+const { closeModal, setSelectedParty } = guestsSlice.actions;
+
+export {
+  guests,
+  getGuests,
+  getParties,
+  updatePartyData,
+  closeModal,
+  setSelectedParty,
+};

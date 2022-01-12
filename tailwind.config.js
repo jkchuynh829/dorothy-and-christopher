@@ -32,6 +32,7 @@ module.exports = {
       transparent: 'transparent',
       'light-gray': 'rgba(15, 15, 15, 0.10)',
       'dark-gray': 'rgba(25, 25, 25, 0.35)',
+      'modal-bg': 'rgba(15, 15, 15, 0.85)',
       black: '#0F0F0F',
       white: '#FAFAFA',
       green: 'rgba(17, 146, 118, 0.25)',

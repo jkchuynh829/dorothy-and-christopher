@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import tw, { styled } from 'twin.macro';
 import Image from 'next/image';
 import { Aerotis, Almara, Paragraph } from './Typography';
@@ -11,6 +11,10 @@ import saveTheDate from '../assets/our-story/DOROTHYANDCHRIS74.jpg';
 import GoldTextClip from './GoldTextClip';
 import Carousel from './Carousel';
 import SaveTheDate from './SaveTheDate';
+import Modal from './Modal';
+import { useSelector } from '../store';
+import { useDispatch } from 'react-redux';
+import { closeModal, setSelectedParty } from '../store/guests';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-hidden h-full`;
 const HeroHeading = tw.div`text-center z-10 mt-120 md:mt-60 text-white text-8xl md:text-6xl md:mx-14`;
@@ -59,6 +63,9 @@ const MobileSection = styled(Section)`
 `;
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const { updatePartySuccess } = useSelector((state) => state.guests);
   return (
     <Container>
       <HeroContainer>
@@ -106,6 +113,13 @@ const Home = () => {
           <SaveTheDateP>Pasadena, CA</SaveTheDateP>
         </Content>
       </MobileSection>
+      <Modal
+        isOpen={updatePartySuccess}
+        onClose={() => {
+          dispatch(closeModal());
+          dispatch(setSelectedParty(null));
+        }}
+      />
     </Container>
   );
 };

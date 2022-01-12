@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import {
   getGuests,
   getParties,
-  updatePartyAddress,
-  updatePartyEmail,
+  setSelectedParty,
+  updatePartyData,
 } from '../store/guests';
 import { useSelector } from '../store';
 import PartySettings from './PartySettings';
@@ -71,9 +71,9 @@ const SaveTheDate = () => {
 
   const guests = useSelector((state) => state.guests.guests);
   const parties = useSelector((state) => state.guests.parties);
+  const selectedParty = useSelector((state) => state.guests.selectedParty);
 
   const [searchResults, setSearchResults] = useState<Models.Guest[]>([]);
-  const [selectedParty, setSelectedParty] = useState<Models.Party | null>(null);
 
   const [searchForm, updateSearchForm] =
     useState<GuestSearchForm>(initialSearchForm);
@@ -92,12 +92,12 @@ const SaveTheDate = () => {
   const selectParty = (id: string) => {
     const party = parties.find((p) => p.id === id);
     if (party) {
-      setSelectedParty(party);
+      dispatch(setSelectedParty(party));
     }
   };
 
   const clearSelectedParty = () => {
-    setSelectedParty(null);
+    dispatch(setSelectedParty(null));
   };
 
   const [addressForm, updateAddressForm] =
@@ -152,9 +152,10 @@ const SaveTheDate = () => {
     if (!selectedParty) return;
     const { address1, address2, city, state, zipcode, email, country } =
       addressForm;
-    const address = `${address1.value} ${address2.value}, ${city.value}, ${state.value} ${zipcode.value} ${country}`;
-    dispatch(updatePartyAddress({ id: selectedParty.id, address }));
-    dispatch(updatePartyEmail({ id: selectedParty.id, email: email.value }));
+    const address = `${address1.value} ${address2.value}, ${city.value}, ${state.value} ${zipcode.value} ${country.value}`;
+    dispatch(
+      updatePartyData({ id: selectedParty.id, email: email.value, address })
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addressForm, selectedParty]);
 
