@@ -46,8 +46,9 @@ const updatePartyData = createAsyncThunk(
         method: 'POST',
         body: JSON.stringify({
           to: email,
-          subject: 'Address Confirmation',
-          message: `This is the address we are sending stuff to: ${address}`,
+          subject: 'Address Received: Dorothy & Christopher’s Wedding',
+          message: `Thank you for providing your mailing address! We will send a formal invitation to: ${address}. If you would like to make any changes, please resubmit your address using the form on our website: http://dorothyandchristopher.com. Feel free to respond to this email with any questions or concerns! With Love, Dorothy & Christopher.`,
+          address,
         }),
       });
     }

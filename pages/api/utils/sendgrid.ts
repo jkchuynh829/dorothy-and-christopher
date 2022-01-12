@@ -19,7 +19,10 @@ const sendConfirmation = async ({
 }: SendConfirmationRequest) => {
   mail.send({
     to,
-    from: 'hello@dorothyandchristopher.com',
+    from: {
+      email: 'hello@dorothyandchristopher.com',
+      name: 'Dorothy & Chris',
+    },
     subject,
     text: message,
     html,
