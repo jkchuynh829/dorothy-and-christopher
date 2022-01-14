@@ -17,7 +17,7 @@ export default function handler(
     message: data.message,
     html: `
       <body>
-        <div>Thank you for providing your mailing address! We will send a formal invitation to:</div>
+        <div>Thank you for providing your mailing address! We will send a formal invitation to: </div>
 
         <br />
 
