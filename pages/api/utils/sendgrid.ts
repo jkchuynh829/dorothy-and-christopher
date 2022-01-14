@@ -17,7 +17,7 @@ const sendConfirmation = async ({
   message,
   html,
 }: SendConfirmationRequest) => {
-  mail.send({
+  const [response] = await mail.send({
     to,
     from: {
       email: 'hello@dorothyandchristopher.com',
@@ -27,6 +27,8 @@ const sendConfirmation = async ({
     text: message,
     html,
   });
+
+  return { statusCode: response.statusCode, apiKey: sendgridApiKey };
 };
 
 export { sendConfirmation };

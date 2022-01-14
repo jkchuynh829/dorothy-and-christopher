@@ -2,16 +2,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { sendConfirmation } from './utils/sendgrid';
 
-type Data = {
-  name: string;
-};
+interface Data {
+  statusCode: number;
+  apiKey: string;
+}
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   const data = JSON.parse(req.body);
-  sendConfirmation({
+  const { statusCode, apiKey } = await sendConfirmation({
     to: data.to,
     subject: data.subject,
     message: data.message,
@@ -41,5 +42,5 @@ export default function handler(
       </body>
     `,
   });
-  res.status(200).json({ name: 'John Doe' });
+  res.status(202).json({ statusCode, apiKey });
 }
