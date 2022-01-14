@@ -28,7 +28,11 @@ const sendConfirmation = async ({
     html,
   });
 
-  return { statusCode: response.statusCode, apiKey: sendgridApiKey };
+  if (sendgridApiKey == '' || sendgridApiKey == null) {
+    return { statusCode: 500 };
+  }
+
+  return { statusCode: response.statusCode };
 };
 
 export { sendConfirmation };

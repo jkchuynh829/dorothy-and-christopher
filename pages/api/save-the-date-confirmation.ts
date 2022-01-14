@@ -4,7 +4,6 @@ import { sendConfirmation } from './utils/sendgrid';
 
 interface Data {
   statusCode: number;
-  apiKey: string;
 }
 
 export default async function handler(
@@ -12,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const data = JSON.parse(req.body);
-  const { statusCode, apiKey } = await sendConfirmation({
+  const { statusCode } = await sendConfirmation({
     to: data.to,
     subject: data.subject,
     message: data.message,
@@ -42,5 +41,6 @@ export default async function handler(
       </body>
     `,
   });
-  res.status(202).json({ statusCode, apiKey });
+
+  res.status(statusCode ?? 500).json({ statusCode });
 }
