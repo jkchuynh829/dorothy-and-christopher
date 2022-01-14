@@ -26,7 +26,7 @@ export default function handler(
         <br />
         
         <div>If you would like to make any changes, please resubmit your address using the form on our website: http://dorothyandchristopher.com.</div>
-        <div>Feel free to respond to this email with any questions or concerns!</div>
+        <div>Feel free to respond to this email with any questions or concerns! </div>
 
         <br />
         
