@@ -5,6 +5,8 @@ declare namespace Models {
     last_name: string;
     is_attending: boolean;
     meal_preference: string;
+    is_vaccinated: boolean;
+    allergies: string;
     party_id: string;
     created_at: Date;
     updated_at: Date;
