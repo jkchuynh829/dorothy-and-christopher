@@ -9,6 +9,11 @@ interface PartyReservationProps {
   onSubmit: () => void;
 }
 
+// refactor below to use TS to extend Model.Guest but include only the boolean types
+interface RadioButtonKeys {
+  is_attending: string;
+  is_vaccinated: string
+}
 // interface GuestRSVPForm {
 // is_attending: boolean;
 // meal_preference: string;
@@ -32,6 +37,7 @@ interface PartyReservationProps {
 // }
 
 const Container = tw.div`mt-28`;
+const RadioContainer = tw.div`mt-2`
 
 const GuestContainer = styled(Paragraph)`
     ${tw`text-xl mb-6`}
@@ -44,29 +50,65 @@ const FormRow = styled.div`
   }
 `;
 
-const RadioButtonSelectionContainer = tw.div``//`form-check form-check-inline`
+const RadioButtonSelectionContainer = tw.div``
 
 const PartyReservation = ({
   guests,
   onSubmit,
 }: PartyReservationProps) => {
 
+  const [guestsData, updateGuestsData] =
+    useState<Models.Guest[]>(guests);
+
+  console.log(guestsData);
+  const booleanRadioChangeHandler = (guestId: Models.Guest['id'], guestBooleanProperty: string, checked: boolean) => {
+    const guest = { ...guestsData.find((g) => g.id === guestId) } as Models.Guest
+    if (guest.id == null) return;
+    console.log('Guest Property ', guestBooleanProperty)
+    console.log('CHECKED ', checked)
+    // guest.is_vaccinated = checked
+    // type WritableKeys<T> = {
+    // [P in keyof T]-?: IfEquals<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
+    // }[keyof T];
+    // guest[guestBooleanProperty as keyof ReadonlyGuest extends Omit<Models.Guest, 'id'>] = checked
+    guest[guestBooleanProperty as keyof RadioButtonKeys] = checked
+    const idx = guestsData.map(({ id }) => id).indexOf(guestId)
+    console.log('idxxxxxxx ', idx)
+    if (idx === -1) return;
+    const updatedGuestsData: Models.Guest[] = [...guestsData.slice(0)]
+    console.log('updatedGuests ', updatedGuestsData)
+    updatedGuestsData[idx] = guest
+    console.log('updatedGuest', updatedGuestsData[idx])
+    updateGuestsData(updatedGuestsData)
+  }
+
   return (
     <Container>
       {
-        guests.map((guest) => {
+        guestsData.map((guest) => {
           return <GuestContainer>
             {/*Insert name radio buttons, food choice selection here */}
-            <FormRow>
+            <FormRow id={guest.id}>
               <Paragraph>
                 {`${guest.first_name} ${guest.last_name}`}
               </Paragraph>
               <RadioButtonSelectionContainer>
                 <Paragraph>
+                  {'Attending?'}
+                </Paragraph>
+                <RadioContainer>
+                  <FormRadioButton label='Yes' name={`${guest.id}_is_attending`} value='Yes' checked={guest.is_attending === true} onChange={() => booleanRadioChangeHandler(guest.id, 'is_attending', true)} />
+                  <FormRadioButton label='No' name={`${guest.id}_is_attending`} value='No' checked={guest.is_attending === false} onChange={() => booleanRadioChangeHandler(guest.id, 'is_attending', false)} />
+                </RadioContainer>
+              </RadioButtonSelectionContainer>
+              <RadioButtonSelectionContainer>
+                <Paragraph>
                   {'COVID-19 Vaccinated?'}
                 </Paragraph>
-                <FormRadioButton label={'Yes'} value={true} />
-                <FormRadioButton label={'No'} value={true} />
+                <RadioContainer>
+                  <FormRadioButton label='Yes' name={`${guest.id}_is_vaccinated`} value='Yes' checked={guest.is_vaccinated === true} onChange={() => booleanRadioChangeHandler(guest.id, 'is_vaccinated', true)} />
+                  <FormRadioButton label='No' name={`${guest.id}_is_vaccinated`} value='No' checked={guest.is_vaccinated === false} onChange={() => booleanRadioChangeHandler(guest.id, 'is_vaccinated', false)} />
+                </RadioContainer>
               </RadioButtonSelectionContainer>
             </FormRow>
           </GuestContainer>

@@ -13,8 +13,8 @@ interface PartyRSVPForm {
 }
 
 interface GuestRSVPForm {
-  id: number;
   is_attending: boolean;
+  is_vaccinated: boolean;
   meal_preference: string;
   allergies: string;
 }
@@ -44,7 +44,10 @@ const initialPartyRSVPForm = {
 }
 
 const initialGuestRSVPForm = {
-  is_attending: false
+  is_attending: false,
+  is_vaccinated: false,
+  meal_preference: '',
+  allergies: ''
 }
 
 

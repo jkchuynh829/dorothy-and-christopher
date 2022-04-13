@@ -16,6 +16,7 @@ const FormRow = tw.div`flex flex-col`;
 const U = tw.span`border-b`;
 
 interface GuestSearchProps {
+  headerText: string;
   form: GuestSearchForm;
   searchResults: Models.Guest[];
   onChange: (type: 'lastName' | 'firstName') => (value: string) => void;
@@ -23,6 +24,7 @@ interface GuestSearchProps {
 }
 
 const GuestSearch = ({
+  headerText,
   form,
   searchResults,
   onChange,
@@ -30,7 +32,7 @@ const GuestSearch = ({
 }: GuestSearchProps) => {
   return (
     <Container>
-      <H2>Submit Your Address</H2>
+      <H2>{headerText}</H2>
       <FormRow>
         <FormInput
           label="First Name"

@@ -4,7 +4,7 @@ import supabase from '../supabase';
 const getGuests = createAsyncThunk('get/guests', async () => {
   const { data: guests, error } = await supabase
     .from('guests')
-    .select('id, first_name, last_name, party_id, meal_preference');
+    .select('id, first_name, last_name, party_id, is_attending, is_vaccinated, meal_preference, allergies');
 
   if (error) {
     throw new Error('Could not get guests data');
@@ -56,6 +56,10 @@ const updatePartyData = createAsyncThunk(
     return { success: error == null, email, address };
   }
 );
+
+// const updatePartyReservation = createAsyncThunk(
+
+// )
 
 interface GuestsProps {
   guests: Models.Guest[];

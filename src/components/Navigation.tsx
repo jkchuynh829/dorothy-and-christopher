@@ -77,6 +77,12 @@ const Navigation = () => {
       >
         Save the Date
       </NavLink>
+      <NavLink
+        href="/rsvp"
+        selected={isCurrentPath('/rsvp')}
+      >
+        RSVP
+      </NavLink>
     </Container>
   );
 };

@@ -2,8 +2,7 @@ import React from 'react';
 import tw, { styled } from 'twin.macro';
 import { Paragraph } from './Typography';
 
-const Container = tw.div`form-check form-check-inline`;
-// const Input = tw.input`type=border border-solid border-dark-gray shadow-input rounded-sm h-10 w-full px-3 mb-6 font-urbanist`;
+const Label = tw.label`inline-flex items-center`
 const Input = tw.input`form-radio`
 
 const P = styled(Paragraph)`
@@ -12,17 +11,24 @@ const P = styled(Paragraph)`
 
 interface FormRadioInputProps {
   label: string;
-  value: boolean;
+  name: string;
+  value: string;
+  onChange: (checked: boolean) => void;
+  checked?: boolean;
 }
 
-const FormRadioButton = ({ label, value }: FormRadioInputProps) => {
+const FormRadioButton = ({ label, name, value, onChange, checked = false }: FormRadioInputProps) => {
   return (
-    <Container>
-      <P>{label}</P>
+    <Label>
+      {label}
       <Input
-        value={'false'}//{value}
+        type="radio"
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={(e: any) => onChange(e.target.value)}
       />
-    </Container>
+    </Label>
   );
 };
 
