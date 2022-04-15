@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import tw, { styled } from 'twin.macro';
 import FormRadioButton from './FormRadioButton';
+import FormInput from './FormInput';
+import FormSelect from './FormSelect';
 import { Paragraph } from './Typography';
 
 interface PartyReservationProps {
@@ -64,8 +66,6 @@ const PartyReservation = ({
   const booleanRadioChangeHandler = (guestId: Models.Guest['id'], guestBooleanProperty: string, checked: boolean) => {
     const guest = { ...guestsData.find((g) => g.id === guestId) } as Models.Guest
     if (guest.id == null) return;
-    console.log('Guest Property ', guestBooleanProperty)
-    console.log('CHECKED ', checked)
     // guest.is_vaccinated = checked
     // type WritableKeys<T> = {
     // [P in keyof T]-?: IfEquals<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
@@ -73,13 +73,45 @@ const PartyReservation = ({
     // guest[guestBooleanProperty as keyof ReadonlyGuest extends Omit<Models.Guest, 'id'>] = checked
     guest[guestBooleanProperty as keyof RadioButtonKeys] = checked
     const idx = guestsData.map(({ id }) => id).indexOf(guestId)
-    console.log('idxxxxxxx ', idx)
     if (idx === -1) return;
     const updatedGuestsData: Models.Guest[] = [...guestsData.slice(0)]
-    console.log('updatedGuests ', updatedGuestsData)
     updatedGuestsData[idx] = guest
-    console.log('updatedGuest', updatedGuestsData[idx])
     updateGuestsData(updatedGuestsData)
+  }
+
+  // const onChangeAddress = useCallback(
+  // (
+  // type:
+  // | 'address1'
+  // | 'address2'
+  // | 'city'
+  // | 'state'
+  // | 'zipcode'
+  // | 'country'
+  // | 'email'
+  // ) => {
+  // const updatedForm = { ...addressForm };
+  // return (value: string) => {
+  // updatedForm[type].value = value;
+  // updateAddressForm(updatedForm);
+  // };
+  // },
+  // [addressForm]
+  // );
+
+  const allergiesInputChangeHandler = (guestId: Models.Guest['id']) => {
+    return (value: string) => {
+      const guest = { ...guestsData.find((g) => g.id === guestId) } as Models.Guest
+      if (guest.id == null) return;
+
+      guest.allergies = value;
+      const idx = guestsData.map(({ id }) => id).indexOf(guestId)
+      if (idx === -1) return;
+      const updatedGuestsData: Models.Guest[] = [...guestsData.slice(0)]
+      updatedGuestsData[idx] = guest
+      updateGuestsData(updatedGuestsData)
+      console.log('GUESTSDATA ', guestsData)
+    }
   }
 
   return (
@@ -110,6 +142,15 @@ const PartyReservation = ({
                   <FormRadioButton label='No' name={`${guest.id}_is_vaccinated`} value='No' checked={guest.is_vaccinated === false} onChange={() => booleanRadioChangeHandler(guest.id, 'is_vaccinated', false)} />
                 </RadioContainer>
               </RadioButtonSelectionContainer>
+              <FormInput
+                label='Please list any dietary restrictions and/or dog allergies.'
+                value={guest.allergies}
+                onChange={allergiesInputChangeHandler(guest.id)}
+              />
+              <FormSelect
+                label='Meal Selection'
+                onChange={() => { }}
+              />
             </FormRow>
           </GuestContainer>
         })

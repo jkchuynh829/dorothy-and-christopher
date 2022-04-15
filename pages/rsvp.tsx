@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import tw from 'twin.macro';
 import ContentWrapper from '../src/components/ContentWrapper';
@@ -103,6 +103,11 @@ const Rsvp = () => {
     [searchForm]
   );
 
+  const partyGuests = useMemo(() => {
+    if (selectedParty == null) return [];
+    return guests.filter((guest) => guest.party_id === selectedParty.id);
+  }, [guests, selectedParty]);
+
   useEffect(() => {
     dispatch(getGuests());
     dispatch(getParties());
@@ -129,7 +134,7 @@ const Rsvp = () => {
         {selectedParty ? (
           <PartyReservation
             party={selectedParty}
-            guests={guests}
+            guests={partyGuests}
             onSubmit={onSubmit}
           />
         ) : (
