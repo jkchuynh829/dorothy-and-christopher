@@ -69,17 +69,15 @@ const Rsvp = () => {
 
   // copied from SaveTheDate.tsx, should move to util file?
   const selectParty = useCallback((id: string) => {
-    console.log('TRYNA SELECt PARTY')
     const party = parties.find((p) => p.id === id);
     if (party) {
-      console.log('SETTING THE SELECTED PARTY')
       dispatch(setSelectedParty(party));
     }
   }, [parties, dispatch]);
 
-  const onSubmit = useCallback(() => {
-    console.log('hello')
-  }, []);
+  // const onSubmit = useCallback(() => {
+  // console.log('hello')
+  // }, []);
 
   // const onSubmit = useCallback(() => {
   // if (!selectedParty) return;
@@ -135,7 +133,6 @@ const Rsvp = () => {
           <PartyReservation
             party={selectedParty}
             guests={partyGuests}
-            onSubmit={onSubmit}
           />
         ) : (
           <GuestSearch
