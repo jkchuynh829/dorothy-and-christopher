@@ -18,6 +18,7 @@ declare namespace Models {
     size: number;
     address: string;
     email: string;
+    song_requests: string;
     created_at: Date;
     updated_at: Date;
   }

@@ -2,8 +2,9 @@ import { useCallback, useState } from 'react';
 import tw, { styled } from 'twin.macro';
 import FormRadioButton from './FormRadioButton';
 import FormInput from './FormInput';
-import FormSelect from './FormSelect';
 import { Paragraph } from './Typography';
+import Select from 'react-select';
+import { SingleValue } from 'react-select';
 
 interface PartyReservationProps {
   party: Models.Party;
@@ -16,27 +17,11 @@ interface RadioButtonKeys {
   is_attending: string;
   is_vaccinated: string
 }
-// interface GuestRSVPForm {
-// is_attending: boolean;
-// meal_preference: string;
-// allergies: string;
-// }
 
-// interface PartyForm {
-// song_requests: string;
-// }
-
-// const initialGuestRSVPForm = {
-// is_attending: false,
-// meal_preference: '',
-// allergies: ''
-// }
-
-// const GuestRSVPForm = () => {
-// const [rsvpForm, updateGuestRSVPForm] = useState<GuestRSVPForm>(initialGuestRSVPForm);
-
-// return <p></p>
-// }
+interface OptionType {
+  label: string;
+  value: string;
+}
 
 const Container = tw.div`mt-28`;
 const RadioContainer = tw.div`mt-2`
@@ -54,15 +39,23 @@ const FormRow = styled.div`
 
 const RadioButtonSelectionContainer = tw.div``
 
+const mealOptions: OptionType[] = [
+  { value: 'steak', label: 'Steak' },
+  { value: 'chicken', label: 'Chicken' },
+  { value: 'salmon', label: 'Salmon' },
+];
+
 const PartyReservation = ({
+  party,
   guests,
   onSubmit,
 }: PartyReservationProps) => {
 
+  const [partyData, updatePartyData] =
+    useState<Models.Party>(party);
   const [guestsData, updateGuestsData] =
     useState<Models.Guest[]>(guests);
 
-  console.log(guestsData);
   const booleanRadioChangeHandler = (guestId: Models.Guest['id'], guestBooleanProperty: string, checked: boolean) => {
     const guest = { ...guestsData.find((g) => g.id === guestId) } as Models.Guest
     if (guest.id == null) return;
@@ -79,39 +72,42 @@ const PartyReservation = ({
     updateGuestsData(updatedGuestsData)
   }
 
-  // const onChangeAddress = useCallback(
-  // (
-  // type:
-  // | 'address1'
-  // | 'address2'
-  // | 'city'
-  // | 'state'
-  // | 'zipcode'
-  // | 'country'
-  // | 'email'
-  // ) => {
-  // const updatedForm = { ...addressForm };
-  // return (value: string) => {
-  // updatedForm[type].value = value;
-  // updateAddressForm(updatedForm);
-  // };
-  // },
-  // [addressForm]
-  // );
-
   const allergiesInputChangeHandler = (guestId: Models.Guest['id']) => {
     return (value: string) => {
+      const guestCopy = { ...guestsData.find((g) => g.id === guestId) } as Models.Guest
+      if (guestCopy.id == null) return;
+
+      guestCopy.allergies = value;
+      const idx = guestsData.map(({ id }) => id).indexOf(guestId)
+      if (idx === -1) return;
+      const updatedGuestsData: Models.Guest[] = [...guestsData.slice(0)]
+      updatedGuestsData[idx] = guestCopy
+      updateGuestsData(updatedGuestsData)
+    }
+  }
+
+  const mealSelectionChangeHandler = (guestId: Models.Guest['id']) => {
+    return (option: SingleValue<OptionType>) => {
       const guest = { ...guestsData.find((g) => g.id === guestId) } as Models.Guest
       if (guest.id == null) return;
 
-      guest.allergies = value;
+      guest.meal_preference = option?.value || '';
       const idx = guestsData.map(({ id }) => id).indexOf(guestId)
       if (idx === -1) return;
       const updatedGuestsData: Models.Guest[] = [...guestsData.slice(0)]
       updatedGuestsData[idx] = guest
       updateGuestsData(updatedGuestsData)
-      console.log('GUESTSDATA ', guestsData)
+      console.log('GUESTSDATA AFTER MEAL SELECTION', guestsData)
     }
+  }
+
+  const songRequestsChangeHandler = (value: string) => {
+    console.log('UPDATED PARTY DATA 1', partyData)
+    const partyCopy = { ...partyData }
+    partyCopy.song_requests = value;
+    updatePartyData(partyCopy)
+    console.log('UPDATED PARTY DATA 2', partyData)
+    console.log('UPDATED PARTY COPY ', partyCopy)
   }
 
   return (
@@ -119,7 +115,6 @@ const PartyReservation = ({
       {
         guestsData.map((guest) => {
           return <GuestContainer>
-            {/*Insert name radio buttons, food choice selection here */}
             <FormRow id={guest.id}>
               <Paragraph>
                 {`${guest.first_name} ${guest.last_name}`}
@@ -147,14 +142,16 @@ const PartyReservation = ({
                 value={guest.allergies}
                 onChange={allergiesInputChangeHandler(guest.id)}
               />
-              <FormSelect
-                label='Meal Selection'
-                onChange={() => { }}
-              />
+              <Select options={mealOptions} onChange={mealSelectionChangeHandler(guest.id)} />
             </FormRow>
           </GuestContainer>
         })
       }
+      <FormInput
+        label='Song Requests'
+        value={party.song_requests}
+        onChange={songRequestsChangeHandler}
+      />
     </Container>
   )
 }
