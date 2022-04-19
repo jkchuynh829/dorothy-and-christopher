@@ -17,13 +17,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 To develop locally with a local Supabase instance, follow [Supabase Local Development](https://supabase.com/docs/guides/local-development).
 Inside, there are instructions to:
  - Download the Supabase Client CLI.
-  - After downloading the CLI, there are instructions to use the CLI to login with your Supabase credentials.
-  - Afterward, you'll be able to spin up Docker containers to run local Supabase services with `supabase start`.
-  - An output of credentials will show after the command is finished running.
-  - Two of these, `API URL` and `anon key`, can be used for your local `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`, respectively.
-  - A value for `Studio URL` will also show where you'll be able to access a local version of Supabase's studio, where you can use the GUI to make db changes and SQL queries.
- - Synchronize remote database changes with local database changes.
- - Create and push migrations.
+ - After downloading the CLI, there are instructions on how to use the CLI to login with your Supabase credentials via `supabase login`.
+ - There's a step to initialize a `supabase` folder within the project, but pulling this repo down should already include one, so you can skip that step.
+ - Afterward, you'll be able to spin up Docker containers to run local Supabase services with `supabase start`.
+ - An output of credentials will show after the command is finished running.
+ - Two of these, `API URL` and `anon key`, can be used for your local `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`, respectively.
+ - A value for `Studio URL` will also show where you'll be able to access a local version of Supabase's studio, where you can use the GUI to make db changes and SQL queries.
+ - There are also instructions on how to synchronize remote database changes with local database changes via migrations.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
