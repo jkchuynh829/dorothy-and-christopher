@@ -74,7 +74,7 @@ const updatePartyData = createAsyncThunk(
 // }
 // }
 
-interface GuestRsvpData {
+export interface GuestRsvpData {
   id: Models.Guest['id'];
   is_attending: Models.Guest['is_attending'];
   is_vaccinated: Models.Guest['is_vaccinated'];
@@ -82,11 +82,11 @@ interface GuestRsvpData {
   meal_preference: Models.Guest['meal_preference'];
 }
 
-interface PartyRsvpData {
+export interface PartyRsvpData {
   id: Models.Party['id']
   song_requests: Models.Party['song_requests']
 }
-interface RsvpApiData {
+export interface RsvpApiData {
   guestsRsvpData: GuestRsvpData[];
   partyRsvpData: PartyRsvpData;
 }

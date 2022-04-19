@@ -1,10 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { PrismaClient } from '@prisma/client';
 import { sendConfirmation } from './utils/sendgrid';
+import { GuestRsvpData } from '../../src/store/guests';
 
 interface Data {
   statusCode: number;
 }
+
+const prisma = new PrismaClient()
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,6 +16,56 @@ export default async function handler(
 ) {
   const data = JSON.parse(req.body);
   console.log('RSVP API DATA ', data)
+  const guestsRsvpData = data.guestsRsvpData;
+  const partyRsvpData = data.partyRsvpData;
+
+  try {
+    await prisma.$transaction(async (prisma) => {
+      guestsRsvpData.forEach(async (guestData: GuestRsvpData) => {
+        await prisma.guests.update({
+          data: {
+            is_attending: guestData.is_attending,
+            is_vaccinated: guestData.is_vaccinated,
+            allergies: guestData.allergies,
+            meal_preference: guestData.meal_preference
+          },
+          where: {
+            id: parseInt(guestData.id),
+          },
+        })
+      })
+      await prisma.parties.update({
+        data: {
+          song_requests: partyRsvpData.song_requests
+        },
+        where: {
+          id: parseInt(partyRsvpData.id)
+        }
+      })
+      // return [
+      // ...guestsRsvpData.map((guestData: GuestRsvpData) => {
+      // prisma.guests.update({
+      // data: {
+      // is_attending: guestData.is_attending,
+      // },
+      // where: {
+      // id: parseInt(guestData.id),
+      // },
+      // })
+      // }),
+      // prisma.parties.update({
+      // data: {
+      // song_requests: partyRsvpData.song_requests
+      // },
+      // where: {
+      // id: parseInt(partyRsvpData.id)
+      // }
+      // })
+      // ]
+    })
+  } catch (error) {
+    console.log('RSVP API DB ERROR ', error)
+  }
   // const { statusCode } = await sendConfirmation({
   // to: data.to,
   // subject: data.subject,
@@ -44,5 +98,6 @@ export default async function handler(
   // });
 
   // res.status(statusCode ?? 500).json({ statusCode });
+  console.log("IM DONE")
   res.status(200);
 }
