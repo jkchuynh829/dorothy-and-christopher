@@ -23,6 +23,7 @@ Inside, there are instructions to:
  - An output of credentials will show after the command is finished running.
  - Two of these, `API URL` and `anon key`, can be used for your local `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` env variables, respectively.
  - A value for `Studio URL` will also show where you'll be able to access a local version of Supabase's studio, where you can use the GUI to make db changes and SQL queries.
+ - A value for `DB URL` will also appear. This will be used for the `DATABASE_URL` env variable that is needed for the `prisma` ORM.
  - There are also instructions on how to synchronize remote database changes with local database changes via migrations.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
