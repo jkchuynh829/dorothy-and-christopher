@@ -12,6 +12,19 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Supabase Local Dev
+
+To develop locally with a local Supabase instance, follow [Supabase Local Development](https://supabase.com/docs/guides/local-development).
+Inside, there are instructions to:
+ - Download the Supabase Client CLI.
+  - After downloading the CLI, there are instructions to use the CLI to login with your Supabase credentials.
+  - Afterward, you'll be able to spin up Docker containers to run local Supabase services with `supabase start`.
+  - An output of credentials will show after the command is finished running.
+  - Two of these, `API URL` and `anon key`, can be used for your local `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`, respectively.
+  - A value for `Studio URL` will also show where you'll be able to access a local version of Supabase's studio, where you can use the GUI to make db changes and SQL queries.
+ - Synchronize remote database changes with local database changes.
+ - Create and push migrations.
+
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
