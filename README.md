@@ -12,6 +12,12 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
 ## Supabase Local Dev
 
 To develop locally with a local Supabase instance, follow [Supabase Local Development](https://supabase.com/docs/guides/local-development).
@@ -25,12 +31,6 @@ Inside, there are instructions to:
  - A value for `Studio URL` will also show where you'll be able to access a local version of Supabase's studio, where you can use the GUI to make db changes and SQL queries.
  - A value for `DB URL` will also appear. This will be used for the `DATABASE_URL` env variable that is needed for the `prisma` ORM.
  - There are also instructions on how to synchronize remote database changes with local database changes via migrations.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 
