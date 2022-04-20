@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import tw, { styled } from 'twin.macro';
 import FormRadioButton from './FormRadioButton';
@@ -6,9 +6,7 @@ import FormInput from './FormInput';
 import { Paragraph } from './Typography';
 import Select from 'react-select';
 import { SingleValue } from 'react-select';
-// import { updateGuestRSVP, updatePartyRSVP } from '../store/guests';
 import { updateRsvp } from '../store/guests';
-import { mdiContentSaveOutline } from '@mdi/js';
 
 interface PartyReservationProps {
   party: Models.Party;
@@ -137,15 +135,6 @@ const PartyReservation = ({
   }
 
   const onSubmit = () => {
-    // guestsData.forEach((guest) => {
-    // const { id, is_attending, is_vaccinated, allergies, meal_preference } = guest;
-    // dispatch(updateGuestRSVP(guest))
-    // });
-    // const { song_requests } = partyData;
-    // dispatch(updatePartyRSVP)
-
-    console.log('GUESTDATA ', guestsData)
-    console.log('PARTYDATA ', partyData)
     const rsvpData = {
       guestsRsvpData: guestsData.map((guestData) => {
         return {

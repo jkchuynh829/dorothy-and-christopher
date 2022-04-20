@@ -8,26 +8,6 @@ import GuestSearch from '../src/components/GuestSearch';
 import PartyReservation from '../src/components/PartyReservation';
 import { GuestSearchForm } from '../src/components/SaveTheDate';
 
-interface PartyRSVPForm {
-  song_requests: string;
-}
-
-interface GuestRSVPForm {
-  is_attending: boolean;
-  is_vaccinated: boolean;
-  meal_preference: string;
-  allergies: string;
-}
-
-interface GuestRSVPData {
-  data: GuestRSVPForm[]
-}
-
-interface RSVPForm {
-  party_data: PartyRSVPForm;
-  guests_data: GuestRSVPData
-}
-
 const initialSearchForm = {
   firstName: {
     value: '',
@@ -37,27 +17,10 @@ const initialSearchForm = {
   },
 };
 
-const initialGuestRSVPData = []
-
-const initialPartyRSVPForm = {
-  song_requests: ''
-}
-
-const initialGuestRSVPForm = {
-  is_attending: false,
-  is_vaccinated: false,
-  meal_preference: '',
-  allergies: ''
-}
-
-
-// const Container = tw.div`relative w-full h-full`;
 const Container = tw.div`relative w-full h-full mt-28`;
-// const Container = tw.div`flex flex-col items-center overflow-hidden h-full`;
 
 const Rsvp = () => {
   const dispatch = useDispatch();
-  //dispatch(setSelectedParty(null))
 
   const guests = useSelector((state) => state.guests.guests);
   const parties = useSelector((state) => state.guests.parties);
@@ -66,7 +29,6 @@ const Rsvp = () => {
   const [searchForm, updateSearchForm] = useState<GuestSearchForm>(initialSearchForm);
   const [searchResults, setSearchResults] = useState<Models.Guest[]>([]);
 
-
   // copied from SaveTheDate.tsx, should move to util file?
   const selectParty = useCallback((id: string) => {
     const party = parties.find((p) => p.id === id);
@@ -74,21 +36,6 @@ const Rsvp = () => {
       dispatch(setSelectedParty(party));
     }
   }, [parties, dispatch]);
-
-  // const onSubmit = useCallback(() => {
-  // console.log('hello')
-  // }, []);
-
-  // const onSubmit = useCallback(() => {
-  // if (!selectedParty) return;
-  // const { address1, address2, city, state, zipcode, email, country } =
-  // addressForm;
-  // const address = `${address1.value} ${address2.value}, ${city.value}, ${state.value} ${zipcode.value} ${country.value}`;
-  // dispatch(
-  // updatePartyData({ id: selectedParty.id, email: email.value, address })
-  // );
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [addressForm, selectedParty]);
 
   const onChangeSearch = useCallback(
     (type: 'lastName' | 'firstName') => {
