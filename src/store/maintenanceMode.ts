@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  enabled: false,
+  maintenanceEnabled: true,
+  rsvpEnabled: true,
 };
 
 const maintenanceModeSlice = createSlice({
@@ -9,7 +10,7 @@ const maintenanceModeSlice = createSlice({
   initialState,
   reducers: {
     disableMaintenanceMode(state) {
-      state.enabled = false;
+      state.maintenanceEnabled = false;
     },
   },
 });

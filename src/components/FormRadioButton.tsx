@@ -1,13 +1,8 @@
 import React from 'react';
-import tw, { styled } from 'twin.macro';
-import { Paragraph } from './Typography';
+import tw from 'twin.macro';
 
-const Label = tw.label`inline-flex items-center`
-const Input = tw.input`form-radio`
-
-const P = styled(Paragraph)`
-  ${tw`uppercase text-sm`}
-`;
+const Label = tw.label`flex flex-row justify-center items-center mx-2 text-sm uppercase`;
+const Input = tw.input`ml-2 form-radio border border-solid border-dark-gray`;
 
 interface FormRadioInputProps {
   label: string;
@@ -17,7 +12,13 @@ interface FormRadioInputProps {
   checked?: boolean;
 }
 
-const FormRadioButton = ({ label, name, value, onChange, checked = false }: FormRadioInputProps) => {
+const FormRadioButton = ({
+  label,
+  name,
+  value,
+  onChange,
+  checked = false,
+}: FormRadioInputProps) => {
   return (
     <Label>
       {label}

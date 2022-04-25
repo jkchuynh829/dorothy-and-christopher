@@ -10,7 +10,7 @@ const Container = tw.div`relative w-full h-full`;
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { enabled } = useSelector((state) => state.maintenanceMode);
+  const { maintenanceEnabled } = useSelector((state) => state.maintenanceMode);
   return (
     <Container>
       <Head>
@@ -18,7 +18,7 @@ const Main = () => {
         <meta name="description" content="Made by Jimmy Huynh" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {enabled ? (
+      {maintenanceEnabled ? (
         <Maintenance unlock={() => dispatch(disableMaintenanceMode())} />
       ) : (
         <OurStory />

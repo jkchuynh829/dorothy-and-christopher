@@ -2,14 +2,16 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import { useDispatch } from 'react-redux';
 import tw from 'twin.macro';
-import ContentWrapper from '../src/components/ContentWrapper';
-import { useSelector } from '../src/store';
-import { getGuests, getParties, setSelectedParty } from '../src/store/guests';
-import GuestSearch from '../src/components/GuestSearch';
-import PartyReservation from '../src/components/PartyReservation';
-import { GuestSearchForm } from '../src/components/SaveTheDate';
-import Maintenance from '../src/components/Maintenance';
-import { disableMaintenanceMode } from '../src/store/maintenanceMode';
+import ContentWrapper from '../components/ContentWrapper';
+import { useSelector } from '../store';
+import { getGuests, getParties, setSelectedParty } from '../store/guests';
+import GuestSearch from '../components/GuestSearch';
+import PartyReservation from '../components/PartyReservation';
+import { GuestSearchForm } from '../components/SaveTheDate';
+import Maintenance from '../components/Maintenance';
+import { disableMaintenanceMode } from '../store/maintenanceMode';
+
+const Container = tw.div`relative w-full h-full`;
 
 const initialSearchForm = {
   firstName: {
@@ -19,8 +21,6 @@ const initialSearchForm = {
     value: '',
   },
 };
-
-const Container = tw.div`relative w-full h-full`;
 
 const Rsvp = () => {
   const dispatch = useDispatch();
@@ -88,7 +88,6 @@ const Rsvp = () => {
       </Container>
     );
   }
-
   return (
     <Container>
       <ContentWrapper>

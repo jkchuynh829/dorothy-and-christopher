@@ -15,10 +15,11 @@ import Modal from './Modal';
 import { useSelector } from '../store';
 import { useDispatch } from 'react-redux';
 import { closeModal, setSelectedParty } from '../store/guests';
+import Rsvp from './Rsvp';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-hidden h-full`;
 const HeroHeading = tw.div`text-center z-10 mt-120 md:mt-60 text-white text-8xl md:text-6xl md:mx-14`;
-const Section = tw.div`relative min-h-screen w-full flex flex-row justify-center`;
+const Section = tw.div`relative min-h-screen w-full flex flex-row justify-center max-h-14`;
 const Content = tw.div`absolute w-full h-full flex justify-center items-center flex-col text-white`;
 
 const HeroContainer = styled.div`
@@ -36,7 +37,7 @@ const SectionInner = styled.div`
   ${tw`bg-white w-full flex flex-row`}
 `;
 const Block = styled.div`
-  ${tw`relative flex-1 m-16 my-36`};
+  ${tw`relative flex-1 m-16 my-36 overflow-scroll`};
   &:first-of-type {
     ${tw`mr-8 md:mx-0`}
   }
@@ -66,6 +67,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { updatePartySuccess } = useSelector((state) => state.guests);
+  const { rsvpEnabled } = useSelector((state) => state.maintenanceMode);
   return (
     <Container>
       <HeroContainer>
@@ -80,9 +82,7 @@ const Home = () => {
       </HeroContainer>
       <Section id="save-the-date">
         <SectionInner>
-          <Block>
-            <SaveTheDate />
-          </Block>
+          <Block>{rsvpEnabled ? <Rsvp /> : <SaveTheDate />}</Block>
           <Block>
             <Image
               src={saveTheDate}
@@ -92,7 +92,9 @@ const Home = () => {
               objectPosition="center"
             />
             <Content>
-              <AerotisHeading>save the date</AerotisHeading>
+              <AerotisHeading>
+                {rsvpEnabled ? 'Rsvp' : 'save the date'}
+              </AerotisHeading>
               <SaveTheDateP>August 20, 2022</SaveTheDateP>
               <SaveTheDateP>Pasadena, CA</SaveTheDateP>
             </Content>
@@ -108,7 +110,9 @@ const Home = () => {
           objectPosition="center"
         />
         <Content>
-          <AerotisHeading>save the date</AerotisHeading>
+          <AerotisHeading>
+            {rsvpEnabled ? 'Rsvp' : 'save the date'}
+          </AerotisHeading>{' '}
           <SaveTheDateP>August 20, 2022</SaveTheDateP>
           <SaveTheDateP>Pasadena, CA</SaveTheDateP>
         </Content>
