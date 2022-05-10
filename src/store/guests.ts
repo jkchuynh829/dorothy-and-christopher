@@ -3,6 +3,8 @@ import supabase from '../supabase';
 
 export interface GuestRsvpData {
   id: Models.Guest['id'];
+  first_name: Models.Guest['first_name'];
+  last_name: Models.Guest['last_name'];
   is_attending: Models.Guest['is_attending'];
   is_vaccinated: Models.Guest['is_vaccinated'];
   allergies: Models.Guest['allergies'];
@@ -10,8 +12,9 @@ export interface GuestRsvpData {
 }
 
 export interface PartyRsvpData {
-  id: Models.Party['id']
-  song_requests: Models.Party['song_requests']
+  id: Models.Party['id'];
+  song_requests: Models.Party['song_requests'];
+  email: Models.Party['email'];
 }
 
 export interface RsvpApiData {
@@ -22,7 +25,9 @@ export interface RsvpApiData {
 const getGuests = createAsyncThunk('get/guests', async () => {
   const { data: guests, error } = await supabase
     .from('guests')
-    .select('id, first_name, last_name, party_id, is_attending, is_vaccinated, meal_preference, allergies');
+    .select(
+      'id, first_name, last_name, party_id, is_attending, is_vaccinated, meal_preference, allergies'
+    );
 
   if (error) {
     throw new Error('Could not get guests data');
@@ -34,7 +39,7 @@ const getGuests = createAsyncThunk('get/guests', async () => {
 const getParties = createAsyncThunk('get/parties', async () => {
   const { data: parties, error } = await supabase
     .from('parties')
-    .select('id, name, address, size, type');
+    .select('id, name, address, size, type, song_requests');
 
   if (error) {
     throw new Error('Could not get parties data');
@@ -82,8 +87,9 @@ const updateRsvp = createAsyncThunk(
       method: 'POST',
       body: JSON.stringify(rsvpData),
     });
+    return rsvpData;
   }
-)
+);
 interface GuestsProps {
   guests: Models.Guest[];
   parties: Models.Party[];
@@ -137,5 +143,5 @@ export {
   updatePartyData,
   closeModal,
   setSelectedParty,
-  updateRsvp
+  updateRsvp,
 };

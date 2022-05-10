@@ -104,32 +104,12 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
     updatePartyData(partyCopy);
   };
 
-  // const onSubmit = useCallback(() => {
-  // guestsData.forEach((guest) => {
-  // const { id, is_attending, is_vaccinated, allergies, meal_preference } = guest;
-  // dispatch(updateGuestRSVP(guest))
-  // });
-  // const { song_requests } = partyData;
-  // dispatch(updatePartyRSVP)
-  // }, [guests, party]);
-
-  // interface GuestRsvpData {
-  //   id: Models.Guest['id'];
-  //   is_attending: Models.Guest['is_attending'];
-  //   is_vaccinated: Models.Guest['is_vaccinated'];
-  //   allergies: Models.Guest['allergies'];
-  //   meal_preference: Models.Guest['meal_preference'];
-  // }
-
-  // interface PartyRsvpData {
-  //   id: Models.Party['id'];
-  //   song_requests: Models.Party['song_requests'];
-  // }
-
   const onSubmit = () => {
     const rsvpData = {
       guestsRsvpData: guestsData.map((guestData) => {
         return {
+          first_name: guestData.first_name,
+          last_name: guestData.last_name,
           id: guestData.id,
           is_attending: guestData.is_attending,
           is_vaccinated: guestData.is_vaccinated,
@@ -207,6 +187,9 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
                 <CustomSelect
                   options={mealOptions}
                   onChange={mealSelectionChangeHandler(guest.id)}
+                  value={mealOptions.filter(
+                    (option) => option.value === guest.meal_preference
+                  )}
                 />
               </Section>
               <Section>
