@@ -1,8 +1,8 @@
 import tw, { styled } from 'twin.macro';
 import { useSpring, animated } from 'react-spring';
-import { H1, Paragraph, Almara, Aerotis } from './Typography';
-import MdiIcon from '@mdi/react';
-import { mdiLock } from '@mdi/js';
+import { H1, Almara, Aerotis } from './Typography';
+import { useState } from 'react';
+import FormInput from './FormInput';
 
 const PASSWORD = 'pugsley';
 
@@ -16,17 +16,6 @@ const Container = tw.main`
 const Heading = styled(animated(H1))`
   ${tw`mb-4`}
 `;
-
-const P = styled(animated(Paragraph))`
-  ${tw`flex flex-row items-center`}
-`;
-
-const IconButton = tw.button`absolute bottom-4 right-4`;
-
-const Icon = styled(MdiIcon)`
-  ${tw`mx-1 opacity-10 hover:opacity-100 cursor-pointer`}
-`;
-
 interface MaintenanceProps {
   unlock: () => void;
 }
@@ -45,12 +34,12 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
     config: { duration: 500 },
   });
 
+  const [password, setPassword] = useState('');
+
   /* Handlers */
-  const onUnlockClick = async () => {
-    const password = await window.prompt(
-      'You can only take a sneak peak if you are a special person. Enter the password!'
-    );
-    if (password === PASSWORD) unlock();
+  const passwordHandler = (value: string) => {
+    setPassword(value);
+    if (value === PASSWORD) unlock();
   };
 
   return (
@@ -60,10 +49,14 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
           Dorothy <Almara>&</Almara> Christopher
         </Aerotis>
       </Heading>
-      <P style={animmateParagraph}>Coming soon!</P>
-      <IconButton onClick={onUnlockClick}>
-        <Icon path={mdiLock} size="32px" />
-      </IconButton>
+      <FormInput
+        style={{ ...animmateParagraph, width: '350px' }}
+        label=""
+        value={password}
+        placeholder="Enter password..."
+        onChange={passwordHandler}
+        password
+      />
     </Container>
   );
 };

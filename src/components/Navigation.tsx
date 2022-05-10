@@ -18,7 +18,11 @@ const Gradient = styled.div`
 `;
 
 const Navigation = () => {
-  const maintenanceMode = useSelector((state) => state.maintenanceMode.enabled);
+  const maintenanceMode = useSelector(
+    (state) => state.maintenanceMode.maintenanceEnabled
+  );
+
+  const rsvpEnabled = useSelector((state) => state.maintenanceMode.rsvpEnabled);
 
   const { asPath } = useRouter();
 
@@ -71,17 +75,11 @@ const Navigation = () => {
       <NavLink href="/our-story" selected={isCurrentPath('/our-story')}>
         Our Story
       </NavLink>
-      <NavLink
-        href="/#save-the-date"
-        selected={isCurrentPath('/#save-the-date')}
-      >
-        Save the Date
+      <NavLink href="/#rsvp" selected={isCurrentPath('/#rsvp')}>
+        {rsvpEnabled ? 'RSVP' : 'Save the Date'}
       </NavLink>
-      <NavLink
-        href="/rsvp"
-        selected={isCurrentPath('/rsvp')}
-      >
-        RSVP
+      <NavLink href="/faqs" selected={isCurrentPath('/faqs')}>
+        FAQs
       </NavLink>
     </Container>
   );

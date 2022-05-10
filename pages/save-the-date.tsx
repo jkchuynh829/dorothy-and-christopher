@@ -13,12 +13,12 @@ const Main = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { enabled } = useSelector((state) => state.maintenanceMode);
+  const { maintenanceEnabled } = useSelector((state) => state.maintenanceMode);
 
   useEffect(() => {
-    if (enabled) return;
+    if (maintenanceEnabled) return;
     router.replace('/#save-the-date');
-  }, [enabled, router]);
+  }, [maintenanceEnabled, router]);
   return (
     <Container>
       <Head>
