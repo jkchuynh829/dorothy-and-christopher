@@ -26,7 +26,7 @@ const Navigation = () => {
 
   const { asPath } = useRouter();
 
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true);
 
   const onScroll = useThrottledCallback(() => {
     if (window.scrollY > 100 && !scrolled) {
@@ -72,14 +72,23 @@ const Navigation = () => {
       >
         Home
       </NavLink>
-      <NavLink href="/our-story" selected={isCurrentPath('/our-story')}>
-        Our Story
-      </NavLink>
       <NavLink href="/#rsvp" selected={isCurrentPath('/#rsvp')}>
         {rsvpEnabled ? 'RSVP' : 'Save the Date'}
       </NavLink>
+      <NavLink href="/our-story" selected={isCurrentPath('/our-story')}>
+        Our Story
+      </NavLink>
+      <NavLink href="/things-to-do" selected={isCurrentPath('/things-to-do')}>
+        Wedding Party
+      </NavLink>
       <NavLink href="/faqs" selected={isCurrentPath('/faqs')}>
-        FAQs
+        FAQS
+      </NavLink>
+      <NavLink href="/things-to-do" selected={isCurrentPath('/things-to-do')}>
+        Things to do
+      </NavLink>
+      <NavLink href="/things-to-do" selected={isCurrentPath('/things-to-do')}>
+        Registry
       </NavLink>
     </Container>
   );

@@ -93,7 +93,7 @@ const Home = () => {
             />
             <Content>
               <AerotisHeading>
-                {rsvpEnabled ? 'Rsvp' : 'save the date'}
+                {rsvpEnabled ? 'rsvp' : 'save the date'}
               </AerotisHeading>
               <SaveTheDateP>August 20, 2022</SaveTheDateP>
               <SaveTheDateP>Pasadena, CA</SaveTheDateP>
