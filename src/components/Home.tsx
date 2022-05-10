@@ -80,7 +80,7 @@ const Home = () => {
           </GoldTextClip>
         </HeroHeading>
       </HeroContainer>
-      <Section id="save-the-date">
+      <Section id="rsvp">
         <SectionInner>
           <Block>{rsvpEnabled ? <Rsvp /> : <SaveTheDate />}</Block>
           <Block>
@@ -111,7 +111,7 @@ const Home = () => {
         />
         <Content>
           <AerotisHeading>
-            {rsvpEnabled ? 'Rsvp' : 'save the date'}
+            {rsvpEnabled ? 'rsvp' : 'save the date'}
           </AerotisHeading>{' '}
           <SaveTheDateP>August 20, 2022</SaveTheDateP>
           <SaveTheDateP>Pasadena, CA</SaveTheDateP>
