@@ -1,5 +1,5 @@
 import { Parallax } from 'react-scroll-parallax';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import tw, { styled } from 'twin.macro';
 import { Paragraph as P } from './Typography';
 
