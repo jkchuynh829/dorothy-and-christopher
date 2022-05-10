@@ -1,10 +1,28 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import supabase from '../supabase';
 
+export interface GuestRsvpData {
+  id: Models.Guest['id'];
+  is_attending: Models.Guest['is_attending'];
+  is_vaccinated: Models.Guest['is_vaccinated'];
+  allergies: Models.Guest['allergies'];
+  meal_preference: Models.Guest['meal_preference'];
+}
+
+export interface PartyRsvpData {
+  id: Models.Party['id']
+  song_requests: Models.Party['song_requests']
+}
+
+export interface RsvpApiData {
+  guestsRsvpData: GuestRsvpData[];
+  partyRsvpData: PartyRsvpData;
+}
+
 const getGuests = createAsyncThunk('get/guests', async () => {
   const { data: guests, error } = await supabase
     .from('guests')
-    .select('id, first_name, last_name, party_id, meal_preference');
+    .select('id, first_name, last_name, party_id, is_attending, is_vaccinated, meal_preference, allergies');
 
   if (error) {
     throw new Error('Could not get guests data');
@@ -57,6 +75,15 @@ const updatePartyData = createAsyncThunk(
   }
 );
 
+const updateRsvp = createAsyncThunk(
+  'update/rsvp',
+  async (rsvpData: RsvpApiData) => {
+    await fetch('/api/rsvp', {
+      method: 'POST',
+      body: JSON.stringify(rsvpData),
+    });
+  }
+)
 interface GuestsProps {
   guests: Models.Guest[];
   parties: Models.Party[];
@@ -110,4 +137,5 @@ export {
   updatePartyData,
   closeModal,
   setSelectedParty,
+  updateRsvp
 };

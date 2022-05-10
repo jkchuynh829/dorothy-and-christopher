@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import tw, { styled } from 'twin.macro';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Icon from '@mdi/react';

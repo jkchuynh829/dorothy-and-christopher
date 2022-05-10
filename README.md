@@ -18,6 +18,20 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+## Supabase Local Dev
+
+To develop locally with a local Supabase instance, follow [Supabase Local Development](https://supabase.com/docs/guides/local-development).
+Inside, there are instructions to:
+ - Download the Supabase Client CLI.
+ - After downloading the CLI, there are instructions on how to use the CLI to login with your Supabase credentials via `supabase login`.
+ - There's a step to initialize a `supabase` folder within the project, but pulling this repo down should already include one, so you can skip that step.
+ - Afterward, you'll be able to spin up Docker containers to run local Supabase services with `supabase start`.
+ - An output of credentials will show after the command is finished running.
+ - Two of these, `API URL` and `anon key`, can be used for your local `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` env variables, respectively.
+ - A value for `Studio URL` will also show where you'll be able to access a local version of Supabase's studio, where you can use the GUI to make db changes and SQL queries.
+ - A value for `DB URL` will also appear. This will be used for the `DATABASE_URL` env variable that is needed for the `prisma` ORM.
+ - There are also instructions on how to synchronize remote database changes with local database changes via migrations.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

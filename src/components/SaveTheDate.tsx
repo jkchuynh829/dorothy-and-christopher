@@ -173,6 +173,7 @@ const SaveTheDate = () => {
           />
         ) : (
           <GuestSearch
+            headerText={'Submit Your Address'}
             form={searchForm}
             searchResults={searchResults}
             onChange={onChangeSearch}
