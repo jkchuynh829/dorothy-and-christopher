@@ -21,15 +21,15 @@ interface ContainerProps {
 const Container = styled.section<ContainerProps>`
   ${tw`
     relative flex justify-center items-center
-    border-0 border-dotted md:border-solid
-    mb-2 md:mb-0
+    border-0 border-solid
+    mb-0 md:mb-0
     p-12 md:p-0
     min-h-160 md:min-h-0
   `}
   ${({ format }) =>
     ({
-      'image-left': tw`flex-row border-light-gray border-t-8 border-l-8 md:border-0`,
-      'image-right': tw`flex-row-reverse border-dark-gray border-t-8 border-r-8 md:border-0`,
+      'image-left': tw`flex-row border-light-gray border-t border-l md:border-0`,
+      'image-right': tw`flex-row-reverse border-dark-gray border-t border-r md:border-0`,
     }[format])}
 `;
 
