@@ -78,7 +78,7 @@ const Home = () => {
           </GoldTextClip>
         </HeroHeading>
       </HeroContainer>
-      <Section id="save-the-date">
+      <Section id="rsvp">
         <SectionInner>
           <Block>
             <SaveTheDate />
@@ -92,7 +92,7 @@ const Home = () => {
               objectPosition="center"
             />
             <Content>
-              <AerotisHeading>save the date</AerotisHeading>
+              <AerotisHeading>rsvp</AerotisHeading>
               <SaveTheDateP>August 20, 2022</SaveTheDateP>
               <SaveTheDateP>Pasadena, CA</SaveTheDateP>
             </Content>
