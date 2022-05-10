@@ -75,8 +75,11 @@ const Navigation = () => {
       <NavLink href="/our-story" selected={isCurrentPath('/our-story')}>
         Our Story
       </NavLink>
-      <NavLink href="/rsvp" selected={isCurrentPath('/rsvp')}>
+      <NavLink href="/#rsvp" selected={isCurrentPath('/#rsvp')}>
         {rsvpEnabled ? 'RSVP' : 'Save the Date'}
+      </NavLink>
+      <NavLink href="/faqs" selected={isCurrentPath('/faqs')}>
+        FAQs
       </NavLink>
     </Container>
   );
