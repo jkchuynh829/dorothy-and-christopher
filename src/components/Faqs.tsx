@@ -46,7 +46,7 @@ const Faqs = () => {
         </Paragraph>
 
         <Question>Will there be an open bar?</Question>
-        <Paragraph>Absolutely — Don’t forget to tip the bartenders!</Paragraph>
+        <Paragraph>Absolutely — Don't forget to tip the bartenders!</Paragraph>
 
         <Question>
           When will the reception end and is there an after party?
@@ -57,23 +57,23 @@ const Faqs = () => {
           walking distance!
         </Paragraph>
 
-        <Paragraph>
+        <Question>
           How can I let you know of my dietary restrictions?
-        </Paragraph>
+        </Question>
         <Paragraph>
           We definitely want to make sure you enjoy your time and meal on our
           wedding day. Please select your meal preference based on your dietary
           needs when you RSVP online.
         </Paragraph>
 
-        <Paragraph>Will transportation be provided?</Paragraph>
+        <Question>Will transportation be provided?</Question>
         <Paragraph>
           We are not providing any formal transportation for the events, but
           there will be ample parking (see next question). Carpooling and/or
           rideshare would also be a great option for close groups!
         </Paragraph>
 
-        <Paragraph>What is the parking situation?</Paragraph>
+        <Question>What is the parking situation?</Question>
         <Paragraph>
           Parking is free at the ceremony. There will be signs guiding you as
           you enter the venue.
@@ -82,10 +82,10 @@ const Faqs = () => {
         <Paragraph>
           There will be validated parking at NOOR, the reception venue. Parking
           will be $10.50 with validation for 24 hours, so you can leave your car
-          overnight if necessary.{' '}
+          overnight if necessary.
         </Paragraph>
 
-        <Paragraph>Are kids welcome?</Paragraph>
+        <Question>Are kids welcome?</Question>
         <Paragraph>
           While we love your little ones, our wedding will be a 12+ event. We
           appreciate you making arrangements ahead of time and leaving the kids
@@ -93,101 +93,101 @@ const Faqs = () => {
           off!
         </Paragraph>
 
-        <Paragraph>Can I bring a plus one?</Paragraph>
+        <Question>Can I bring a plus one?</Question>
         <Paragraph>
           We have a strict guest list to stay on budget. Our wedding is strictly
           RSVP only. We will only be able to accommodate those listed on your
           invitation.
         </Paragraph>
 
-        <Paragraph>When is the RSVP deadline?</Paragraph>
+        <Question>When is the RSVP deadline?</Question>
         <Paragraph>
-          We’d love to know if you can make it by July 30, 2022. Please RSVP
-          online here - if you do not submit your RSVP, we will assume you can’t
+          We'd love to know if you can make it by July 30, 2022. Please RSVP
+          online here - if you do not submit your RSVP, we will assume you can't
           make it!
         </Paragraph>
 
-        <Paragraph>
+        <Question>
           Do you have a hotel block for guests? Where do you recommend I stay?
-        </Paragraph>
+        </Question>
         <Paragraph>
           We do not have a hotel block but here are suggested accommodations
           nearby!
         </Paragraph>
 
-        <Paragraph>Are the venues wheelchair accessible?</Paragraph>
+        <Question>Are the venues wheelchair accessible?</Question>
         <Paragraph>Yes! [provide accessibility details]</Paragraph>
 
-        <Paragraph>Where is your gift registry?</Paragraph>
+        <Question>Where is your gift registry?</Question>
         <Paragraph>
           We do not have a registry open and prefer cash gifts! You can send us
           a cash gift via Venmo, Zelle or PayPal or write a check out to either
           of us and drop it in our gift box at the reception.
         </Paragraph>
 
-        <Paragraph>Can I take home a centerpiece as a souvenir?</Paragraph>
+        <Question>Can I take home a centerpiece as a souvenir?</Question>
         <Paragraph>
           Please do not take centerpieces home as they are rentals! If a
           centerpiece is unaccounted for at the end of the night, we will have
           to pay a fee.
         </Paragraph>
 
+        <Question>
+          I'm visiting from out of town. What can I do while I'm in LA?
+        </Question>
         <Paragraph>
-          I’m visiting from out of town. What can I do while I’m in LA?
-        </Paragraph>
-        <Paragraph>
-          Here are some of our favorite things to do in LA!{' '}
+          Here are some of our favorite things to do in LA!
         </Paragraph>
 
-        <Paragraph>
+        <Question>
           I still have questions, what is the best way to contact you?
-        </Paragraph>
+        </Question>
         <Paragraph>
           Feel free to reach out to us at hello@dorothyandchristopher.com :)
         </Paragraph>
 
-        <Paragraph>COVID-19 QUESTIONS</Paragraph>
+        <Question>COVID-19 QUESTIONS</Question>
 
-        <Paragraph>How many guests will be attending?</Paragraph>
+        <Question>How many guests will be attending?</Question>
         <Paragraph>
           We understand your concern that our wedding is happening during the
           COVID-19 pandemic. To be fully transparent, we are expecting about 200
-          guests.{' '}
+          guests.
         </Paragraph>
 
-        <Paragraph>
+        <Question>
           Are there any vaccine or test requirements to attend your wedding?
-        </Paragraph>
+        </Question>
         <Paragraph>
           All guests will be required to be vaccinated. We also encourage
           everyone to receive a negative COVID-19 PCR test result at least 48
-          hours before the wedding.{' '}
+          hours before the wedding.
         </Paragraph>
 
-        <Paragraph>Do I need to wear a mask?</Paragraph>
+        <Question>Do I need to wear a mask?</Question>
         <Paragraph>
           We know that not everyone may want to wear a mask at our wedding, but
-          we completely respect those who do. We won’t be providing masks to
+          we completely respect those who do. We won't be providing masks to
           guests though, so if you do want to wear one, please bring your own.
         </Paragraph>
 
-        <Paragraph>
+        <Question>
           What safety measures will be taken on your wedding day?
-        </Paragraph>
-        <Paragraph>Hand sanitizer? Ask NOOR</Paragraph>
+        </Question>
+        <Paragraph>Hand sanitizer stations will be available at NOOR.</Paragraph>
 
-        <Paragraph>
+        <Question>
           How will changes be communicated before the wedding day?
-        </Paragraph>
+        </Question>
         <Paragraph>
           Please check back here on our website for all updates!
         </Paragraph>
 
+        <Question>
+          Will you have any live streaming options if I can't make it?
+        </Question>
         <Paragraph>
-          Will you have any live streaming options if I can’t make it?
-        </Paragraph>
-        <Paragraph>
-          Unfortunately, we won’t have a live stream but feel free to follow
+          Unfortunately, we won't have a live stream but feel free to follow
           along on our social media accounts.
         </Paragraph>
       </Inner>
