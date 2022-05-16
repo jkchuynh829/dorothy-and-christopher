@@ -23,7 +23,7 @@ const ThingsToDo = () => {
       <Inner>
         <Section>
           <Paragraph>
-            Here is a list of places and things we recommend while you’re in LA.
+            Here is a list of places and things we recommend while you're in LA.
             Some of these are our favorite places to visit, we hope you enjoy
             your time here!
           </Paragraph>
@@ -38,7 +38,7 @@ const ThingsToDo = () => {
             <Aerotis>hotels</Aerotis>
           </H1>
           <Paragraph>
-            We don’t have any hotel room blocks, but these are hotels near our
+            We don't have any hotel room blocks, but these are hotels near our
             reception venue.
           </Paragraph>
 
@@ -102,7 +102,7 @@ const ThingsToDo = () => {
           >
             T - KEBOB
           </Links>
-          <Aside>It’s bomb, just go here!</Aside>
+          <Aside>It's bomb, just go here!</Aside>
           <Paragraph>168 E Garvey Ave Ste B, Monterey Park, CA 91755</Paragraph>
         </Section>
 
@@ -125,7 +125,7 @@ const ThingsToDo = () => {
           </Paragraph>
 
           <Links {...generateLink('http://jenis.com')}>
-            Jeni’s Splendid Ice Cream
+            Jeni's Splendid Ice Cream
           </Links>
           <Aside>Multiple locations around LA as well</Aside>
           <Paragraph>1954 Hillhurst Ave, Los Angeles, CA 90027</Paragraph>
@@ -134,7 +134,7 @@ const ThingsToDo = () => {
             KITH Treats
           </Links>
           <Aside>
-            Dorothy’s favorite clothing brand that also sells ice cream
+            Dorothy's favorite clothing brand that also sells ice cream
           </Aside>
           <Paragraph>8500 Sunset Blvd, West Hollywood, CA 90069</Paragraph>
         </Section>
@@ -153,9 +153,9 @@ const ThingsToDo = () => {
             The Aestheticyn
           </Links>
           <Paragraph>
-            Dorothy’s sister, Cynthia, is offering all wedding guests 15% off
+            Dorothy's sister, Cynthia, is offering all wedding guests 15% off
             her beauty services to get you wedding ready! DM her on Instagram to
-            book facials, lash lifts, brow laminations and more. You’re welcome
+            book facials, lash lifts, brow laminations and more. You're welcome
             to book multiple appointments until August 18th! Make sure to
             mention our wedding upon booking :)
           </Paragraph>
