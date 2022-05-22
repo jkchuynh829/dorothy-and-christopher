@@ -7,6 +7,7 @@ import { Paragraph } from './Typography';
 import Select from 'react-select';
 import { SingleValue } from 'react-select';
 import { updateRsvp } from '../store/guests';
+import { openRsvpModal } from '../store/rsvp';
 
 interface PartyReservationProps {
   party: Models.Party;
@@ -24,7 +25,7 @@ interface OptionType {
   value: string;
 }
 
-const Container = tw.div``;
+const Container = tw.div`relative`;
 const InputLabel = tw(Paragraph)`uppercase text-sm mb-0`;
 const RadioContainer = tw.div`flex flex-row`;
 const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist uppercase font-bold hover:bg-green`;
@@ -53,11 +54,6 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       ...guestsData.find((g) => g.id === guestId),
     } as Models.Guest;
     if (guest.id == null) return;
-    // guest.is_vaccinated = checked
-    // type WritableKeys<T> = {
-    // [P in keyof T]-?: IfEquals<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
-    // }[keyof T];
-    // guest[guestBooleanProperty as keyof ReadonlyGuest extends Omit<Models.Guest, 'id'>] = checked
     guest[guestBooleanProperty as keyof RadioButtonKeys] = checked;
     const idx = guestsData.map(({ id }) => id).indexOf(guestId);
     if (idx === -1) return;
@@ -209,7 +205,14 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
         value={partyData.song_requests}
         onChange={songRequestsChangeHandler}
       />
-      <SubmitButton onClick={onSubmit}>Submit RSVP</SubmitButton>
+      <SubmitButton
+        onClick={() => {
+          onSubmit();
+          dispatch(openRsvpModal());
+        }}
+      >
+        Submit RSVP
+      </SubmitButton>
     </Container>
   );
 };
