@@ -206,7 +206,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       })}
       <FormInput
         label="Song Requests"
-        value={party.song_requests}
+        value={partyData.song_requests}
         onChange={songRequestsChangeHandler}
       />
       <SubmitButton onClick={onSubmit}>Submit RSVP</SubmitButton>
