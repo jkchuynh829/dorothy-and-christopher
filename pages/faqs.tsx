@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useDispatch } from 'react-redux';
 import tw from 'twin.macro';
+import Faqs from '../src/components/Faqs';
 import Maintenance from '../src/components/Maintenance';
-import Faqs from '../src/components/FAQs';
 import { useSelector } from '../src/store';
 import { disableMaintenanceMode } from '../src/store/maintenanceMode';
 

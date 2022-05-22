@@ -120,6 +120,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       partyRsvpData: {
         id: partyData.id,
         song_requests: partyData.song_requests,
+        email: partyData.email,
       },
     };
     dispatch(updateRsvp(rsvpData));
