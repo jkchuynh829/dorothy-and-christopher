@@ -35,9 +35,8 @@ const Section = tw.div`flex flex-row items-center justify-between mb-3`;
 const CustomSelect = tw(Select)`uppercase text-sm`;
 
 const mealOptions: OptionType[] = [
-  { value: 'steak', label: 'Steak' },
-  { value: 'chicken', label: 'Chicken' },
-  { value: 'salmon', label: 'Salmon' },
+  { value: 'beef/salmon', label: 'Beef/Salmon' },
+  { value: 'vegetarian', label: 'Vegetarian' },
 ];
 
 const PartyReservation = ({ party, guests }: PartyReservationProps) => {

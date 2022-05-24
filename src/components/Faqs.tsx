@@ -105,8 +105,8 @@ const Faqs = () => {
             )}
           >
             {' '}
-            Gate 5{' '}
-          </Links>
+            Gate 5
+          </Links>{' '}
           on Huntington Drive. There will be signs and/or personnel guiding you
           as you enter the venue.
         </Paragraph>
@@ -144,8 +144,8 @@ const Faqs = () => {
           We&apos;d love to know if you can make it by July 30, 2022. Please{' '}
           <Links onClick={(e: any) => switchPath('/#rsvp')(e)}>
             {' '}
-            RSVP online here{' '}
-          </Links>
+            RSVP online here
+          </Links>{' '}
           - if you do not submit your RSVP, we will assume you can&apos;t make
           it.
         </Paragraph>
@@ -154,9 +154,8 @@ const Faqs = () => {
           Do you have a hotel block for guests? Where do you recommend I stay?
         </Question>
         <Paragraph>
-          We do not have a hotel block but here are suggested
+          We do not have a hotel block but here are suggested{' '}
           <Links onClick={(e: any) => switchPath('/things-to-do')(e)}>
-            {' '}
             accomodations
           </Links>{' '}
           nearby.
@@ -189,9 +188,8 @@ const Faqs = () => {
           LA?
         </Question>
         <Paragraph>
-          Check out some of our
+          Check out some of our{' '}
           <Links onClick={(e: any) => switchPath('/things-to-do')(e)}>
-            {' '}
             favorite things to do
           </Links>{' '}
           in LA.
