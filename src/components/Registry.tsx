@@ -13,8 +13,8 @@ const Registry = () => {
       <Inner>
         <Section>
           <Paragraph>
-            We won't have a formal registry but will be accepting any donations through
-            through any of the below options.
+            We won&apos; have a formal registry but will be accepting any
+            donations through through any of the below options.
           </Paragraph>
         </Section>
 
@@ -24,29 +24,23 @@ const Registry = () => {
 
         <Section>
           <H1>
-            <Aerotis>Chris's Venmo</Aerotis>
+            <Aerotis>Chris&apos;s Venmo</Aerotis>
           </H1>
-          <Paragraph>
-            [INSERT Chris's Venmo QR Code]
-          </Paragraph>
+          <Paragraph>[INSERT Chris&apos;s Venmo QR Code]</Paragraph>
         </Section>
 
         <Section>
           <H1>
-            <Aerotis>Dorothy's Venmo</Aerotis>
+            <Aerotis>Dorothy&apos;s Venmo</Aerotis>
           </H1>
-          <Paragraph>
-            [INSERT Dorothy's Venmo QR Code]
-          </Paragraph>
+          <Paragraph>[INSERT Dorothy&apos;s Venmo QR Code]</Paragraph>
         </Section>
 
         <Section>
           <H1>
-            <Aerotis>Chris's Paypal</Aerotis>
+            <Aerotis>Chris&apos;s Paypal</Aerotis>
           </H1>
-          <Paragraph>
-            [INSERT Chris's Paypal QR Code]
-          </Paragraph>
+          <Paragraph>[INSERT Chris&apos;s Paypal QR Code]</Paragraph>
         </Section>
 
         <Section>
@@ -54,7 +48,8 @@ const Registry = () => {
             <Aerotis>Zelle</Aerotis>
           </H1>
           <Paragraph>
-            You can send money through Zelle to our account with email duckiexduarte@gmail.com.
+            You can send money through Zelle to our account with email
+            duckiexduarte@gmail.com.
           </Paragraph>
         </Section>
 
