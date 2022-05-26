@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useSelector } from '../store';
 import tw, { styled } from 'twin.macro';
 import { Aerotis, H1, Paragraph } from './Typography';
 
@@ -24,6 +25,8 @@ interface ConfirmRsvpPropsBase {
 }
 
 const ConfirmRsvp = ({ isOpen, onClose }: ConfirmRsvpPropsBase) => {
+  const { confirmationEmail } = useSelector((state) => state.rsvp);
+
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <Container className="confirm-rsvp" onClick={onClose}>
@@ -31,7 +34,7 @@ const ConfirmRsvp = ({ isOpen, onClose }: ConfirmRsvpPropsBase) => {
         <H1>
           <Aerotis>thank you</Aerotis>
         </H1>
-        <Paragraph>Check your email for confirmation.</Paragraph>
+        <Paragraph>{`Check your email: ${confirmationEmail}, for your RSVP confirmation.`}</Paragraph>
       </Box>
     </Container>,
     document.body

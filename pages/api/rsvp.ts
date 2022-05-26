@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
-import { GuestRsvpData } from '../../src/store/guests';
+import { GuestRsvpData } from '../../src/store/rsvp';
 import { sendConfirmation } from './utils/sendgrid';
 
 interface Data {

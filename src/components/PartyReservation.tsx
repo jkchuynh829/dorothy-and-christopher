@@ -6,8 +6,7 @@ import FormInput from './FormInput';
 import { Paragraph } from './Typography';
 import Select from 'react-select';
 import { SingleValue } from 'react-select';
-import { updateRsvp } from '../store/guests';
-import { openRsvpModal } from '../store/rsvp';
+import { openRsvpModal, updateRsvp } from '../store/rsvp';
 
 interface PartyReservationProps {
   party: Models.Party;
