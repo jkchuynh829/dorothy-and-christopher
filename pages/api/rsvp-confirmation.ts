@@ -23,12 +23,13 @@ export default async function handler(
         <br />
     
         <div style="font-weight: bold">
-        ${data.guestsRsvpData
-        .map((guestData: GuestRsvpData) => {
+        ${data.guestsRsvpData.map((guestData: GuestRsvpData) => {
           return `<div>
               <div>${guestData.first_name} ${guestData.last_name}</div>
                 <div>
-                  <b>Attending:</b> ${guestData.is_attending === true ? 'Yes' : 'No'}
+                  <b>Attending:</b> ${
+                    guestData.is_attending === true ? 'Yes' : 'No'
+                  }
                 </div>
                 <div>
                   <b>Meal Preference:</b> ${guestData.meal_preference}

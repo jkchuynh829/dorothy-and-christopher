@@ -97,7 +97,7 @@ const Rsvp = () => {
           <meta name="description" content="Made by Jimmy Huynh" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        { }
+        {}
         {selectedParty ? (
           <PartyReservation party={selectedParty} guests={partyGuests} />
         ) : (
