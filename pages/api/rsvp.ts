@@ -17,6 +17,7 @@ export default async function handler(
   const data = JSON.parse(req.body);
   const guestsRsvpData = data.guestsRsvpData;
   const partyRsvpData = data.partyRsvpData;
+  const confirmationEmail = data.confirmationEmail;
 
   try {
     await prismaClient.$transaction(async (prisma) => {
@@ -45,9 +46,9 @@ export default async function handler(
         },
       });
 
-      if (party.email) {
+      if (confirmationEmail) {
         sendConfirmation({
-          to: 'canoc4262@gmail.com',
+          to: confirmationEmail,
           subject: 'RSVP Test',
           message:
             'Thank you for your RSVP! We look forward to celebrating with you on August 20, 2022.',
@@ -57,22 +58,21 @@ export default async function handler(
             <br /> 
             <div style="font-weight: bold">
               ${data.guestsRsvpData
-                .map((guestData: GuestRsvpData) => {
-                  return `
+              .map((guestData: GuestRsvpData) => {
+                return `
                   <div style="margin-bottom: 24px">
                     <div>${guestData.first_name} ${guestData.last_name}</div>
                     <div>
-                      <b>Attending:</b> ${
-                        guestData.is_attending === true ? 'Yes' : 'No'
-                      }
+                      <b>Attending:</b> ${guestData.is_attending === true ? 'Yes' : 'No'
+                  }
                     </div>
                     <div>
                       <b>Meal Preference:</b> ${guestData.meal_preference}
                     </div>
                   </div>
                 `;
-                })
-                .join('')}
+              })
+              .join('')}
               </div>
                   
               <div>
@@ -91,7 +91,7 @@ export default async function handler(
               </div>
 
               <div style="margin-top: 12px;">
-                  <img src="https://elasticbeanstalk-us-west-2-842181368088.s3.us-west-2.amazonaws.com/wedding_site_logo.png" height="64px" alt="DC" />
+                <img src="https://elasticbeanstalk-us-west-2-842181368088.s3.us-west-2.amazonaws.com/wedding_site_logo.png" height="64px" alt="DC" />
               </div>
             </body>
           `,
@@ -103,7 +103,7 @@ export default async function handler(
       });
     });
   } catch (error) {
-    console.log('RSVP API DB ERROR ', error);
+    console.log('Rsvp Api Db Error ', error);
     res.send({
       statusCode: 500,
     });

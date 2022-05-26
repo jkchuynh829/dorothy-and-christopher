@@ -20,6 +20,7 @@ export interface PartyRsvpData {
 export interface RsvpApiData {
   guestsRsvpData: GuestRsvpData[];
   partyRsvpData: PartyRsvpData;
+  confirmationEmail: Models.Party['email'];
 }
 
 const getGuests = createAsyncThunk('get/guests', async () => {
@@ -39,7 +40,7 @@ const getGuests = createAsyncThunk('get/guests', async () => {
 const getParties = createAsyncThunk('get/parties', async () => {
   const { data: parties, error } = await supabase
     .from('parties')
-    .select('id, name, address, size, type, song_requests');
+    .select('id, email, name, address, size, type, song_requests');
 
   if (error) {
     throw new Error('Could not get parties data');

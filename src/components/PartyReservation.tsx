@@ -25,6 +25,8 @@ interface OptionType {
   value: string;
 }
 
+type ConfirmationEmail = Models.Party['email'];
+
 const Container = tw.div`relative`;
 const InputLabel = tw(Paragraph)`uppercase text-sm mb-0`;
 const RadioContainer = tw.div`flex flex-row`;
@@ -43,6 +45,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
   const dispatch = useDispatch();
   const [partyData, updatePartyData] = useState<Models.Party>(party);
   const [guestsData, updateGuestsData] = useState<Models.Guest[]>(guests);
+  const [confirmationEmail, updateConfirmationEmail] = useState<ConfirmationEmail>(partyData.email || '');
 
   const booleanRadioChangeHandler = (
     guestId: Models.Guest['id'],
@@ -99,6 +102,10 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
     updatePartyData(partyCopy);
   };
 
+  const confirmationEmailChangeHandler = (value: string) => {
+    updateConfirmationEmail(value)
+  };
+
   const onSubmit = () => {
     const rsvpData = {
       guestsRsvpData: guestsData.map((guestData) => {
@@ -115,7 +122,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       partyRsvpData: {
         id: partyData.id,
         song_requests: partyData.song_requests,
-        email: partyData.email,
+        email: confirmationEmail,
       },
     };
     dispatch(updateRsvp(rsvpData));
@@ -203,6 +210,11 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
         label="Song Requests"
         value={partyData.song_requests}
         onChange={songRequestsChangeHandler}
+      />
+      <FormInput
+        label="Email Address"
+        value={confirmationEmail}
+        onChange={confirmationEmailChangeHandler}
       />
       <SubmitButton
         onClick={() => {
