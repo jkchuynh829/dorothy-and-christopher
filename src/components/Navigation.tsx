@@ -87,7 +87,7 @@ const Navigation = () => {
       <NavLink href="/things-to-do" selected={isCurrentPath('/things-to-do')}>
         Things to do
       </NavLink>
-      <NavLink href="/things-to-do" selected={isCurrentPath('/things-to-do')}>
+      <NavLink href="/registry" selected={isCurrentPath('/registry')}>
         Registry
       </NavLink>
     </Container>
