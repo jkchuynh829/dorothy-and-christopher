@@ -90,6 +90,9 @@ const Navigation = () => {
       <NavLink href="/registry" selected={isCurrentPath('/registry')}>
         Registry
       </NavLink>
+      <NavLink href="/wedding-party" selected={isCurrentPath('/wedding-party')}>
+        Wedding Party
+      </NavLink>
     </Container>
   );
 };
