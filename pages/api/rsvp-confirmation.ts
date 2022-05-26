@@ -23,19 +23,18 @@ export default async function handler(
         <br />
     
         <div style="font-weight: bold">
-          ${data.guestsRsvpData.map((guestData: GuestRsvpData) => {
-            return `<div>
+        ${data.guestsRsvpData
+        .map((guestData: GuestRsvpData) => {
+          return `<div>
               <div>${guestData.first_name} ${guestData.last_name}</div>
                 <div>
-                <b>Attending:</b> ${
-                  guestData.is_attending === true ? 'Yes' : 'No'
-                }
+                  <b>Attending:</b> ${guestData.is_attending === true ? 'Yes' : 'No'}
                 </div>
                 <div>
-                <b>Meal Preference:</b> ${guestData.meal_preference}
+                  <b>Meal Preference:</b> ${guestData.meal_preference}
                 </div>
             </div>`;
-          })}
+        })}
         </div>
     
         <br />
@@ -44,7 +43,6 @@ export default async function handler(
           If you would like to make any changes to your RSVP or meal preferences, you may resubmit your answers in the RSVP form.
           Feel free to respond to this email with any questions or concerns!
         </div>
-        <div>Feel free to respond to this email with any questions or concerns!</div>
         
         <br />
         

@@ -20,7 +20,6 @@ export interface PartyRsvpData {
 export interface RsvpApiData {
   guestsRsvpData: GuestRsvpData[];
   partyRsvpData: PartyRsvpData;
-  confirmationEmail: Models.Party['email'];
 }
 
 const getGuests = createAsyncThunk('get/guests', async () => {

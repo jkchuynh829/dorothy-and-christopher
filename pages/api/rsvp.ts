@@ -17,7 +17,6 @@ export default async function handler(
   const data = JSON.parse(req.body);
   const guestsRsvpData = data.guestsRsvpData;
   const partyRsvpData = data.partyRsvpData;
-  const confirmationEmail = data.confirmationEmail;
 
   try {
     await prismaClient.$transaction(async (prisma) => {
@@ -46,10 +45,10 @@ export default async function handler(
         },
       });
 
-      if (confirmationEmail) {
+      if (party.email) {
         sendConfirmation({
-          to: confirmationEmail,
-          subject: 'RSVP Test',
+          to: party.email,
+          subject: 'Dorothy & Christopher\'s Wedding RSVP Confirmation',
           message:
             'Thank you for your RSVP! We look forward to celebrating with you on August 20, 2022.',
           html: `
@@ -80,8 +79,6 @@ export default async function handler(
                 Feel free to respond to this email with any questions or concerns!
               </div>
 
-              <div>Feel free to respond to this email with any questions or concerns! </div>
-                  
               <br />
                   
               <div>

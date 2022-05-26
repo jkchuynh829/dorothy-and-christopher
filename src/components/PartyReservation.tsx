@@ -25,8 +25,6 @@ interface OptionType {
   value: string;
 }
 
-type ConfirmationEmail = Models.Party['email'];
-
 const Container = tw.div`relative`;
 const InputLabel = tw(Paragraph)`uppercase text-sm mb-0`;
 const RadioContainer = tw.div`flex flex-row`;
@@ -37,15 +35,14 @@ const Section = tw.div`flex flex-row items-center justify-between mb-3`;
 const CustomSelect = tw(Select)`uppercase text-sm`;
 
 const mealOptions: OptionType[] = [
-  { value: 'beef/salmon', label: 'Beef/Salmon' },
-  { value: 'vegetarian', label: 'Vegetarian' },
+  { value: 'Beef/Salmon', label: 'Beef/Salmon' },
+  { value: 'Vegetarian', label: 'Vegetarian' },
 ];
 
 const PartyReservation = ({ party, guests }: PartyReservationProps) => {
   const dispatch = useDispatch();
   const [partyData, updatePartyData] = useState<Models.Party>(party);
   const [guestsData, updateGuestsData] = useState<Models.Guest[]>(guests);
-  const [confirmationEmail, updateConfirmationEmail] = useState<ConfirmationEmail>(partyData.email || '');
 
   const booleanRadioChangeHandler = (
     guestId: Models.Guest['id'],
@@ -102,8 +99,10 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
     updatePartyData(partyCopy);
   };
 
-  const confirmationEmailChangeHandler = (value: string) => {
-    updateConfirmationEmail(value)
+  const partyEmailChangeHandler = (value: string) => {
+    const partyCopy = { ...partyData };
+    partyCopy.email = value;
+    updatePartyData(partyCopy)
   };
 
   const onSubmit = () => {
@@ -121,8 +120,8 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       }),
       partyRsvpData: {
         id: partyData.id,
+        email: partyData.email,
         song_requests: partyData.song_requests,
-        email: confirmationEmail,
       },
     };
     dispatch(updateRsvp(rsvpData));
@@ -213,8 +212,8 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       />
       <FormInput
         label="Email Address"
-        value={confirmationEmail}
-        onChange={confirmationEmailChangeHandler}
+        value={partyData.email}
+        onChange={partyEmailChangeHandler}
       />
       <SubmitButton
         onClick={() => {
