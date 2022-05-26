@@ -101,7 +101,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
   const partyEmailChangeHandler = (value: string) => {
     const partyCopy = { ...partyData };
     partyCopy.email = value;
-    updatePartyData(partyCopy)
+    updatePartyData(partyCopy);
   };
 
   const onSubmit = () => {

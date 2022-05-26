@@ -48,7 +48,7 @@ export default async function handler(
       if (party.email) {
         sendConfirmation({
           to: party.email,
-          subject: 'Dorothy & Christopher\'s Wedding RSVP Confirmation',
+          subject: "Dorothy & Christopher's Wedding RSVP Confirmation",
           message:
             'Thank you for your RSVP! We look forward to celebrating with you on August 20, 2022.',
           html: `
@@ -57,21 +57,22 @@ export default async function handler(
             <br /> 
             <div style="font-weight: bold">
               ${data.guestsRsvpData
-              .map((guestData: GuestRsvpData) => {
-                return `
+                .map((guestData: GuestRsvpData) => {
+                  return `
                   <div style="margin-bottom: 24px">
                     <div>${guestData.first_name} ${guestData.last_name}</div>
                     <div>
-                      <b>Attending:</b> ${guestData.is_attending === true ? 'Yes' : 'No'
-                  }
+                      <b>Attending:</b> ${
+                        guestData.is_attending === true ? 'Yes' : 'No'
+                      }
                     </div>
                     <div>
                       <b>Meal Preference:</b> ${guestData.meal_preference}
                     </div>
                   </div>
                 `;
-              })
-              .join('')}
+                })
+                .join('')}
               </div>
                   
               <div>
