@@ -18,7 +18,7 @@ const Registry = () => {
           </Paragraph>
         </Section>
 
-        <GoldTextClip>
+        <GoldTextClip clipText={false}>
           <Seperator />
         </GoldTextClip>
 
