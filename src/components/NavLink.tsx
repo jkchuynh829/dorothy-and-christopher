@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 const Container = styled.a<ContainerProps>`
-  ${tw`relative font-urbanist uppercase text-nav-link mx-8 mb-3 cursor-pointer transition-opacity hover:opacity-35`}
+  ${tw`relative font-urbanist uppercase text-nav-link mx-6 mb-3 cursor-pointer transition-opacity hover:opacity-35`}
   ${({ selected }) =>
     selected && tw`border-b md:border-0 md:font-bold md:opacity-50`}
 `;

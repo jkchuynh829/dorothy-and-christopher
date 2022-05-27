@@ -4,7 +4,7 @@ import { Paragraph } from './Typography';
 import { useRouter } from 'next/router';
 
 const Container = tw.div`flex justify-center`;
-const Inner = tw.div`mt-36 text-left max-w-2xl px-6`;
+const Inner = tw.div`mt-36 text-left max-w-4xl px-6`;
 const Question = tw(Paragraph)`font-bold text-2xl`;
 const Heading = tw(Question)`mt-12 text-4xl`;
 const Links = tw.a`font-urbanist text-lg mb-0 font-bold underline cursor-pointer`;
