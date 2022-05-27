@@ -168,7 +168,6 @@ const Navigation = () => {
         </NavLink>
         <NavLink
           close={toggleMobileMenu}
-          k
           href="/wedding-party"
           selected={isCurrentPath('/wedding-party')}
         >
