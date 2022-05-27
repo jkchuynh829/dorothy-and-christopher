@@ -24,16 +24,19 @@ export interface RsvpApiData {
 interface RsvpProps {
   showRsvpModal: boolean;
   confirmationEmail: Models.Party['email'];
+  status?: 'pending' | 'success';
 }
 
 const initialState: RsvpProps = {
   showRsvpModal: false,
   confirmationEmail: '',
+  status: undefined,
 };
 
 const updateRsvp = createAsyncThunk(
   'update/rsvp',
   async (rsvpData: RsvpApiData) => {
+    console.log('rsvpData', rsvpData);
     await fetch('/api/rsvp', {
       method: 'POST',
       body: JSON.stringify(rsvpData),
@@ -54,8 +57,12 @@ const guestsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(updateRsvp.pending, (state) => {
+      state.status = 'pending';
+    });
     builder.addCase(updateRsvp.fulfilled, (state, { payload }) => {
-      state.confirmationEmail = payload.partyRsvpData.email
+      state.confirmationEmail = payload.partyRsvpData.email;
+      state.status = 'success';
     });
   },
   // extraReducers: (builder) => {

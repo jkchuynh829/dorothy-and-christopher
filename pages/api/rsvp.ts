@@ -14,6 +14,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  console.log('req', req.body);
   const data = JSON.parse(req.body);
   const guestsRsvpData = data.guestsRsvpData;
   const partyRsvpData = data.partyRsvpData;
@@ -39,6 +40,7 @@ export default async function handler(
       const party = await prisma.parties.update({
         data: {
           song_requests: partyRsvpData.song_requests,
+          email: partyRsvpData.email,
         },
         where: {
           id: parseInt(partyRsvpData.id, 10),
