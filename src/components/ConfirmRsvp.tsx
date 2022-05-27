@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { useSelector } from '../store';
 import tw, { styled } from 'twin.macro';
 import { Aerotis, H1, Paragraph } from './Typography';
+import Icon from '@mdi/react';
+import { mdiLoading } from '@mdi/js';
 
 const Container = tw.div`
   fixed w-full h-screen top-0 left-0 bg-modal-bg z-30
@@ -25,16 +27,27 @@ interface ConfirmRsvpPropsBase {
 }
 
 const ConfirmRsvp = ({ isOpen, onClose }: ConfirmRsvpPropsBase) => {
-  const { confirmationEmail } = useSelector((state) => state.rsvp);
+  const { confirmationEmail, status } = useSelector((state) => state.rsvp);
 
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <Container className="confirm-rsvp" onClick={onClose}>
       <Box>
-        <H1>
-          <Aerotis>thank you</Aerotis>
-        </H1>
-        <Paragraph>{`Check your email: ${confirmationEmail}, for your RSVP confirmation.`}</Paragraph>
+        {status === 'pending' ? (
+          <>
+            <H1>
+              <Aerotis>sending confirmation...</Aerotis>
+            </H1>
+            <Icon path={mdiLoading} spin={1} size="32px" />
+          </>
+        ) : (
+          <>
+            <H1>
+              <Aerotis>thank you</Aerotis>
+            </H1>
+            <Paragraph>{`Check your email [${confirmationEmail}] for your RSVP confirmation.`}</Paragraph>
+          </>
+        )}
       </Box>
     </Container>,
     document.body
