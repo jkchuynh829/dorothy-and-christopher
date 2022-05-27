@@ -28,6 +28,8 @@ const sendConfirmation = async ({
     html,
   });
 
+  console.log('response', response);
+
   if (sendgridApiKey == '' || sendgridApiKey == null) {
     return { statusCode: 500 };
   }
