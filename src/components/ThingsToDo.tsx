@@ -8,7 +8,7 @@ const Inner = tw.div`mt-52 text-center max-w-2xl px-6`;
 const Links = tw.a`font-urbanist text-lg mb-0 font-bold underline cursor-pointer`;
 const Section = tw.div`mb-12`;
 const Aside = tw(Paragraph)`mb-0 italic`;
-const Seperator = tw.div`w-full h-1 bg-pink`;
+const Seperator = tw.div`w-full h-1`;
 
 const ThingsToDo = () => {
   const generateLink = useCallback((link: string) => {
@@ -29,7 +29,7 @@ const ThingsToDo = () => {
           </Paragraph>
         </Section>
 
-        <GoldTextClip>
+        <GoldTextClip clipText={false}>
           <Seperator />
         </GoldTextClip>
 
@@ -70,7 +70,7 @@ const ThingsToDo = () => {
           <Paragraph>168 S Los Robles Ave, Pasadena, CA 91101</Paragraph>
         </Section>
 
-        <GoldTextClip>
+        <GoldTextClip clipText={false}>
           <Seperator />
         </GoldTextClip>
 
@@ -106,7 +106,7 @@ const ThingsToDo = () => {
           <Paragraph>168 E Garvey Ave Ste B, Monterey Park, CA 91755</Paragraph>
         </Section>
 
-        <GoldTextClip>
+        <GoldTextClip clipText={false}>
           <Seperator />
         </GoldTextClip>
 
@@ -139,7 +139,7 @@ const ThingsToDo = () => {
           <Paragraph>8500 Sunset Blvd, West Hollywood, CA 90069</Paragraph>
         </Section>
 
-        <GoldTextClip>
+        <GoldTextClip clipText={false}>
           <Seperator />
         </GoldTextClip>
 
