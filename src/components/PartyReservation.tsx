@@ -6,7 +6,7 @@ import FormInput from './FormInput';
 import { Paragraph } from './Typography';
 import Select from 'react-select';
 import { SingleValue } from 'react-select';
-import { updateRsvp } from '../store/guests';
+import { openRsvpModal, updateRsvp } from '../store/rsvp';
 
 interface PartyReservationProps {
   party: Models.Party;
@@ -24,7 +24,7 @@ interface OptionType {
   value: string;
 }
 
-const Container = tw.div``;
+const Container = tw.div`relative`;
 const InputLabel = tw(Paragraph)`uppercase text-sm mb-0`;
 const RadioContainer = tw.div`flex flex-row`;
 const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist uppercase font-bold hover:bg-green`;
@@ -34,9 +34,8 @@ const Section = tw.div`flex flex-row items-center justify-between mb-3`;
 const CustomSelect = tw(Select)`uppercase text-sm`;
 
 const mealOptions: OptionType[] = [
-  { value: 'steak', label: 'Steak' },
-  { value: 'chicken', label: 'Chicken' },
-  { value: 'salmon', label: 'Salmon' },
+  { value: 'Beef/Salmon', label: 'Beef/Salmon' },
+  { value: 'Vegetarian', label: 'Vegetarian' },
 ];
 
 const PartyReservation = ({ party, guests }: PartyReservationProps) => {
@@ -53,11 +52,6 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       ...guestsData.find((g) => g.id === guestId),
     } as Models.Guest;
     if (guest.id == null) return;
-    // guest.is_vaccinated = checked
-    // type WritableKeys<T> = {
-    // [P in keyof T]-?: IfEquals<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
-    // }[keyof T];
-    // guest[guestBooleanProperty as keyof ReadonlyGuest extends Omit<Models.Guest, 'id'>] = checked
     guest[guestBooleanProperty as keyof RadioButtonKeys] = checked;
     const idx = guestsData.map(({ id }) => id).indexOf(guestId);
     if (idx === -1) return;
@@ -104,32 +98,18 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
     updatePartyData(partyCopy);
   };
 
-  // const onSubmit = useCallback(() => {
-  // guestsData.forEach((guest) => {
-  // const { id, is_attending, is_vaccinated, allergies, meal_preference } = guest;
-  // dispatch(updateGuestRSVP(guest))
-  // });
-  // const { song_requests } = partyData;
-  // dispatch(updatePartyRSVP)
-  // }, [guests, party]);
-
-  // interface GuestRsvpData {
-  //   id: Models.Guest['id'];
-  //   is_attending: Models.Guest['is_attending'];
-  //   is_vaccinated: Models.Guest['is_vaccinated'];
-  //   allergies: Models.Guest['allergies'];
-  //   meal_preference: Models.Guest['meal_preference'];
-  // }
-
-  // interface PartyRsvpData {
-  //   id: Models.Party['id'];
-  //   song_requests: Models.Party['song_requests'];
-  // }
+  const partyEmailChangeHandler = (value: string) => {
+    const partyCopy = { ...partyData };
+    partyCopy.email = value;
+    updatePartyData(partyCopy);
+  };
 
   const onSubmit = () => {
     const rsvpData = {
       guestsRsvpData: guestsData.map((guestData) => {
         return {
+          first_name: guestData.first_name,
+          last_name: guestData.last_name,
           id: guestData.id,
           is_attending: guestData.is_attending,
           is_vaccinated: guestData.is_vaccinated,
@@ -139,6 +119,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       }),
       partyRsvpData: {
         id: partyData.id,
+        email: partyData.email,
         song_requests: partyData.song_requests,
       },
     };
@@ -207,6 +188,9 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
                 <CustomSelect
                   options={mealOptions}
                   onChange={mealSelectionChangeHandler(guest.id)}
+                  value={mealOptions.filter(
+                    (option) => option.value === guest.meal_preference
+                  )}
                 />
               </Section>
               <Section>
@@ -222,10 +206,22 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
       })}
       <FormInput
         label="Song Requests"
-        value={party.song_requests}
+        value={partyData.song_requests}
         onChange={songRequestsChangeHandler}
       />
-      <SubmitButton onClick={onSubmit}>Submit RSVP</SubmitButton>
+      <FormInput
+        label="Email Address"
+        value={partyData.email}
+        onChange={partyEmailChangeHandler}
+      />
+      <SubmitButton
+        onClick={() => {
+          onSubmit();
+          dispatch(openRsvpModal());
+        }}
+      >
+        Submit RSVP
+      </SubmitButton>
     </Container>
   );
 };

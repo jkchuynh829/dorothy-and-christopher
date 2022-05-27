@@ -12,9 +12,11 @@ import GoldTextClip from './GoldTextClip';
 import Carousel from './Carousel';
 import SaveTheDate from './SaveTheDate';
 import Modal from './Modal';
+import ConfirmRsvp from './ConfirmRsvp';
 import { useSelector } from '../store';
 import { useDispatch } from 'react-redux';
 import { closeModal, setSelectedParty } from '../store/guests';
+import { closeRsvpModal } from '../store/rsvp';
 import Rsvp from './Rsvp';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-hidden h-full`;
@@ -67,6 +69,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { updatePartySuccess } = useSelector((state) => state.guests);
+  const { showRsvpModal } = useSelector((state) => state.rsvp);
   const { rsvpEnabled } = useSelector((state) => state.maintenanceMode);
   return (
     <Container>
@@ -93,7 +96,7 @@ const Home = () => {
             />
             <Content>
               <AerotisHeading>
-                {rsvpEnabled ? 'Rsvp' : 'save the date'}
+                {rsvpEnabled ? 'rsvp' : 'save the date'}
               </AerotisHeading>
               <SaveTheDateP>August 20, 2022</SaveTheDateP>
               <SaveTheDateP>Pasadena, CA</SaveTheDateP>
@@ -122,6 +125,12 @@ const Home = () => {
         onClose={() => {
           dispatch(closeModal());
           dispatch(setSelectedParty(null));
+        }}
+      />
+      <ConfirmRsvp
+        isOpen={showRsvpModal}
+        onClose={() => {
+          dispatch(closeRsvpModal());
         }}
       />
     </Container>

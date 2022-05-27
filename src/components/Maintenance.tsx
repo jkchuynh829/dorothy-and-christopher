@@ -46,11 +46,11 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
     <Container>
       <Heading style={animatedHeading}>
         <Aerotis>
-          Dorothy <Almara>&</Almara> Christopher
+          dorothy <Almara>&</Almara> christopher
         </Aerotis>
       </Heading>
       <FormInput
-        style={{ ...animmateParagraph, width: '350px' }}
+        style={{ ...animmateParagraph, width: '250px' }}
         label=""
         value={password}
         placeholder="Enter password..."

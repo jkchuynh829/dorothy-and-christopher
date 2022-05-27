@@ -4,7 +4,7 @@ import tw, { styled } from 'twin.macro';
 import { Paragraph } from './Typography';
 
 const Container = styled(animated(tw.div``))``;
-const Input = tw.input`border border-solid border-dark-gray shadow-input rounded-sm h-10 w-full px-3 mb-6`;
+const Input = tw.input`border border-solid border-dark-gray shadow-input rounded-sm h-10 w-full px-3 mb-6 font-urbanist text-lg`;
 
 const P = styled(Paragraph)`
   ${tw`uppercase text-sm`}
