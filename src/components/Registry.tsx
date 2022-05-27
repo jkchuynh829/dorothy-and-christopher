@@ -5,7 +5,7 @@ import { H1, Paragraph, Aerotis } from './Typography';
 const Container = tw.div`flex justify-center`;
 const Inner = tw.div`mt-52 text-center max-w-2xl px-6`;
 const Section = tw.div`mb-12`;
-const Seperator = tw.div`w-full h-1 bg-pink`;
+const Seperator = tw.div`w-full h-0.5`;
 
 const Registry = () => {
   return (

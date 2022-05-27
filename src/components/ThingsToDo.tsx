@@ -8,7 +8,7 @@ const Inner = tw.div`mt-52 text-center max-w-2xl px-6`;
 const Links = tw.a`font-urbanist text-lg mb-0 font-bold underline cursor-pointer`;
 const Section = tw.div`mb-12`;
 const Aside = tw(Paragraph)`mb-0 italic`;
-const Seperator = tw.div`w-full h-1`;
+const Seperator = tw.div`w-full h-0.5`;
 
 const ThingsToDo = () => {
   const generateLink = useCallback((link: string) => {
