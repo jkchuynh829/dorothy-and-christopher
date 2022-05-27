@@ -1,6 +1,10 @@
 import tw from 'twin.macro';
 import GoldTextClip from './GoldTextClip';
-import { H1, Paragraph, Aerotis } from './Typography';
+import { H1, Paragraph, Aerotis, Almara } from './Typography';
+import chrisPaypalQrCode from '../assets/registry/chris-paypal-qr-code.png';
+import chrisVenmoQrCode from '../assets/registry/chris-venmo-qr-code.png';
+import dorohyVenmoQrCode from '../assets/registry/dorothy-venmo-qr-code.png';
+import Image from 'next/image';
 
 const Container = tw.div`flex justify-center`;
 const Inner = tw.div`mt-52 text-center max-w-2xl px-6`;
@@ -13,8 +17,8 @@ const Registry = () => {
       <Inner>
         <Section>
           <Paragraph>
-            We won&apos; have a formal registry but will be accepting any
-            donations through through any of the below options.
+            We won<Almara>&apos;</Almara>t have a formal registry but will be
+            accepting any donations through through any of the below options.
           </Paragraph>
         </Section>
 
@@ -24,23 +28,35 @@ const Registry = () => {
 
         <Section>
           <H1>
-            <Aerotis>Chris&apos;s Venmo</Aerotis>
+            <Aerotis>
+              Chris<Almara>&apos;</Almara>s Venmo
+            </Aerotis>
           </H1>
-          <Paragraph>[INSERT Chris&apos;s Venmo QR Code]</Paragraph>
+          <Paragraph>
+            <Image src={chrisVenmoQrCode} />
+          </Paragraph>
         </Section>
 
         <Section>
           <H1>
-            <Aerotis>Dorothy&apos;s Venmo</Aerotis>
+            <Aerotis>
+              Dorothy<Almara>&apos;</Almara>s Venmo
+            </Aerotis>
           </H1>
-          <Paragraph>[INSERT Dorothy&apos;s Venmo QR Code]</Paragraph>
+          <Paragraph>
+            <Image src={dorohyVenmoQrCode} />
+          </Paragraph>
         </Section>
 
         <Section>
           <H1>
-            <Aerotis>Chris&apos;s Paypal</Aerotis>
+            <Aerotis>
+              Chris<Almara>&apos;</Almara>s Paypal
+            </Aerotis>
           </H1>
-          <Paragraph>[INSERT Chris&apos;s Paypal QR Code]</Paragraph>
+          <Paragraph>
+            <Image src={chrisPaypalQrCode} />
+          </Paragraph>
         </Section>
 
         <Section>
