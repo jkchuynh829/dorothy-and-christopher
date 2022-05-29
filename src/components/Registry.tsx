@@ -18,7 +18,7 @@ const Registry = () => {
         <Section>
           <Paragraph>
             We won<Almara>&apos;</Almara>t have a formal registry but will be
-            accepting any donations through through any of the below options.
+            accepting donations through any of the options below.
           </Paragraph>
         </Section>
 
@@ -29,20 +29,12 @@ const Registry = () => {
         <Section>
           <H1>
             <Aerotis>
-              Chris<Almara>&apos;</Almara>s Venmo
+              Venmo
             </Aerotis>
           </H1>
           <Paragraph>
             <Image src={chrisVenmoQrCode} />
           </Paragraph>
-        </Section>
-
-        <Section>
-          <H1>
-            <Aerotis>
-              Dorothy<Almara>&apos;</Almara>s Venmo
-            </Aerotis>
-          </H1>
           <Paragraph>
             <Image src={dorohyVenmoQrCode} />
           </Paragraph>
@@ -51,7 +43,7 @@ const Registry = () => {
         <Section>
           <H1>
             <Aerotis>
-              Chris<Almara>&apos;</Almara>s Paypal
+              Paypal
             </Aerotis>
           </H1>
           <Paragraph>
@@ -64,7 +56,7 @@ const Registry = () => {
             <Aerotis>Zelle</Aerotis>
           </H1>
           <Paragraph>
-            You can send money through Zelle to our account with email
+            You can send money to our Zelle account set up with
             duckiexduarte@gmail.com.
           </Paragraph>
         </Section>
@@ -74,7 +66,7 @@ const Registry = () => {
             <Aerotis>Check</Aerotis>
           </H1>
           <Paragraph>
-            You can write us a check and make it out to ___.
+            You can write us a check and make it out to "Christopher Cano" or "Dorothy Le".
           </Paragraph>
         </Section>
       </Inner>

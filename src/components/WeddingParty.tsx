@@ -72,7 +72,7 @@ const WeddingParty = () => {
           </Section>
           <Section>
             <SectionHeading>
-              <Aerotis>grooms parents</Aerotis>
+              <Aerotis>parents of the groom</Aerotis>
             </SectionHeading>
             <Person>Nilo Cano</Person>
             <Person>Edita Cano</Person>
