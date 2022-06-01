@@ -16,6 +16,11 @@ const Container = tw.main`
 const Heading = styled(animated(H1))`
   ${tw`mb-4`}
 `;
+
+const Button = styled(animated(tw.button``))`
+  ${tw`border border-solid border-dark-gray rounded-sm h-10 px-3 mb-6 font-urbanist text-lg hover:bg-dark-gray hover:text-white`}
+`;
+
 interface MaintenanceProps {
   unlock: () => void;
 }
@@ -39,7 +44,11 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
   /* Handlers */
   const passwordHandler = (value: string) => {
     setPassword(value);
-    if (value === PASSWORD) unlock();
+  };
+
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    if (password === PASSWORD) unlock();
   };
 
   return (
@@ -49,14 +58,17 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
           dorothy <Almara>&</Almara> christopher
         </Aerotis>
       </Heading>
-      <FormInput
-        style={{ ...animmateParagraph, width: '250px' }}
-        label=""
-        value={password}
-        placeholder="Enter password..."
-        onChange={passwordHandler}
-        password
-      />
+      <form onSubmit={onSubmit}>
+        <FormInput
+          style={{ ...animmateParagraph, width: '250px' }}
+          label=""
+          value={password}
+          placeholder="Enter password..."
+          onChange={passwordHandler}
+          password
+        />
+        <Button style={{ ...animmateParagraph, width: '250px' }}>Log in</Button>
+      </form>
     </Container>
   );
 };

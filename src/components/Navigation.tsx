@@ -55,12 +55,12 @@ const Navigation = () => {
 
   const rsvpEnabled = useSelector((state) => state.maintenanceMode.rsvpEnabled);
 
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
 
   const [scrolled, setScrolled] = useState(false);
 
   const onScroll = useThrottledCallback(() => {
-    const shouldScroll = SCROLLED_PAGES.includes(asPath);
+    const shouldScroll = SCROLLED_PAGES.includes(pathname);
     if (window.scrollY > 100 && !scrolled) {
       setScrolled(true);
     }
@@ -77,8 +77,8 @@ const Navigation = () => {
   }, [onScroll]);
 
   const shouldScroll = useMemo(() => {
-    return scrolled || SCROLLED_PAGES.includes(asPath);
-  }, [scrolled, asPath]);
+    return scrolled || SCROLLED_PAGES.includes(pathname);
+  }, [scrolled, pathname]);
 
   const navAnimation = useSpring({
     height: shouldScroll ? '6rem' : '10rem',
@@ -91,9 +91,9 @@ const Navigation = () => {
 
   const isCurrentPath = useCallback(
     (link: string) => {
-      return link === asPath;
+      return link === pathname;
     },
-    [asPath]
+    [pathname]
   );
 
   const toggleMobileMenu = useCallback(() => {
@@ -110,7 +110,7 @@ const Navigation = () => {
         </HamburgerContainer>
       </Mobile>
       <Desktop>
-        {!scrolled && !SCROLLED_PAGES.includes(asPath) && <Gradient />}
+        {!scrolled && !SCROLLED_PAGES.includes(pathname) && <Gradient />}
         <NavLink
           href="/"
           selected={isCurrentPath('/')}
