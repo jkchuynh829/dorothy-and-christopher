@@ -67,7 +67,7 @@ const Maintenance = ({ unlock }: MaintenanceProps) => {
           onChange={passwordHandler}
           password
         />
-        <Button style={{ ...animmateParagraph, width: '250px' }}>Log in</Button>
+        <Button style={{ ...animmateParagraph, width: '250px' }}>Let's Party</Button>
       </form>
     </Container>
   );
