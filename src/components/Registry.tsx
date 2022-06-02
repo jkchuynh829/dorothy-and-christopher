@@ -67,6 +67,8 @@ const Registry = () => {
           </Paragraph>
         </Section>
 
+        <GoldenRule />
+
         <Section>
           <H1>
             <Aerotis>Check</Aerotis>
