@@ -118,6 +118,7 @@ const PartyReservation = ({ party, guests }: PartyReservationProps) => {
         };
       }),
       partyRsvpData: {
+        name: partyData.name,
         id: partyData.id,
         email: partyData.email,
         song_requests: partyData.song_requests,
