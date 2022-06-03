@@ -11,19 +11,18 @@ interface SendConfirmationRequest {
   html?: string;
 }
 
+interface RsvpAdminNotificationRequest {
+  html: string;
+}
+
 const sendConfirmation = async ({
   to,
   subject,
   message,
   html,
 }: SendConfirmationRequest) => {
-  console.log('\n\n\n\n');
-  console.log('----------------------------------');
-  console.log('Send Confirmation');
-
-  console.log('sendgridApiKey', sendgridApiKey);
-
   if (sendgridApiKey == '' || sendgridApiKey == null) {
+    console.log('Sengrid API Key is missing');
     return { statusCode: 500 };
   }
 
@@ -39,12 +38,40 @@ const sendConfirmation = async ({
       html,
     });
 
-    console.log('reponse', response);
+    console.log('Confirmation email response: ', response);
     return { statusCode: response.statusCode };
   } catch (err) {
-    console.log('err', err);
+    console.log('Confirmation email error: ', err);
     return { statusCode: 500, error: (err as any).message };
   }
 };
 
-export { sendConfirmation };
+const sendRsvpAdminNotification = async ({
+  html,
+}: RsvpAdminNotificationRequest) => {
+  if (sendgridApiKey == '' || sendgridApiKey == null) {
+    console.log('Sengrid API Key is missing');
+    return { statusCode: 500 };
+  }
+
+  try {
+    const [response] = await mail.send({
+      to: 'duckiexduarte@gmail.com',
+      from: {
+        email: 'hello@dorothyandchristopher.com',
+        name: 'Dorothy & Chris',
+      },
+      subject: "You've received a new wedding RSVP!",
+      text: "You've received a new wedding RSVP!",
+      html,
+    });
+
+    console.log('Rsvp Admin Notification email response: ', response);
+    return { statusCode: response.statusCode };
+  } catch (err) {
+    console.log('Rsvp Admin Notification email error: ', err);
+    return { statusCode: 500, error: (err as any).message };
+  }
+};
+
+export { sendConfirmation, sendRsvpAdminNotification };
