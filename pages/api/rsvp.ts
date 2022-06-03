@@ -23,6 +23,30 @@ export default async function handler(
   const guestsRsvpData = data.guestsRsvpData;
   const partyRsvpData = data.partyRsvpData;
 
+  const sendErrorEmail = async (error: any) => {
+    await sendRsvpErrorNotification({
+      html: `
+        <body>
+          <div>There was an error after an attempt to RSVP to your wedding for party: ${partyRsvpData.email}! =(</div>
+          <br /> 
+          <div style="font-weight: bold">
+            Request Body:
+          </div>
+          <div>
+            ${req.body}
+          </div>
+          <br />
+          <div style="font-weight: bold">
+            Error Details:
+          </div>
+          <div>
+            ${error}
+          </div>
+        </body>
+      `,
+    });
+  };
+
   try {
     await prismaClient.$transaction(async (prisma) => {
       await Promise.all(
@@ -52,10 +76,6 @@ export default async function handler(
       });
 
       if (party.email) {
-        console.log(
-          'Party email exists, beginning process to send confirmation email...'
-        );
-
         const { statusCode } = await sendConfirmation({
           to: party.email,
           subject: "Dorothy & Christopher's Wedding RSVP Confirmation",
@@ -114,46 +134,49 @@ export default async function handler(
         });
 
         if (statusCode == 202) {
+          const listGuestData = ({
+            first_name,
+            last_name,
+            meal_preference,
+            allergies,
+            is_attending,
+          }: GuestRsvpData) => {
+            return `
+              <div style="margin-bottom: 24px">
+                <div>${first_name} ${last_name}</div>
+                <div>
+                  <b>Attending:</b> ${is_attending === true ? 'Yes' : 'No'}
+                </div>
+                <div>
+                  <b>Meal Preference:</b> ${meal_preference}
+                </div>
+                <div>
+                  <b>Dietary Restrictions/Allergies:</b> ${allergies}
+                </div>
+              </div>
+           `;
+          };
+
           sendRsvpAdminNotification({
             html: `
               <body>
-                <div>You've received a new wedding RSVP from party: ${
-                  party.name
-                }</div>
+                <div>
+                    You've received a new wedding RSVP from party: ${party.name}
+                </div>
                 <br />
-              <div style="font-weight: bold">
-              ${data.guestsRsvpData
-                .map((guestData: GuestRsvpData) => {
-                  return `
-              <div style="margin-bottom: 24px">
-              <div>${guestData.first_name} ${guestData.last_name}</div>
-              <div>
-              <b>Attending:</b> ${
-                guestData.is_attending === true ? 'Yes' : 'No'
-              }
-              </div>
-              <div>
-              <b>Meal Preference:</b> ${guestData.meal_preference}
-              </div>
-              <div>
-              <b>Dietary Restrictions/Allergies:</b> ${guestData.allergies}
-              </div>
-              </div>
-        `;
-                })
-                .join('')}
-        <div>
-        <b>Song Requests:</b> ${partyRsvpData.song_requests}
-        </div>
-        </div>
-
-        <br />
-        <div style="font-weight: bold">
-        Yay!
-        </div>
-        </body>
-        `,
+                <div style="font-weight: bold">
+                  ${guestsRsvpData.map(listGuestData).join('')}
+                <div>
+                  <b>Song Requests:</b> ${partyRsvpData.song_requests}
+                </div>
+                </div>
+                  <br />
+                <div style="font-weight: bold">Yay!</div>
+              </body>
+            `,
           });
+        } else {
+          await sendErrorEmail(`Error code: ${statusCode}. Sendgrid bad!`);
         }
       }
 
@@ -161,29 +184,8 @@ export default async function handler(
         statusCode: 200,
       });
     });
-  } catch (error) {
-    console.log('Rsvp Api Db Error ', error);
-    sendRsvpErrorNotification({
-      html: `
-      <body>
-        <div>There was an error after an attempt to RSVP to your wedding for party: ${partyRsvpData.email}! =(</div>
-        <br /> 
-        <div style="font-weight: bold">
-          Request Body:
-        </div>
-        <div>
-          ${req.body}
-        </div>
-        <br />
-        <div style="font-weight: bold">
-          Error Details:
-        </div>
-        <div>
-          ${error}
-        </div>
-      </body>
-    `,
-    });
+  } catch (error: any) {
+    await sendErrorEmail(error.message);
     res.send({
       statusCode: 500,
     });
