@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import { GuestRsvpData } from '../../src/store/rsvp';
-import { sendConfirmation } from './utils/sendgrid';
+import { sendConfirmation, sendRsvpAdminNotification } from './utils/sendgrid';
 
 interface Data {
   statusCode: number;
@@ -107,6 +107,40 @@ export default async function handler(
               </div>
             </body>
           `,
+        }).then(() => {
+          sendRsvpAdminNotification({
+            html: `
+            <body>
+              <div>You've received a new wedding RSVP from party: ${
+                party.name
+              }</div>
+              <br /> 
+              <div style="font-weight: bold">
+                ${data.guestsRsvpData
+                  .map((guestData: GuestRsvpData) => {
+                    return `
+                    <div style="margin-bottom: 24px">
+                      <div>${guestData.first_name} ${guestData.last_name}</div>
+                      <div>
+                        <b>Attending:</b> ${
+                          guestData.is_attending === true ? 'Yes' : 'No'
+                        }
+                      </div>
+                      <div>
+                        <b>Meal Preference:</b> ${guestData.meal_preference}
+                      </div>
+                    </div>
+                  `;
+                  })
+                  .join('')}
+              </div>
+                    
+              <div>
+                Yay!
+              </div>
+            </body>
+          `,
+          });
         });
       }
 
