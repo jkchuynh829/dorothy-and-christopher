@@ -36,7 +36,6 @@ const initialState: RsvpProps = {
 const updateRsvp = createAsyncThunk(
   'update/rsvp',
   async (rsvpData: RsvpApiData) => {
-    console.log('rsvpData', rsvpData);
     await fetch('/api/rsvp', {
       method: 'POST',
       body: JSON.stringify(rsvpData),

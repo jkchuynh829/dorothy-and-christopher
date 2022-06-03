@@ -23,9 +23,9 @@ const sendConfirmation = async ({
   const [response] = await mail.send({
     to,
     bcc: [
-      'duckiexduarte@gmail.com',
-      'jkchuynh829@gmail.com',
-      'canoc4262@gmail.com',
+      'duckiexduarte+wedding-rsvp-admin@gmail.com',
+      'jkchuynh829+wedding-rsvp-admin@gmail.com',
+      'canoc4262+wedding-rsvp-admin@gmail.com',
     ],
     from: {
       email: 'hello@dorothyandchristopher.com',

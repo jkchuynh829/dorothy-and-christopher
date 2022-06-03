@@ -14,7 +14,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log('req', req.body);
+  console.log('Request Body', req.body);
   const data = JSON.parse(req.body);
   const guestsRsvpData = data.guestsRsvpData;
   const partyRsvpData = data.partyRsvpData;
@@ -46,6 +46,8 @@ export default async function handler(
           id: parseInt(partyRsvpData.id, 10),
         },
       });
+
+      console.log('party', party);
 
       if (party.email) {
         sendConfirmation({
