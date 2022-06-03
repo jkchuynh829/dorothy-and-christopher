@@ -111,49 +111,49 @@ export default async function handler(
               </div>
             </body>
           `,
-        }).then(() => {
-          sendRsvpAdminNotification({
-            html: `
-            <body>
-              <div>You've received a new wedding RSVP from party: ${
-                party.name
-              }</div>
-              <br /> 
-              <div style="font-weight: bold">
-                ${data.guestsRsvpData
-                  .map((guestData: GuestRsvpData) => {
-                    return `
-                    <div style="margin-bottom: 24px">
-                      <div>${guestData.first_name} ${guestData.last_name}</div>
-                      <div>
-                        <b>Attending:</b> ${
-                          guestData.is_attending === true ? 'Yes' : 'No'
-                        }
-                      </div>
-                      <div>
-                        <b>Meal Preference:</b> ${guestData.meal_preference}
-                      </div>
-                      <div>
-                        <b>Dietary Restrictions/Allergies:</b> ${
-                          guestData.allergies
-                        }
-                      </div>
+        });
+
+        sendRsvpAdminNotification({
+          html: `
+          <body>
+            <div>You've received a new wedding RSVP from party: ${
+              party.name
+            }</div>
+            <br /> 
+            <div style="font-weight: bold">
+              ${data.guestsRsvpData
+                .map((guestData: GuestRsvpData) => {
+                  return `
+                  <div style="margin-bottom: 24px">
+                    <div>${guestData.first_name} ${guestData.last_name}</div>
+                    <div>
+                      <b>Attending:</b> ${
+                        guestData.is_attending === true ? 'Yes' : 'No'
+                      }
                     </div>
-                  `;
-                  })
-                  .join('')}
-                <div>
-                  <b>Song Requests:</b> ${partyRsvpData.song_requests}
-                </div>
+                    <div>
+                      <b>Meal Preference:</b> ${guestData.meal_preference}
+                    </div>
+                    <div>
+                      <b>Dietary Restrictions/Allergies:</b> ${
+                        guestData.allergies
+                      }
+                    </div>
+                  </div>
+                `;
+                })
+                .join('')}
+              <div>
+                <b>Song Requests:</b> ${partyRsvpData.song_requests}
               </div>
-                    
-              <br /> 
-              <div style="font-weight: bold">
-                Yay!
-              </div>
-            </body>
-          `,
-          });
+            </div>
+                  
+            <br /> 
+            <div style="font-weight: bold">
+              Yay!
+            </div>
+          </body>
+        `,
         });
       }
 
