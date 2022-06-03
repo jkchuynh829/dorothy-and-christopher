@@ -76,7 +76,9 @@ export default async function handler(
                       <b>Meal Preference:</b> ${guestData.meal_preference}
                     </div>
                     <div>
-                      <b>Meal Preference:</b> ${guestData.allergies}
+                      <b>Dietary Restrictions/Allergies:</b> ${
+                        guestData.allergies
+                      }
                     </div>
                   </div>
                 `;
