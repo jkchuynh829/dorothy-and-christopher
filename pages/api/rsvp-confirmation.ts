@@ -18,7 +18,7 @@ export default async function handler(
     message: data.message,
     html: `
       <body>
-        <div>Thank you for your RSVP! We look forward to celebrating with you on August 20, 2022.</div>
+        <div>Thank you for your RSVP! We look forward to celebrating with you on August 20, 2022. </div>
         
         <br />
     
