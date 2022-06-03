@@ -30,7 +30,7 @@ const sendConfirmation = async ({
   try {
     const [response] = await mail.send({
       to,
-      bcc: ['duckiexduarte+wedding-rsvp-admin@gmail.com'],
+      bcc: ['duckiexduarte@gmail.com'],
       from: {
         email: 'hello@dorothyandchristopher.com',
         name: 'Dorothy & Chris',
