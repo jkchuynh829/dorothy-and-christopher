@@ -20,32 +20,36 @@ const sendConfirmation = async ({
   console.log('\n\n\n\n');
   console.log('----------------------------------');
   console.log('Send Confirmation');
-  const [response] = await mail.send({
-    to,
-    bcc: [
-      'duckiexduarte+wedding-rsvp-admin@gmail.com',
-      'jkchuynh829+wedding-rsvp-admin@gmail.com',
-      'canoc4262+wedding-rsvp-admin@gmail.com',
-    ],
-    from: {
-      email: 'hello@dorothyandchristopher.com',
-      name: 'Dorothy & Chris',
-    },
-    subject,
-    text: message,
-    html,
-  });
-
-  console.log('sendgridApiKey', sendgridApiKey);
-  console.log('sendgridApiKey', sendgridApiKey);
-  console.log('reponse', response);
 
   if (sendgridApiKey == '' || sendgridApiKey == null) {
     return { statusCode: 500 };
   }
 
-  return { statusCode: response.statusCode };
-  console.log('\n\n\n\n');
+  try {
+    const [response] = await mail.send({
+      to,
+      bcc: [
+        'duckiexduarte+wedding-rsvp-admin@gmail.com',
+        'jkchuynh829+wedding-rsvp-admin@gmail.com',
+        'canoc4262+wedding-rsvp-admin@gmail.com',
+      ],
+      from: {
+        email: 'hello@dorothyandchristopher.com',
+        name: 'Dorothy & Chris',
+      },
+      subject,
+      text: message,
+      html,
+    });
+
+    console.log('sendgridApiKey', sendgridApiKey);
+    console.log('sendgridApiKey', sendgridApiKey);
+    console.log('reponse', response);
+    return { statusCode: response.statusCode };
+  } catch (err) {
+    console.log('err', err);
+    return { statusCode: 500, error: (err as any).message };
+  }
 };
 
 export { sendConfirmation };
