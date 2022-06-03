@@ -27,8 +27,7 @@ interface ConfirmRsvpPropsBase {
 }
 
 const ConfirmRsvp = ({ isOpen, onClose }: ConfirmRsvpPropsBase) => {
-  // const { confirmationEmail, status } = useSelector((state) => state.rsvp);
-  const { status } = useSelector((state) => state.rsvp);
+  const { confirmationEmail, status } = useSelector((state) => state.rsvp);
 
   if (!isOpen) return null;
   return ReactDOM.createPortal(
@@ -46,9 +45,7 @@ const ConfirmRsvp = ({ isOpen, onClose }: ConfirmRsvpPropsBase) => {
             <H1>
               <Aerotis>thank you</Aerotis>
             </H1>
-            {/* <Paragraph>{`Check your email [${confirmationEmail}] for your RSVP confirmation.` </Paragraph> */}
-            <Paragraph>{`Your response has been recorded!`}</Paragraph>
-            <Paragraph>{`If you'd like to change your response, please resubmit this form.`}</Paragraph>
+            <Paragraph>{`Check your email [${confirmationEmail}] for your RSVP confirmation.`}</Paragraph>
           </>
         )}
       </Box>
