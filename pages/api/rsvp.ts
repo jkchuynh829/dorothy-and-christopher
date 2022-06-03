@@ -14,7 +14,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log('Request Body', req.body);
+  console.log('RSVP request body: ', req.body);
   const data = JSON.parse(req.body);
   const guestsRsvpData = data.guestsRsvpData;
   const partyRsvpData = data.partyRsvpData;
@@ -47,9 +47,11 @@ export default async function handler(
         },
       });
 
-      console.log('party', party);
-
       if (party.email) {
+        console.log(
+          'Party email exists, beginning process to send confirmation email...'
+        );
+
         sendConfirmation({
           to: party.email,
           subject: "Dorothy & Christopher's Wedding RSVP Confirmation",
@@ -73,10 +75,16 @@ export default async function handler(
                     <div>
                       <b>Meal Preference:</b> ${guestData.meal_preference}
                     </div>
+                    <div>
+                      <b>Meal Preference:</b> ${guestData.allergies}
+                    </div>
                   </div>
                 `;
                 })
                 .join('')}
+                <div>
+                  <b>Song Requests:</b> ${party.song_requests}
+                </div>
               </div>
                   
               <div>

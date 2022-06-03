@@ -21,13 +21,16 @@ const sendConfirmation = async ({
   console.log('----------------------------------');
   console.log('Send Confirmation');
 
-  console.log('sendgridApiKey', sendgridApiKey);
-
   if (sendgridApiKey == '' || sendgridApiKey == null) {
+    console.log('Sendgrid API Key is not present.');
     return { statusCode: 500 };
   }
 
   try {
+    console.log(
+      'Sendgrid API Key is present, attempting mail send api call...'
+    );
+
     const [response] = await mail.send({
       to,
       from: {
@@ -39,10 +42,10 @@ const sendConfirmation = async ({
       html,
     });
 
-    console.log('reponse', response);
+    console.log('RSVP confirmation response: ', response);
     return { statusCode: response.statusCode };
   } catch (err) {
-    console.log('err', err);
+    console.log('RSVP confirmation error: ', err);
     return { statusCode: 500, error: (err as any).message };
   }
 };
