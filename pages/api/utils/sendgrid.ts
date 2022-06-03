@@ -17,6 +17,9 @@ const sendConfirmation = async ({
   message,
   html,
 }: SendConfirmationRequest) => {
+  console.log('\n\n\n\n');
+  console.log('----------------------------------');
+  console.log('Send Confirmation');
   const [response] = await mail.send({
     to,
     bcc: ['duckiexduarte@gmail.com'],
@@ -29,13 +32,16 @@ const sendConfirmation = async ({
     html,
   });
 
-  console.log('response', response);
+  console.log('sendgridApiKey', sendgridApiKey);
+  console.log('sendgridApiKey', sendgridApiKey);
+  console.log('reponse', response);
 
   if (sendgridApiKey == '' || sendgridApiKey == null) {
     return { statusCode: 500 };
   }
 
   return { statusCode: response.statusCode };
+  console.log('\n\n\n\n');
 };
 
 export { sendConfirmation };
