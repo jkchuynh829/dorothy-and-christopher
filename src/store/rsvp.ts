@@ -13,7 +13,6 @@ export interface GuestRsvpData {
 export interface PartyRsvpData {
   id: Models.Party['id'];
   song_requests: Models.Party['song_requests'];
-  name: Models.Party['name'];
   email: Models.Party['email'];
 }
 
