@@ -21,6 +21,8 @@ const sendConfirmation = async ({
   console.log('----------------------------------');
   console.log('Send Confirmation');
 
+  console.log('sendgridApiKey', sendgridApiKey);
+
   if (sendgridApiKey == '' || sendgridApiKey == null) {
     return { statusCode: 500 };
   }
@@ -42,8 +44,6 @@ const sendConfirmation = async ({
       html,
     });
 
-    console.log('sendgridApiKey', sendgridApiKey);
-    console.log('sendgridApiKey', sendgridApiKey);
     console.log('reponse', response);
     return { statusCode: response.statusCode };
   } catch (err) {
