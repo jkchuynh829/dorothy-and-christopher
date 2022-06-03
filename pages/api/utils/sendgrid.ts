@@ -74,4 +74,36 @@ const sendRsvpAdminNotification = async ({
   }
 };
 
-export { sendConfirmation, sendRsvpAdminNotification };
+const sendRsvpErrorNotification = async ({
+  html,
+}: RsvpAdminNotificationRequest) => {
+  if (sendgridApiKey == '' || sendgridApiKey == null) {
+    console.log('Sengrid API Key is missing');
+    return { statusCode: 500 };
+  }
+
+  try {
+    const [response] = await mail.send({
+      to: ['canoc4262@gmail.com', 'jkchuynh829@gmail.com'],
+      from: {
+        email: 'hello@dorothyandchristopher.com',
+        name: 'Dorothy & Chris',
+      },
+      subject: 'There was an error after an attempt to RSVP to your wedding.',
+      text: 'There was an error after an attempt to RSVP to your wedding.',
+      html,
+    });
+
+    console.log('Rsvp Error Notification email response: ', response);
+    return { statusCode: response.statusCode };
+  } catch (err) {
+    console.log('Rsvp Error Notification email error: ', err);
+    return { statusCode: 500, error: (err as any).message };
+  }
+};
+
+export {
+  sendConfirmation,
+  sendRsvpAdminNotification,
+  sendRsvpErrorNotification,
+};

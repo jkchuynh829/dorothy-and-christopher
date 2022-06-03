@@ -2,7 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import { GuestRsvpData } from '../../src/store/rsvp';
-import { sendConfirmation, sendRsvpAdminNotification } from './utils/sendgrid';
+import {
+  sendConfirmation,
+  sendRsvpAdminNotification,
+  sendRsvpErrorNotification,
+} from './utils/sendgrid';
 
 interface Data {
   statusCode: number;
@@ -58,7 +62,7 @@ export default async function handler(
             <div>Thank you for your RSVP! We look forward to celebrating with you on August 20, 2022.</div>      
             <br /> 
             <div style="font-weight: bold">
-              ${data.guestsRsvpData
+              ${guestsRsvpData
                 .map((guestData: GuestRsvpData) => {
                   return `
                   <div style="margin-bottom: 24px">
@@ -71,10 +75,18 @@ export default async function handler(
                     <div>
                       <b>Meal Preference:</b> ${guestData.meal_preference}
                     </div>
+                    <div>
+                      <b>Dietary Restrictions/Allergies:</b> ${
+                        guestData.allergies
+                      }
+                    </div>
                   </div>
                 `;
                 })
                 .join('')}
+                <div>
+                  <b>Song Requests:</b> ${partyRsvpData.song_requests}
+                </div>
               </div>
                   
               <div>
@@ -117,13 +129,22 @@ export default async function handler(
                       <div>
                         <b>Meal Preference:</b> ${guestData.meal_preference}
                       </div>
+                      <div>
+                        <b>Dietary Restrictions/Allergies:</b> ${
+                          guestData.allergies
+                        }
+                      </div>
                     </div>
                   `;
                   })
                   .join('')}
+                <div>
+                  <b>Song Requests:</b> ${partyRsvpData.song_requests}
+                </div>
               </div>
                     
-              <div>
+              <br /> 
+              <div style="font-weight: bold">
                 Yay!
               </div>
             </body>
@@ -138,6 +159,27 @@ export default async function handler(
     });
   } catch (error) {
     console.log('Rsvp Api Db Error ', error);
+    sendRsvpErrorNotification({
+      html: `
+      <body>
+        <div>There was an error after an attempt to RSVP to your wedding for party: ${partyRsvpData.email}! =(</div>
+        <br /> 
+        <div style="font-weight: bold">
+          Request Body:
+        </div>
+        <div>
+          ${req.body}
+        </div>
+        <br />
+        <div style="font-weight: bold">
+          Error Details:
+        </div>
+        <div>
+          ${error}
+        </div>
+      </body>
+    `,
+    });
     res.send({
       statusCode: 500,
     });
