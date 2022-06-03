@@ -52,7 +52,7 @@ export default async function handler(
           'Party email exists, beginning process to send confirmation email...'
         );
 
-        sendConfirmation({
+        await sendConfirmation({
           to: party.email,
           subject: "Dorothy & Christopher's Wedding RSVP Confirmation",
           message:
