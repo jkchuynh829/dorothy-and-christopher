@@ -157,7 +157,7 @@ export default async function handler(
            `;
           };
 
-          sendRsvpAdminNotification({
+          await sendRsvpAdminNotification({
             html: `
               <body>
                 <div>
