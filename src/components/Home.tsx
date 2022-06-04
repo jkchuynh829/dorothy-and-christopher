@@ -21,7 +21,10 @@ import Rsvp from './Rsvp';
 
 const Container = tw.div`w-full flex flex-col items-center overflow-hidden h-full`;
 const HeroHeading = tw.div`text-center z-10 mt-120 md:mt-60 text-white text-8xl md:text-6xl md:mx-14`;
-const Section = tw.div`relative min-h-screen w-full flex flex-row justify-center max-h-14`;
+const Section = styled.div`
+  ${tw`relative min-h-screen w-full flex flex-row justify-center max-h-14`}
+  min-height: 980px;
+`;
 const Content = tw.div`absolute w-full h-full flex justify-center items-center flex-col text-white`;
 
 const HeroContainer = styled.div`
@@ -39,9 +42,9 @@ const SectionInner = styled.div`
   ${tw`bg-white w-full flex flex-row`}
 `;
 const Block = styled.div`
-  ${tw`relative flex-1 m-16 my-36 overflow-scroll`};
+  ${tw`relative flex-1 m-16 my-36 overflow-scroll border border-solid border-light-gray`};
   &:first-of-type {
-    ${tw`mr-8 md:mx-0`}
+    ${tw`mr-8 md:mx-0 py-8`}
   }
   &:last-of-type {
     ${tw`ml-8 text-white md:hidden`}
