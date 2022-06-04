@@ -42,7 +42,7 @@ const SectionInner = styled.div`
   ${tw`bg-white w-full flex flex-row`}
 `;
 const Block = styled.div`
-  ${tw`relative flex-1 m-16 my-36 overflow-scroll border border-solid border-light-gray`};
+  ${tw`relative flex-1 m-16 my-36 overflow-scroll`};
   &:first-of-type {
     ${tw`mr-8 md:mx-0 py-8`}
   }

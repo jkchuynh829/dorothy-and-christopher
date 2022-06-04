@@ -24,7 +24,7 @@ interface OptionType {
   value: string;
 }
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative pb-16`;
 const InputLabel = tw(Paragraph)`uppercase text-sm mb-0`;
 const RadioContainer = tw.div`flex flex-row`;
 const SubmitButton = tw.button`h-12 w-full border rounded border-dark-gray mt-3 font-urbanist uppercase font-bold hover:bg-green`;
