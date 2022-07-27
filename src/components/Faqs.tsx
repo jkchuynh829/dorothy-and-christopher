@@ -177,11 +177,7 @@ const Faqs = () => {
         </Answer>
 
         <Question>Can I take home a centerpiece as a souvenir?</Question>
-        <Answer>
-          Please do not take centerpieces home as they are rentals. If a
-          centerpiece is unaccounted for at the end of the night, we will have
-          to pay a fee.
-        </Answer>
+        <Answer>Yes, please feel free to take home a centerpiece!</Answer>
 
         <Question>
           I&apos;m visiting from out of town. What can I do while I&apos;m in
