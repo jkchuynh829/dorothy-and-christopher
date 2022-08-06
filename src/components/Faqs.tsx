@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import tw from 'twin.macro';
 import { Paragraph } from './Typography';
 import { useRouter } from 'next/router';
@@ -27,6 +27,30 @@ const Faqs = () => {
       router.push(path);
     };
   };
+
+  const gate5Link = useMemo(
+    () =>
+      generateLink(
+        'https://www.google.com/maps/place/Gate+5/@34.1385486,-118.0423273,16z/data=!4m13!1m7!3m6!1s0x80c2dbbf6a43dbb1:0xe306286712a4aa0e!2s285+Huntington+Dr,+Arcadia,+CA+91007!3b1!8m2!3d34.1386371!4d-118.0452673!3m4!1s0x80c2dbc01f1499b7:0x7448cd039a43eb5!8m2!3d34.1386377!4d-118.0406626'
+      ),
+    [generateLink]
+  );
+
+  const gate5MapLink = useMemo(
+    () =>
+      generateLink(
+        'https://drive.google.com/file/d/1l7t0QKuyK88VrnhRvAMVAmgKi8PkEjdK/view?usp=sharing'
+      ),
+    [generateLink]
+  );
+
+  const noorParkingLink = useMemo(
+    () =>
+      generateLink(
+        'https://drive.google.com/file/d/1cWtnu3zmeH3fAbdS7T9oWwGhaEfWD9QF/view?usp=sharing'
+      ),
+    [generateLink]
+  );
 
   return (
     <Container>
@@ -96,32 +120,23 @@ const Faqs = () => {
         </Answer>
 
         <Question>What is the parking situation?</Question>
+
         <Answer>
           Parking is free at Santa Anita Park, the ceremony venue. Please enter
-          through
-          <Links
-            {...generateLink(
-              'https://www.google.com/maps/place/Gate+5/@34.1385486,-118.0423273,16z/data=!4m13!1m7!3m6!1s0x80c2dbbf6a43dbb1:0xe306286712a4aa0e!2s285+Huntington+Dr,+Arcadia,+CA+91007!3b1!8m2!3d34.1386371!4d-118.0452673!3m4!1s0x80c2dbc01f1499b7:0x7448cd039a43eb5!8m2!3d34.1386377!4d-118.0406626'
-            )}
-          >
-            {' '}
-            Gate 5
-          </Links>{' '}
-          on Huntington Drive. There will be signs and/or personnel guiding you
-          as you enter the venue.
+          through <Links {...gate5Link}>Gate 5</Links> on Huntington Drive.
+          Click <Links {...gate5MapLink}>here</Links> for a map. You can follow
+          the signs for “Dorothy &amp; Christopher’s Wedding” and there will be
+          signs and/or there will be personnel guiding you as you enter the
+          venue.
         </Answer>
 
         <Answer>
-          There will be validated parking at NOOR, the reception venue. Please
-          park at the Marengo Parking Structure and make sure to get validated
-          before heading out. You can also leave your car overnight if necessary
-          and pick it up the next morning.
-        </Answer>
-
-        <Answer>
-          From the NOOR parking structure, walk across the bridge into the main
-          terrace and the NOOR Sofia Ballroom will be on your left across from
-          El Cholo restaurant.
+          There is public will be validated parking at NOOR, the reception
+          venue. Please park at the Marengo Parking Structure at 45 South
+          Marengo Ave. Pasadena, CA 91101. Click{' '}
+          <Links {...noorParkingLink}>here</Links> for a map. The daily maximum
+          is $12. and make sure to get validated before heading out. You can
+          also leave your car overnight if necessary!
         </Answer>
 
         <Question>Are kids welcome?</Question>
