@@ -126,17 +126,21 @@ const Faqs = () => {
           through <Links {...gate5Link}>Gate 5</Links> on Huntington Drive.
           Click <Links {...gate5MapLink}>here</Links> for a map. You can follow
           the signs for “Dorothy &amp; Christopher’s Wedding” and there will be
-          signs and/or there will be personnel guiding you as you enter the
-          venue.
+          personnel guiding you as you enter the venue.
         </Answer>
 
         <Answer>
-          There is public will be validated parking at NOOR, the reception
-          venue. Please park at the Marengo Parking Structure at 45 South
-          Marengo Ave. Pasadena, CA 91101. Click{' '}
-          <Links {...noorParkingLink}>here</Links> for a map. The daily maximum
-          is $12. and make sure to get validated before heading out. You can
-          also leave your car overnight if necessary!
+          There is public parking at NOOR, the reception venue. Please park at
+          the Marengo Parking Structure at 45 South Marengo Ave. Pasadena, CA
+          91101. Click <Links {...noorParkingLink}>here</Links> for a map. The
+          daily maximum is $12. You can also leave your car overnight if
+          necessary!
+        </Answer>
+
+        <Answer>
+          From the NOOR parking structure, walk across the bridge into the main
+          terrace and the NOOR Sofia Ballroom will be on your left across from
+          El Cholo restaurant.
         </Answer>
 
         <Question>Are kids welcome?</Question>
